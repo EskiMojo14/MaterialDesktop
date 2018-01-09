@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Material Top Bar</title>
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" type="text/css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/material-components-web.css" type="text/css">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" type="text/css">
+    
+    <!-- MCW Scripts -->
+    <script src="node_modules/material-components-web/dist/material-components-web.js"></script>
+    
+    <!-- ConicalGradients Polyfill -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src="http://leaverou.github.io/conic-gradient/conic-gradient.js"></script>
+    
+    <!-- MessagePassing Scripts -->
+    <script type="application/javascript">
+        var reconnect;
+
+        function open() {
+            try {
+                var url = "ws://127.0.0.1:58932/MDPlayer";
+                wsPlayer = new WebSocket(url);
+                wsPlayer.onopen = onOpen;
+                wsPlayer.onclose = onClose;
+                wsPlayer.onmessage = onMessage;
+                wsPlayer.onerror = onError;
+
+                document.getElementById('player-status').innerHTML += "Opening";
+            } catch (error) {
+                //document.getElementById('content').innerHTML += "\nError:" + error;
+            }
+        }
+
+        var onOpen = function() {
+            document.getElementById("player-status").innerHTML = "Yes";
+            document.getElementById("player-info").innerHTML = event.data;
+            connected = true;
+            clearTimeout(reconnect);
+        };
+
+        var onClose = function() {
+            document.getElementById("player-status").innerHTML = "No";
+            document.getElementById("player-info").innerHTML = "N/A";
+            connected = false;
+            reconnect = setTimeout(function() {
+                open();
+            }, 5000);
+        };
+
+        var onMessage = function(event) {
+          document.getElementById("player-info").innerHTML = event.data;
+          document.getElementById(event.data.toLowerCase()).classList.add("mdc-temporary-drawer--selected")
+        };
+
+        var onError = function(event) {
+            if (typeof event.data != 'undefined') {
+                //document.getElementById('content').innerHTML += "\nWebsocket Error:" + event.data;
+            }
+        };
+
+        function sendMessagePlayer(stringToSend) {
+            if (connected) {
+                wsPlayer.send(stringToSend);
+                location.reload(true);
+            }
+        }
+        open();
+    </script>
+    <script type="application/javascript">
+        var reconnect;
+
+        function open() {
+            try {
+                var url = "ws://127.0.0.1:58932/MDPlayPause";
+                wsPlayPause = new WebSocket(url);
+                wsPlayPause.onopen = onOpen;
+                wsPlayPause.onclose = onClose;
+                wsPlayPause.onmessage = onMessage;
+                wsPlayPause.onerror = onError;
+
+                document.getElementById('playpause-status').innerHTML += "Opening";
+            } catch (error) {
+                //document.getElementById('content').innerHTML += "\nError:" + error;
+            }
+        }
+
+        var onOpen = function() {
+            document.getElementById("playpause-status").innerHTML = "Yes"
+            document.getElementById("playpause-info").innerHTML = event.data
+            connected = true;
+            clearTimeout(reconnect);
+        };
+
+        var onClose = function() {
+            document.getElementById("playpause-status").innerHTML = "No"
+            document.getElementById("playpause-info").innerHTML = "N/A"
+            connected = false;
+            reconnect = setTimeout(function() {
+                open();
+            }, 5000);
+        };
+
+        var onMessage = function(event) {
+          document.getElementById("playpause").innerHTML = event.data;
+          document.getElementById("playpause-info").innerHTML = event.data
+        };
+
+        var onError = function(event) {
+            if (typeof event.data != 'undefined') {
+                //document.getElementById('content').innerHTML += "\nWebsocket Error:" + event.data;
+            }
+        };
+
+        function sendMessage(stringToSend) {
+            if (connected) {
+                wsPlayPause.send(stringToSend);
+            }
+        }
+        open();
+    </script>
+    <script type="application/javascript">
+        var reconnect;
+
+        function open() {
+            try {
+                var url = "ws://127.0.0.1:58932/MDProgress";
+                wsProgress = new WebSocket(url);
+                wsProgress.onopen = onOpen;
+                wsProgress.onclose = onClose;
+                wsProgress.onmessage = onMessage;
+                wsProgress.onerror = onError;
+
+                document.getElementById('progress-status').innerHTML += "Opening";
+            } catch (error) {
+                //document.getElementById('content').innerHTML += "\nError:" + error;
+            }
+        }
+
+        var onOpen = function() {
+            document.getElementById("progress-status").innerHTML = "Yes"
+            document.getElementById("progress-info").innerHTML = event.data
+            connected = true;
+            clearTimeout(reconnect);
+        };
+
+        var onClose = function() {
+            document.getElementById("progress-status").innerHTML = "No"
+            document.getElementById("progress-info").innerHTML = "N/A"
+            connected = false;
+            reconnect = setTimeout(function() {
+                open();
+            }, 5000);
+        };
+
+        var onMessage = function(event) {
+          document.getElementById("progress-bar").style.width = event.data + "%";
+          document.getElementById("progress-info").innerHTML = event.data
+        };
+
+        var onError = function(event) {
+            if (typeof event.data != 'undefined') {
+                //document.getElementById('content').innerHTML += "\nWebsocket Error:" + event.data;
+            }
+        };
+
+        open();
+    </script>
+    <script type="application/javascript">
+        var reconnect;
+
+        function open() {
+            try {
+                var url = "ws://127.0.0.1:58932/MDTrack";
+                wsTrack = new WebSocket(url);
+                wsTrack.onopen = onOpen;
+                wsTrack.onclose = onClose;
+                wsTrack.onmessage = onMessage;
+                wsTrack.onerror = onError;
+
+                document.getElementById('track-status').innerHTML += "Opening";
+            } catch (error) {
+                //document.getElementById('content').innerHTML += "\nError:" + error;
+            }
+        }
+
+        var onOpen = function() {
+            document.getElementById("track-status").innerHTML = "Yes"
+            document.getElementById("track-info").innerHTML = event.data
+            connected = true;
+            clearTimeout(reconnect);
+        };
+
+        var onClose = function() {
+            document.getElementById("track-status").innerHTML = "No"
+            document.getElementById("track-info").innerHTML = "N/A"
+            connected = false;
+            reconnect = setTimeout(function() {
+                open();
+            }, 5000);
+        };
+
+        var onMessage = function(event) {
+          document.getElementById("track").innerHTML = event.data;
+          document.getElementById("track-info").innerHTML = event.data
+        };
+
+        var onError = function(event) {
+            if (typeof event.data != 'undefined') {
+                //document.getElementById('content').innerHTML += "\nWebsocket Error:" + event.data;
+            }
+        };
+
+        open();
+    </script>
+    <script type="application/javascript">
+        var reconnect;
+
+        function open() {
+            try {
+                var url = "ws://127.0.0.1:58932/MDArtist";
+                wsArtist = new WebSocket(url);
+                wsArtist.onopen = onOpen;
+                wsArtist.onclose = onClose;
+                wsArtist.onmessage = onMessage;
+                wsArtist.onerror = onError;
+
+                document.getElementById('artist-status').innerHTML += "Opening";
+            } catch (error) {
+                //document.getElementById('content').innerHTML += "\nError:" + error;
+            }
+        }
+
+        var onOpen = function() {
+            document.getElementById("artist-status").innerHTML = "Yes"
+            document.getElementById("artist-info").innerHTML = event.data
+            connected = true;
+            clearTimeout(reconnect);
+        };
+
+        var onClose = function() {
+            document.getElementById("artist-status").innerHTML = "No"
+            document.getElementById("artist-info").innerHTML = "N/A"
+            connected = false;
+            reconnect = setTimeout(function() {
+                open();
+            }, 5000);
+        };
+
+        var onMessage = function(event) {
+          document.getElementById("artist").innerHTML = event.data;
+          document.getElementById("artist-info").innerHTML = event.data
+        };
+
+        var onError = function(event) {
+            if (typeof event.data != 'undefined') {
+                //document.getElementById('content').innerHTML += "\nWebsocket Error:" + event.data;
+            }
+        };
+
+        open();
+    </script>
+    <!--<script type="application/javascript">
+        var reconnect;
+
+        function open() {
+            try {
+                var url = "ws://127.0.0.1:58932/MDCover";
+                wsCover = new WebSocket(url);
+                wsCover.onopen = onOpen;
+                wsCover.onclose = onClose;
+                wsCover.onmessage = onMessage;
+                wsCover.onerror = onError;
+
+                document.getElementById('cover-status').innerHTML += "Opening";
+            } catch (error) {
+                //document.getElementById('content').innerHTML += "\nError:" + error;
+            }
+        }
+
+        var onOpen = function() {
+            document.getElementById("cover-status").innerHTML = "Yes"
+            connected = true;
+            clearTimeout(reconnect);
+        };
+
+        var onClose = function() {
+            document.getElementById("cover-status").innerHTML = "No"
+            connected = false;
+            reconnect = setTimeout(function() {
+                open();
+            }, 5000);
+        };
+
+        var onMessage = function(event) {
+          document.getElementById("cover").setAttribute("src", event.data)
+          document.getElementById("cover-info").innerHTML = event.data
+        };
+
+        var onError = function(event) {
+            if (typeof event.data != 'undefined') {
+                //document.getElementById('content').innerHTML += "\nWebsocket Error:" + event.data;
+            }
+        };
+        open();
+    </script>-->
+    <script type="application/javascript">
+        var reconnect;
+
+        function open() {
+            try {
+                var url = "ws://127.0.0.1:58932/MDControls";
+                wsControls = new WebSocket(url);
+                wsControls.onopen = onOpen;
+                wsControls.onclose = onClose;
+                wsControls.onmessage = onMessage;
+                wsControls.onerror = onError;
+
+                document.getElementById('controls-status').innerHTML += "Opening";
+            } catch (error) {
+                //document.getElementById('content').innerHTML += "\nError:" + error;
+            }
+        }
+
+        var onOpen = function() {
+            document.getElementById("controls-status").innerHTML = "Yes"
+            connected = true;
+            clearTimeout(reconnect);
+        };
+
+        var onClose = function() {
+            document.getElementById("controls-status").innerHTML = "No"
+            connected = false;
+            reconnect = setTimeout(function() {
+                open();
+            }, 5000);
+        };
+
+        var onError = function(event) {
+            if (typeof event.data != 'undefined') {
+                //document.getElementById('content').innerHTML += "\nWebsocket Error:" + event.data;
+            }
+        };
+
+        function sendMessageControl(stringToSend) {
+            if (connected) {
+                wsControls.send(stringToSend);
+            }
+            document.getElementById("controls-info").innerHTML = stringToSend
+        }
+        open();
+    </script>
+    <style>
+      :root {
+        --taskbar-height: 40px;
+        /* 40 for normal taskbar, 30 for small icons, 0 for disabled/autohide */
+        
+        --media-bar-height: 56px;
+        /* Advisable values are 48px, 56px and 64px */
+        /* Anything smaller than 48px will likely not display well */
+        
+        --progress-bar-height: 4px;
+        
+        --font: Roboto, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="mdc-typography body">
+    <header class="mdc-toolbar mdc-toolbar--fixed">
+      <div class="mdc-toolbar__row">
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+          <span>
+            <button class="mdc-toolbar__menu-icon material-icons menu-icon">menu</button>
+          </span>
+          <span class="mdc-toolbar__title">Top Bar</span>
+        </section>
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
+          <div class="mdc-form-field mdc-toolbar__icon">
+            <div class="mdc-switch">
+              <input type="checkbox" id="toggle-dark" class="mdc-switch__native-control" />
+              <div class="mdc-switch__background">
+                <div class="mdc-switch__knob"></div>
+              </div>
+            </div>
+            <label for="toggle-dark" class="mdc-switch-label" style="text-overflow: ellipsis; white-space: nowrap;">Dark Theme</label>
+          </div>
+          <button class="mdc-toolbar__icon material-icons mdc-menu-anchor" id="dropdown-button">more_vert</button>
+          <div class="mdc-simple-menu mdc-simple-menu--open-from-top-right" id="dropdown" tabindex="-1">
+            <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
+              <li class="mdc-list-item" role="menuitem" tabindex="-1">WebSockets Display
+                <div class="mdc-form-field mdc-list-item__end-detail list-switch">
+                  <div class="mdc-switch">
+                    <input type="checkbox" id="websockets-checkbox" class="mdc-switch__native-control list-switch-native" />
+                    <div class="mdc-switch__background">
+                      <div class="mdc-switch__knob"></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </header>
+    <aside class="mdc-temporary-drawer">
+      <nav class="mdc-temporary-drawer__drawer">
+        <div class="mdc-permanent-drawer__toolbar-spacer">
+        </div>
+        <nav class="mdc-temporary-drawer__content mdc-list-group">
+          <div class="mdc-temporary-drawer__subtitle">
+            Player
+          </div>
+          <div class="mdc-list">
+            <details class="mdc-expansion">
+              <summary class="mdc-expansion__summary mdc-list-item">
+                <div class="mdc-expansion__header"><i class="material-icons mdc-list-item__start-detail" aria-hidden="true">library_music</i>Player</div>
+              </summary>
+              <div class="mdc-expansion__content">
+                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="aimp" onclick="sendMessagePlayer('AIMP')">AIMP</button> 
+                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="foobar" onclick="sendMessagePlayer('Foobar')">Foobar</button>
+                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="gpmdp" onclick="sendMessagePlayer('GPMDP')">GPMDP</button>
+                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="itunes" onclick="sendMessagePlayer('iTunes')">iTunes</button> 
+                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="mediamonkey" onclick="sendMessagePlayer('MediaMonkey')">MediaMonkey</button> 
+                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="musicbee" onclick="sendMessagePlayer('MusicBee')">MusicBee</button>   
+                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="spotify" onclick="sendMessagePlayer('Spotify')">Spotify</button>
+                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="web" onclick="sendMessagePlayer('Web')">Web</button> 
+                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="winamp" onclick="sendMessagePlayer('WinAmp')">WinAmp</button>
+                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="wmp" onclick="sendMessagePlayer('WMP')">WMP</button>
+              </div>
+            </details>
+            <div class="mdc-list-item">
+              <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">account_circle</i>
+              DiscordRP
+              <div class="mdc-form-field mdc-list-item__end-detail list-switch">
+                <div class="mdc-switch">
+                  <input type="checkbox" id="discordrp" class="mdc-switch__native-control list-switch-native" />
+                  <div class="mdc-switch__background">
+                    <div class="mdc-switch__knob"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </nav>
+    </aside>
+    <div class="content mdc-toolbar-fixed-adjust">
+      <div class="mdc-layout-grid hidden" id="websockets">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-1-tablet mdc-layout-grid__cell--span-0-phone"></div>
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-6-tablet mdc-card mdc-theme--background">
+            <header class="mdc-data-table__header">
+              <section class="mdc-data-table__header__section mdc-data-table__header__section--align-start">
+                <span class="mdc-data-table__header__title">WebSockets</span>
+              </section>
+              <section class="mdc-data-table__header__section mdc-data-table__header__section--align-end">
+                <button class="material-icons mdc-data-table__header__icon" onclick="location.reload(true)">refresh</button>
+              </section>
+            </header>
+            <table class="mdc-data-table mdc-data-table--full-width mdc-data-table--card">
+              <thead>
+                <th class="mdc-data-table__cell--non-numeric">WebSocket</th>
+                <th class="mdc-data-table__cell--non-numeric">Open?</th>
+                <th class="mdc-data-table__cell--non-numeric">Data</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="mdc-data-table__cell--non-numeric">Player</td>
+                  <td class="mdc-data-table__cell--non-numeric" id="player-status">No</td>
+                  <td class="mdc-data-table__cell--non-numeric" id="player-info">N/A</td>
+                </tr>
+                <tr>
+                  <td class="mdc-data-table__cell--non-numeric">PlayPause</td>
+                  <td class="mdc-data-table__cell--non-numeric" id="playpause-status">No</td>
+                  <td class="mdc-data-table__cell--non-numeric" id="playpause-info">N/A</td>
+                </tr>
+                <tr>
+                  <td class="mdc-data-table__cell--non-numeric">Progress</td>
+                  <td class="mdc-data-table__cell--non-numeric" id="progress-status">No</td>
+                  <td class="mdc-data-table__cell--non-numeric" id="progress-info">N/A</td>
+                </tr>
+                <tr>
+                  <td class="mdc-data-table__cell--non-numeric">Track</td>
+                  <td class="mdc-data-table__cell--non-numeric" id="track-status">No</td>
+                  <td class="mdc-data-table__cell--non-numeric" id="track-info">N/A</td>
+                </tr>
+                <tr>
+                  <td class="mdc-data-table__cell--non-numeric">Artist</td>
+                  <td class="mdc-data-table__cell--non-numeric" id="artist-status">No</td>
+                  <td class="mdc-data-table__cell--non-numeric" id="artist-info">N/A</td>
+                </tr>
+                <tr>
+                  <td class="mdc-data-table__cell--non-numeric">Cover</td>
+                  <td class="mdc-data-table__cell--non-numeric" id="cover-status">No</td>
+                  <td class="mdc-data-table__cell--non-numeric" id="cover-info">N/A</td>
+                </tr>
+                <tr>
+                  <td class="mdc-data-table__cell--non-numeric">Controls</td>
+                  <td class="mdc-data-table__cell--non-numeric" id="controls-status">No</td>
+                  <td class="mdc-data-table__cell--non-numeric" id="controls-info">N/A</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-1-tablet mdc-layout-grid__cell--span-0-phone"></div>
+        </div>
+      </div>
+      <div class="fab-container">
+        <button class="mdc-fab mdc-fab--mini" aria-label="Toggle media bar visibility" data-mdc-auto-init="MDCRipple">
+          <input type="checkbox" id="show-hide-media" class="mdc-checkbox__native-control"/>
+          <span class="mdc-fab__icon material-icons">
+            expand_more
+          </span>
+        </button>
+      </div>
+      <div class="media-bar mdc-theme--background mdc-elevation--z6">
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-bar">
+          </div>
+        </div>
+        <div class="below-progress-bar">
+          <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+            <i class="material-icons media-bar--icon cover-placeholder">album</i>
+            <div class="cover-art">
+              <img id="cover" src="img/blank.png"></img>
+            </div>
+            <ul class="mdc-list mdc-list--two-line track-info">
+              <li class="mdc-list-item">
+                <span class="mdc-list-item__text">
+                  <span class="mdc-list-item__primary-text" id="track"></span>
+                  <span class="mdc-list-item__secondary-text" id="artist"></span>
+                </span>
+              </li>
+            </ul>
+          </section>
+          <section class="mdc-toolbar__section mdc-toolbar__section--shrink-to-fit">
+            <button class="material-icons media-bar--icon" id="prev" onclick="sendMessageControl('Previous')">skip_previous</button>
+            <button class="material-icons media-bar--icon center-button" id="playpause" onclick="sendMessage('PlayPause')">play_arrow</button>
+            <button class="material-icons media-bar--icon" id="next" onclick="sendMessageControl('Next')">skip_next</button>
+          </section>
+          <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
+            <!--<i class="mdc-toolbar__icon material-icons mdc-theme--primary">equalizer</i>-->
+          </section>
+        </div>
+      </div>
+      <div class="taskbar"></div> 
+    </div>
+    <script>
+      mdc.autoInit()
+      
+      var fab = document.querySelector('.fab-container');
+      var mediaBar = document.querySelector('.media-bar');
+      var fabCheckbox = document.getElementById('show-hide-media');
+      fabCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+          fab.classList.add('hidden');
+          mediaBar.classList.add('hidden');
+        } else {
+          fab.classList.remove('hidden');
+          mediaBar.classList.remove('hidden');
+        }
+      });
+      
+      var wsDisplay = document.querySelector('#websockets');
+      var checkbox = document.getElementById('websockets-checkbox');
+      checkbox.addEventListener('change', function () {
+        if (this.checked) {
+          wsDisplay.classList.remove('hidden');
+        } else {
+          wsDisplay.classList.add('hidden');
+        }
+      });
+      
+      var body = document.querySelector('body');
+      var dark = document.getElementById('toggle-dark');
+      var progressBar = document.getElementById('progress-bar');
+      var playPause = document.getElementById('playpause');
+      dark.addEventListener('change', function () {
+        if (this.checked) {
+          body.classList.add('mdc-theme--dark');
+        } else {
+          body.classList.remove('mdc-theme--dark');
+        }
+      });
+      
+      var toolbar = mdc.toolbar.MDCToolbar.attachTo(document.querySelector('.mdc-toolbar'));
+      toolbar.fixedAdjustElement = document.querySelector('.mdc-toolbar-fixed-adjust');
+      
+      var drawerEl = document.querySelector('.mdc-temporary-drawer');
+      var MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer;
+      var drawer = new MDCTemporaryDrawer(drawerEl);
+      document.querySelector('.menu-icon').addEventListener('click', function() {
+        drawer.open = true;
+      });
+      drawerEl.addEventListener('MDCTemporaryDrawer:open', function() {
+        console.log('Received MDCTemporaryDrawer:open');
+      });
+      drawerEl.addEventListener('MDCTemporaryDrawer:close', function() {
+        console.log('Received MDCTemporaryDrawer:close');
+      });
+      
+      let menu = new mdc.menu.MDCSimpleMenu(document.querySelector('#dropdown'));
+      document.querySelector('#dropdown-button').addEventListener('click', () => menu.open = !menu.open);
+    </script>
+  </body>
+</html>

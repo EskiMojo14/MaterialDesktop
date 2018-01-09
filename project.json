@@ -1,0 +1,62 @@
+{
+  "description" : "Material Desktop setup using MCW",
+	"file" : "index.html",
+	"general" : 
+	{
+		"properties" : 
+		{
+      "mediabarheight" :
+      {
+        "options" : 
+				[
+					{
+						"label" : "48px",
+						"value" : "48px"
+					},
+					{
+						"label" : "56px",
+						"value" : "56px"
+					},
+					{
+						"label" : "64px",
+						"value" : "64px"
+					}
+				],
+				"text" : "Media Bar Height",
+				"type" : "combo",
+				"value" : "56px"
+      },
+      "ataskbarheight" :
+      {
+        "options" : 
+				[
+					{
+						"label" : "40px (Normal)",
+						"value" : "40px"
+					},
+					{
+						"label" : "30px (Small Icons)",
+						"value" : "30px"
+					},
+					{
+						"label" : "0px (disabled/autohide)",
+						"value" : "0px"
+					}
+				],
+				"text" : "Taskbar Height",
+				"type" : "combo",
+				"value" : "40px"
+      },
+			"schemecolor" : 
+			{
+				"order" : 0,
+				"text" : "ui_browse_properties_scheme_color",
+				"type" : "color",
+				"value" : "0.247058824 0.31764705882 0.70980392156"
+			}
+		}
+	},
+	"preview" : "preview.jpg",
+	"title" : "Material Desktop",
+	"type" : "web"
+}
