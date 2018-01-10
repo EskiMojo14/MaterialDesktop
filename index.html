@@ -558,35 +558,20 @@
       var mediaBar = document.querySelector('.media-bar');
       var fabCheckbox = document.getElementById('show-hide-media');
       fabCheckbox.addEventListener('change', function () {
-        if (this.checked) {
-          fab.classList.add('hidden');
-          mediaBar.classList.add('hidden');
-        } else {
-          fab.classList.remove('hidden');
-          mediaBar.classList.remove('hidden');
-        }
+        fab.classList[fabCheckbox.checked ? 'add' : 'remove']('hidden');
+        mediaBar.classList[fabCheckbox.checked ? 'add' : 'remove']('hidden');
       });
       
       var wsDisplay = document.querySelector('#websockets');
-      var checkbox = document.getElementById('websockets-checkbox');
-      checkbox.addEventListener('change', function () {
-        if (this.checked) {
-          wsDisplay.classList.remove('hidden');
-        } else {
-          wsDisplay.classList.add('hidden');
-        }
+      var wsDisplayCheckbox = document.getElementById('websockets-checkbox');
+      wsDisplayCheckbox.addEventListener('change', function () {
+        wsDisplay.classList[wsDisplayCheckbox.checked ? 'remove' : 'add']('hidden');
       });
       
       var body = document.querySelector('body');
       var dark = document.getElementById('toggle-dark');
-      var progressBar = document.getElementById('progress-bar');
-      var playPause = document.getElementById('playpause');
       dark.addEventListener('change', function () {
-        if (this.checked) {
-          body.classList.add('mdc-theme--dark');
-        } else {
-          body.classList.remove('mdc-theme--dark');
-        }
+        body.classList[dark.checked ? 'add' : 'remove']('mdc-theme--dark');
       });
       
       var toolbar = mdc.toolbar.MDCToolbar.attachTo(document.querySelector('.mdc-toolbar'));
@@ -608,16 +593,10 @@
       let menu = new mdc.menu.MDCSimpleMenu(document.querySelector('#dropdown'));
       document.querySelector('#dropdown-button').addEventListener('click', () => menu.open = !menu.open);
       
-      var expand = document.querySelector('.mdc-expansion');
       var expandHeader = document.querySelector('.mdc-expansion__header');
-      console.log(expand);
       function expandUpdate() {
-        let expandOpen = expand.hasAttribute("open");
-        if (expandOpen) {
-          expandHeader.classList.remove('mdc-list-item--selected');
-        } else {
-          expandHeader.classList.add('mdc-list-item--selected');
-        }
+        let expandOpen = document.querySelector('.mdc-expansion').hasAttribute("open");
+        expandHeader.classList[(expandOpen) ? 'remove' : 'add']('mdc-list-item--selected');
       }
     </script>
   </body>
