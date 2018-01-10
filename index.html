@@ -15,10 +15,6 @@
     <!-- MCW Scripts -->
     <script src="node_modules/material-components-web/dist/material-components-web.js"></script>
     
-    <!-- ConicalGradients Polyfill -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-    <script src="http://leaverou.github.io/conic-gradient/conic-gradient.js"></script>
-    
     <!-- MessagePassing Scripts -->
     <script type="application/javascript">
         var reconnect;
@@ -408,18 +404,22 @@
         </section>
       </div>
     </header>
-    <aside class="mdc-temporary-drawer">
-      <nav class="mdc-temporary-drawer__drawer">
-        <div class="mdc-permanent-drawer__toolbar-spacer">
+    <aside class="mdc-drawer mdc-drawer--temporary">
+      <nav class="mdc-drawer__drawer">
+        <div class="mdc-drawer__toolbar-spacer">
         </div>
-        <nav class="mdc-temporary-drawer__content mdc-list-group">
-          <div class="mdc-temporary-drawer__subtitle">
+        <nav class="mdc-drawer__content mdc-list-group">
+          <div class="mdc-drawer__subtitle">
             Player
           </div>
           <div class="mdc-list">
-            <details class="mdc-expansion">
+            <details class="mdc-expansion" onclick="expandUpdate()">
               <summary class="mdc-expansion__summary mdc-list-item">
-                <div class="mdc-expansion__header"><i class="material-icons mdc-list-item__start-detail" aria-hidden="true">library_music</i>Player</div>
+                <div class="mdc-expansion__header">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">library_music</i>
+                  Player
+                  <i class="material-icons mdc-list-item__meta mdc-expansion__icon" aria-hidden="true">expand_more</i>
+                </div>
               </summary>
               <div class="mdc-expansion__content">
                 <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="aimp" onclick="sendMessagePlayer('AIMP')">AIMP</button> 
@@ -435,9 +435,9 @@
               </div>
             </details>
             <div class="mdc-list-item">
-              <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">account_circle</i>
+              <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
               DiscordRP
-              <div class="mdc-form-field mdc-list-item__end-detail list-switch">
+              <div class="mdc-form-field mdc-list-item__meta list-switch">
                 <div class="mdc-switch">
                   <input type="checkbox" id="discordrp" class="mdc-switch__native-control list-switch-native" />
                   <div class="mdc-switch__background">
@@ -592,7 +592,7 @@
       var toolbar = mdc.toolbar.MDCToolbar.attachTo(document.querySelector('.mdc-toolbar'));
       toolbar.fixedAdjustElement = document.querySelector('.mdc-toolbar-fixed-adjust');
       
-      var drawerEl = document.querySelector('.mdc-temporary-drawer');
+      var drawerEl = document.querySelector('.mdc-drawer');
       var MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer;
       var drawer = new MDCTemporaryDrawer(drawerEl);
       document.querySelector('.menu-icon').addEventListener('click', function() {
@@ -607,6 +607,18 @@
       
       let menu = new mdc.menu.MDCSimpleMenu(document.querySelector('#dropdown'));
       document.querySelector('#dropdown-button').addEventListener('click', () => menu.open = !menu.open);
+      
+      var expand = document.querySelector('.mdc-expansion');
+      var expandHeader = document.querySelector('.mdc-expansion__header');
+      console.log(expand);
+      function expandUpdate() {
+        let expandOpen = expand.hasAttribute("open");
+        if (expandOpen) {
+          expandHeader.classList.remove('mdc-list-item--selected');
+        } else {
+          expandHeader.classList.add('mdc-list-item--selected');
+        }
+      }
     </script>
   </body>
 </html>
