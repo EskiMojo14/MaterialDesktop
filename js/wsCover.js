@@ -1,4 +1,4 @@
-
+/*
 var reconnect;
 
 function open() {
@@ -41,3 +41,4 @@ var onError = function(event) {
   }
 };
 open();
+*/
