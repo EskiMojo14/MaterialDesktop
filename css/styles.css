@@ -40,7 +40,7 @@ button:focus {
   justify-content: center;
   align-items: flex-end;
   padding-bottom: 1rem;
-  bottom: calc(var(--taskbar-height, 40px) + var(--media-bar-height, 56px));
+  bottom: calc(var(--taskbar-height, 40px) + 56px + var(--mdc-layout-grid-margin-desktop, 24px));
   width: 100%;
   transition-property: bottom;
   transition-duration: 300ms;
@@ -51,6 +51,16 @@ button:focus {
 @media(min-width: 1024px) {
   .fab-container {
     padding-bottom: 1.5rem;
+  }
+}
+@media (max-width: 839px) and (min-width: 480px) {
+  .fab-container {
+    bottom: calc(var(--taskbar-height, 40px) + 56px + var(--mdc-layout-grid-margin-tablet, 16px));
+  }
+}
+@media (max-width: 479px) {
+  .fab-container {
+    bottom: calc(var(--taskbar-height, 40px) + 56px + var(--mdc-layout-grid-margin-phone, 16px));
   }
 }
 
@@ -66,19 +76,32 @@ button:focus {
   height: 100%;
 }
 
-.media-bar {
+.media-bar-container {
   position: fixed;
-  width: 100%;
   bottom: var(--taskbar-height, 40px);
-  z-index: 4;
-  height: var(--media-bar-height, 56px);
   transition-property: bottom;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  width: 100%;
 }
 
-.media-bar.hidden {
-  bottom: calc(var(--taskbar-height, 40px) - var(--media-bar-height, 56px));
+.media-bar {
+  z-index: 4;
+  height: 56px;
+}
+
+.media-bar-container.hidden {
+  bottom: calc(var(--taskbar-height, 40px) - 56px - (var(--mdc-layout-grid-margin-desktop, 24px)*2));
+}
+@media (max-width: 839px) and (min-width: 480px) {
+  .media-bar-container.hidden {
+    bottom: calc(var(--taskbar-height, 40px) - 56px - (var(--mdc-layout-grid-margin-tablet, 16px)*2));
+  }
+}
+@media (max-width: 479px) {
+  .media-bar-container.hidden {
+    bottom: calc(var(--taskbar-height, 40px) - 56px - (var(--mdc-layout-grid-margin-phone, 16px)*2));
+  }
 }
 
 .media-bar--icon {
@@ -94,7 +117,7 @@ button:focus {
 }
 
 .progress-bar-container {
-  height: var(--progress-bar-height, 4px);
+  height: 4px;
   width: 100%;
   background-color: #6f7dcd;
   background-color: var(--mdc-theme-primary-dark, #6f7dcd);
@@ -110,7 +133,7 @@ button:focus {
   display: flex;
   box-sizing: border-box;
   width: 100%;
-  height: calc(var(--media-bar-height, 56px) - var(--progress-bar-height, 4px));
+  height: 52px;
   justify-content: space-between;
 }
 
@@ -122,8 +145,15 @@ button:focus {
 
 .cover-placeholder {
   position: absolute;
-  padding: 0 34px;
+  padding: 0 calc(34px + var(--mdc-layout-grid-margin-desktop, 24px));
   left: 0;
+  right: auto;
+}
+[dir="rtl"] .cover-placeholder, .cover-placeholder[dir="rtl"] {
+  position: absolute;
+  padding: 0 calc(34px + var(--mdc-layout-grid-margin-desktop, 24px));
+  right: 0;
+  left: auto;
 }
 
 .taskbar {
@@ -162,20 +192,20 @@ button:focus {
 }
 
 .center-button {
-  width: calc(var(--media-bar-height, 56px) - (var(--progress-bar-height, 4px) + 8px)); 
-  height: calc(var(--media-bar-height, 56px) - (var(--progress-bar-height, 4px) + 8px)); 
+  width: 44px; 
+  height: 44px; 
   background-color: var(--mdc-theme-primary, #3f51b5);
   padding: 0; 
   margin: 0 12px; 
   border-radius: 50%;
   color: var(--mdc-theme-text-primary-on-primary, white);
-  line-height: calc(var(--media-bar-height, 56px) - (var(--progress-bar-height, 4px) + 8px));
+  line-height: 44px;
   text-align: center;
 }
 
 .cover-art {
-  width: calc(var(--media-bar-height, 56px) - (var(--progress-bar-height, 4px) + 8px)); 
-  height: calc(var(--media-bar-height, 56px) - (var(--progress-bar-height, 4px) + 8px)); 
+  width: 44px; 
+  height: 44px; 
   padding: 0; 
   margin: 0 12px 0 24px; 
   border-radius: 50%;
@@ -191,7 +221,7 @@ button:focus {
 }
 
 .track-info {
-  width: calc(100% - ((var(--media-bar-height, 56px) - (var(--progress-bar-height, 4px) + 8px)) + 36px));
+  width: calc(100% - 80px);
   padding: 0px;
   height: 100%;
 }

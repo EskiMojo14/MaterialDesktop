@@ -5,28 +5,7 @@
 	{
 		"properties" : 
 		{
-      "mediabarheight" :
-      {
-        "options" : 
-				[
-					{
-						"label" : "48px",
-						"value" : "48px"
-					},
-					{
-						"label" : "56px",
-						"value" : "56px"
-					},
-					{
-						"label" : "64px",
-						"value" : "64px"
-					}
-				],
-				"text" : "Media Bar Height",
-				"type" : "combo",
-				"value" : "56px"
-      },
-      "ataskbarheight" :
+      "taskbarheight" :
       {
         "options" : 
 				[

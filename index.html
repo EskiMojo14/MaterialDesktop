@@ -31,12 +31,6 @@
         --taskbar-height: 40px;
         /* 40 for normal taskbar, 30 for small icons, 0 for disabled/autohide */
         
-        --media-bar-height: 56px;
-        /* Advisable values are 48px, 56px and 64px */
-        /* Anything smaller than 48px will likely not display well */
-        
-        --progress-bar-height: 4px;
-        
         --font: Roboto, sans-serif;
       }
     </style>
@@ -193,34 +187,38 @@
           </span>
         </button>
       </div>
-      <div class="media-bar mdc-theme--background mdc-elevation--z6">
-        <div class="progress-bar-container">
-          <div class="progress-bar" id="progress-bar">
-          </div>
-        </div>
-        <div class="below-progress-bar">
-          <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-            <i class="material-icons media-bar--icon cover-placeholder">album</i>
-            <div class="cover-art">
-              <img id="cover" src="img/blank.png"></img>
+      <div class="mdc-layout-grid media-bar-container">
+        <div class="mdc-layout-grid__inner">
+          <div class="media-bar mdc-theme--background mdc-card mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="progress-bar">
+              </div>
             </div>
-            <ul class="mdc-list mdc-list--two-line mdc-list--non-interactive track-info">
-              <li class="mdc-list-item">
-                <span class="mdc-list-item__text">
-                  <span class="mdc-list-item__primary-text" id="track"></span>
-                  <span class="mdc-list-item__secondary-text" id="artist"></span>
-                </span>
-              </li>
-            </ul>
-          </section>
-          <section class="mdc-toolbar__section mdc-toolbar__section--shrink-to-fit">
-            <button class="material-icons media-bar--icon" id="prev" onclick="sendMessageControl('Previous')">skip_previous</button>
-            <button class="material-icons media-bar--icon center-button" id="playpause" onclick="sendMessage('PlayPause')">play_arrow</button>
-            <button class="material-icons media-bar--icon" id="next" onclick="sendMessageControl('Next')">skip_next</button>
-          </section>
-          <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
-            <!--<i class="mdc-toolbar__icon material-icons mdc-theme--primary">equalizer</i>-->
-          </section>
+            <div class="below-progress-bar">
+              <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+                <i class="material-icons media-bar--icon cover-placeholder">album</i>
+                <div class="cover-art">
+                  <img id="cover" src="img/blank.png"></img>
+                </div>
+                <ul class="mdc-list mdc-list--two-line mdc-list--non-interactive track-info">
+                  <li class="mdc-list-item">
+                    <span class="mdc-list-item__text">
+                      <span class="mdc-list-item__primary-text" id="track"></span>
+                      <span class="mdc-list-item__secondary-text" id="artist"></span>
+                    </span>
+                  </li>
+                </ul>
+              </section>
+              <section class="mdc-toolbar__section mdc-toolbar__section--shrink-to-fit">
+                <button class="material-icons media-bar--icon" id="prev" onclick="sendMessageControl('Previous')">skip_previous</button>
+                <button class="material-icons media-bar--icon center-button" id="playpause" onclick="sendMessage('PlayPause')">play_arrow</button>
+                <button class="material-icons media-bar--icon" id="next" onclick="sendMessageControl('Next')">skip_next</button>
+              </section>
+              <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
+                <!--<i class="mdc-toolbar__icon material-icons mdc-theme--primary">equalizer</i>-->
+              </section>
+            </div>
+          </div>
         </div>
       </div>
       <div class="taskbar"></div> 
@@ -229,7 +227,7 @@
       mdc.autoInit()
       
       var fab = document.querySelector('.fab-container');
-      var mediaBar = document.querySelector('.media-bar');
+      var mediaBar = document.querySelector('.media-bar-container');
       var fabCheckbox = document.getElementById('show-hide-media');
       fabCheckbox.addEventListener('change', function () {
         fab.classList[fabCheckbox.checked ? 'add' : 'remove']('hidden');
