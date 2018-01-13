@@ -10,7 +10,7 @@ function open() {
     wsTrack.onmessage = onMessage;
     wsTrack.onerror = onError;
 
-document.getElementById('track-status').innerHTML += "Opening";
+document.getElementById('track-status').innerHTML = "Opening";
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }

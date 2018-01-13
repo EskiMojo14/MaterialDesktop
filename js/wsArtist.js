@@ -10,7 +10,7 @@ function open() {
     wsArtist.onmessage = onMessage;
     wsArtist.onerror = onError;
 
-document.getElementById('artist-status').innerHTML += "Opening";
+document.getElementById('artist-status').innerHTML = "Opening";
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }

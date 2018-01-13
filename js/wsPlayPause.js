@@ -10,7 +10,7 @@ function open() {
     wsPlayPause.onmessage = onMessage;
     wsPlayPause.onerror = onError;
 
-document.getElementById('playpause-status').innerHTML += "Opening";
+document.getElementById('playpause-status').innerHTML = "Opening";
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }

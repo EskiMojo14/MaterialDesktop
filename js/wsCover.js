@@ -10,7 +10,7 @@ function open() {
     wsCover.onmessage = onMessage;
     wsCover.onerror = onError;
 
-    document.getElementById('cover-status').innerHTML += "Opening";
+    document.getElementById('cover-status').innerHTML = "Opening";
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }

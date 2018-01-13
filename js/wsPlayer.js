@@ -10,7 +10,7 @@ function open() {
     wsPlayer.onmessage = onMessage;
     wsPlayer.onerror = onError;
 
-    document.getElementById('player-status').innerHTML += "Opening";
+    document.getElementById('player-status').innerHTML = "Opening";
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }

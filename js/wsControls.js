@@ -10,7 +10,7 @@ function open() {
     wsControls.onmessage = onMessage;
     wsControls.onerror = onError;
 
-    document.getElementById('controls-status').innerHTML += "Opening";
+    document.getElementById('controls-status').innerHTML = "Opening";
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }

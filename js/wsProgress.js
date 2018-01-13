@@ -10,7 +10,7 @@ function open() {
     wsProgress.onmessage = onMessage;
     wsProgress.onerror = onError;
 
-document.getElementById('progress-status').innerHTML += "Opening";
+document.getElementById('progress-status').innerHTML = "Opening";
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }
