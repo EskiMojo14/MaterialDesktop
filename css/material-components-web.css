@@ -5332,8 +5332,8 @@ body {
   text-decoration: inherit;
   text-transform: inherit;
   /* @alternate */
-  color: rgba(0, 0, 0, 0.87);
-  color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87));
+  color: rgba(0, 0, 0, 0.87) !important;
+  color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87)) !important;
   margin: 0;
   padding: 8px 0;
   line-height: 1.5rem;
@@ -5341,8 +5341,8 @@ body {
   .mdc-list--theme-dark,
   .mdc-theme--dark .mdc-list {
     /* @alternate */
-    color: white;
-    color: var(--mdc-theme-text-primary-on-dark, white); }
+    color: white !important;
+    color: var(--mdc-theme-text-primary-on-dark, white) !important; }
     .mdc-list--theme-dark .mdc-list-item__secondary-text,
     .mdc-theme--dark .mdc-list .mdc-list-item__secondary-text {
       /* @alternate */
@@ -5351,8 +5351,8 @@ body {
     .mdc-list--theme-dark .mdc-list-item__graphic,
     .mdc-theme--dark .mdc-list .mdc-list-item__graphic {
       /* @alternate */
-      color: rgba(255, 255, 255, 0.5);
-      color: var(--mdc-theme-text-icon-on-dark, rgba(255, 255, 255, 0.5)); }
+      color: rgba(255, 255, 255, 0.5) !important;
+      color: var(--mdc-theme-text-icon-on-dark, rgba(255, 255, 255, 0.5)) !important; }
     .mdc-list--theme-dark .mdc-list-item__meta,
     .mdc-theme--dark .mdc-list .mdc-list-item__meta {
       /* @alternate */
@@ -5369,8 +5369,8 @@ body {
 
 .mdc-list-item__graphic {
   /* @alternate */
-  color: rgba(0, 0, 0, 0.38);
-  color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38)); }
+  color: rgba(0, 0, 0, 0.38) !important;
+  color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38)) !important; }
 
 .mdc-list-item__meta {
   /* @alternate */
@@ -5393,12 +5393,12 @@ body {
   padding: 0 16px; }
   .mdc-list-item--selected, .mdc-list-item--activated {
     /* @alternate */
-    color: #009688;
-    color: var(--mdc-theme-primary, #009688); }
+    color: #009688 !important;
+    color: var(--mdc-theme-primary, #009688) !important; }
     .mdc-list-item--selected .mdc-list-item__graphic, .mdc-list-item--activated .mdc-list-item__graphic {
       /* @alternate */
-      color: #009688;
-      color: var(--mdc-theme-primary, #009688); }
+      color: #009688 !important;
+      color: var(--mdc-theme-primary, #009688) !important; }
   .mdc-list-item__graphic {
     margin-left: 0;
     margin-right: 32px;

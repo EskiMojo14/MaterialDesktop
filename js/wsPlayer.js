@@ -34,7 +34,7 @@ var onClose = function() {
 
 var onMessage = function(event) {
   document.getElementById("player-info").innerHTML = event.data;
-  document.getElementById(event.data.toLowerCase()).classList.add("mdc-temporary-drawer--selected")
+  document.getElementById(event.data.toLowerCase()).classList.add("mdc-list-item--activated")
 };
 
 var onError = function(event) {
