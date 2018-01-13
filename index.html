@@ -24,6 +24,7 @@
     <script src="js/wsPlayPause.js"></script>
     <script src="js/wsProgress.js"></script>
     <script src="js/wsTrack.js"></script>
+    <script src="js/wsDiscord.js"></script>
     
     <!--Details polyfill-->
     <script src="js/details-polyfill.js"></script>
@@ -176,6 +177,11 @@
                   <td class="mdc-data-table__cell--non-numeric" id="controls-status">No</td>
                   <td class="mdc-data-table__cell--non-numeric" id="controls-info">N/A</td>
                 </tr>
+                <tr>
+                  <td class="mdc-data-table__cell--non-numeric">Discord</td>
+                  <td class="mdc-data-table__cell--non-numeric" id="discord-status">No</td>
+                  <td class="mdc-data-table__cell--non-numeric" id="discord-info">N/A</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -273,6 +279,15 @@
         let expandOpen = document.querySelector('.mdc-expansion').hasAttribute("open");
         expandHeader.classList[(expandOpen) ? 'remove' : 'add']('mdc-list-item--selected');
       }
+      
+      var discordCheckbox = document.getElementById("discordrp")
+      discordCheckbox.addEventListener('change', function () {
+        if (discordCheckbox.checked) {
+          sendMessageDiscord("1");
+        } else {
+          sendMessageDiscord("0");
+        }
+      });
     </script>
   </body>
 </html>
