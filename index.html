@@ -11,6 +11,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/material-components-web.css" type="text/css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <link rel="stylesheet" href="css/media-bar.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" type="text/css">
     
     <!-- MCW Scripts -->
@@ -123,10 +124,9 @@
       </nav>
     </aside>
     <div class="content mdc-toolbar-fixed-adjust">
-      <div class="mdc-layout-grid hidden" id="websockets">
+      <div class="mdc-layout-grid">
         <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-1-tablet mdc-layout-grid__cell--span-0-phone"></div>
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-6-tablet mdc-card mdc-theme--background">
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-card mdc-theme--background" id="websockets">
             <header class="mdc-data-table__header">
               <section class="mdc-data-table__header__section mdc-data-table__header__section--align-start">
                 <span class="mdc-data-table__header__title">WebSockets</span>
@@ -139,77 +139,55 @@
               <thead>
                 <th class="mdc-data-table__cell--non-numeric">WebSocket</th>
                 <th class="mdc-data-table__cell--non-numeric">Open?</th>
-                <th class="mdc-data-table__cell--non-numeric">Data</th>
+                <th class="mdc-data-table__cell--non-numeric">Player</th>
+                <th class="mdc-data-table__cell--non-numeric">PlayPause</th>
+                <th>Progress</th>
+                <th class="mdc-data-table__cell--non-numeric">Track</th>
+                <th class="mdc-data-table__cell--non-numeric">Artist</th>
+                <th class="mdc-data-table__cell--non-numeric">Cover</th>
+                <th class="mdc-data-table__cell--non-numeric">Controls</th>
+                <th>Discord</th>
               </thead>
               <tbody>
                 <tr>
-                  <td class="mdc-data-table__cell--non-numeric">Player</td>
-                  <td class="mdc-data-table__cell--non-numeric" id="player-status">No</td>
+                  <td class="mdc-data-table__cell--non-numeric">Condensed</td>
+                  <td class="mdc-data-table__cell--non-numeric" id="condensed-status">No</td>
                   <td class="mdc-data-table__cell--non-numeric" id="player-info">N/A</td>
-                </tr>
-                <tr>
-                  <td class="mdc-data-table__cell--non-numeric">PlayPause</td>
-                  <td class="mdc-data-table__cell--non-numeric" id="playpause-status">No</td>
                   <td class="mdc-data-table__cell--non-numeric" id="playpause-info">N/A</td>
-                </tr>
-                <tr>
-                  <td class="mdc-data-table__cell--non-numeric">Progress</td>
-                  <td class="mdc-data-table__cell--non-numeric" id="progress-status">No</td>
-                  <td class="mdc-data-table__cell--non-numeric" id="progress-info">N/A</td>
-                </tr>
-                <tr>
-                  <td class="mdc-data-table__cell--non-numeric">Track</td>
-                  <td class="mdc-data-table__cell--non-numeric" id="track-status">No</td>
+                  <td id="progress-info">N/A</td>
                   <td class="mdc-data-table__cell--non-numeric" id="track-info">N/A</td>
-                </tr>
-                <tr>
-                  <td class="mdc-data-table__cell--non-numeric">Artist</td>
-                  <td class="mdc-data-table__cell--non-numeric" id="artist-status">No</td>
                   <td class="mdc-data-table__cell--non-numeric" id="artist-info">N/A</td>
-                </tr>
-                <tr>
-                  <td class="mdc-data-table__cell--non-numeric">Cover</td>
-                  <td class="mdc-data-table__cell--non-numeric" id="cover-status">No</td>
                   <td class="mdc-data-table__cell--non-numeric" id="cover-info">N/A</td>
-                </tr>
-                <tr>
-                  <td class="mdc-data-table__cell--non-numeric">Controls</td>
-                  <td class="mdc-data-table__cell--non-numeric" id="controls-status">No</td>
                   <td class="mdc-data-table__cell--non-numeric" id="controls-info">N/A</td>
-                </tr>
-                <tr>
-                  <td class="mdc-data-table__cell--non-numeric">Discord</td>
-                  <td class="mdc-data-table__cell--non-numeric" id="discord-status">No</td>
-                  <td class="mdc-data-table__cell--non-numeric" id="discord-info">N/A</td>
+                  <td id="discord-info">N/A</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-1-tablet mdc-layout-grid__cell--span-0-phone"></div>
         </div>
       </div>
-      <div class="fab-container">
-        <button class="mdc-fab mdc-fab--mini fab" aria-label="Toggle media bar visibility" data-mdc-auto-init="MDCRipple">
-          <input type="checkbox" id="show-hide-media" class="mdc-checkbox__native-control"/>
+      <div class="media-bar mdc-layout-grid">
+        <button class="mdc-fab mdc-fab--mini media-bar__fab" aria-label="Toggle media bar visibility" data-mdc-auto-init="MDCRipple" >
+          <input type="checkbox" id="show-hide-media" class="mdc-checkbox__native-control">
           <span class="mdc-fab__icon material-icons">
             expand_more
           </span>
         </button>
-      </div>
-      <div class="mdc-layout-grid media-bar-container">
-        <div class="mdc-layout-grid__inner">
-          <div class="media-bar mdc-theme--background mdc-card mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            <div class="progress-bar-container">
-              <div class="progress-bar" id="progress-bar">
-              </div>
+        <div class="media-bar__bar mdc-theme--background">
+          <div role="progressbar" class="mdc-linear-progress">
+            <div class="mdc-linear-progress__buffer"></div>
+            <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar" style="transform: scaleX(0.5);">
+              <span class="mdc-linear-progress__bar-inner"></span>
             </div>
-            <div class="below-progress-bar">
-              <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-                <i class="material-icons media-bar--icon cover-placeholder">album</i>
-                <div class="cover-art">
-                  <img id="cover" src="img/blank.png"></img>
-                </div>
-                <ul class="mdc-list mdc-list--two-line mdc-list--non-interactive track-info">
+            <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+              <span class="mdc-linear-progress__bar-inner"></span>
+            </div>
+          </div>
+          <div class="media-bar__row">
+            <div class="media-bar__section media-bar__section--align-start">
+              <span class="media-bar__album-icon material-icons">album</span>
+              <div class="media-bar__track-info">
+                <ul class="mdc-list mdc-list--two-line mdc-list--non-interactive">
                   <li class="mdc-list-item">
                     <span class="mdc-list-item__text">
                       <span class="mdc-list-item__primary-text" id="track"></span>
@@ -217,15 +195,15 @@
                     </span>
                   </li>
                 </ul>
-              </section>
-              <section class="mdc-toolbar__section mdc-toolbar__section--shrink-to-fit">
-                <button class="material-icons media-bar--icon" id="prev" onclick="sendMessageControl('Previous')">skip_previous</button>
-                <button class="material-icons media-bar--icon center-button" id="playpause" onclick="sendMessage('PlayPause')">play_arrow</button>
-                <button class="material-icons media-bar--icon" id="next" onclick="sendMessageControl('Next')">skip_next</button>
-              </section>
-              <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
-                <!--<i class="mdc-toolbar__icon material-icons mdc-theme--primary">equalizer</i>-->
-              </section>
+              </div>
+            </div>
+            <div class="media-bar__section media-bar__section--shrink-to-fit">
+              <button class="material-icons media-bar__icon" id="prev" onclick="sendMessageControl('Previous')">skip_previous</button>
+              <button class="material-icons media-bar__icon media-bar--main-button" id="playpause" onclick="sendMessageControl('PlayPause')">play_arrow</button>
+              <button class="material-icons media-bar__icon" id="next" onclick="sendMessageControl('Next')">skip_next</button>
+            </div>
+            <div class="media-bar__section media-bar__section--align-end">
+            
             </div>
           </div>
         </div>
@@ -235,12 +213,10 @@
     <script>
       mdc.autoInit()
       
-      var fab = document.querySelector('.fab-container');
-      var mediaBar = document.querySelector('.media-bar-container');
+      var mediaBar = document.querySelector('.media-bar');
       var fabCheckbox = document.getElementById('show-hide-media');
       fabCheckbox.addEventListener('change', function () {
-        fab.classList[fabCheckbox.checked ? 'add' : 'remove']('hidden');
-        mediaBar.classList[fabCheckbox.checked ? 'add' : 'remove']('hidden');
+        mediaBar.classList[fabCheckbox.checked ? 'add' : 'remove']('media-bar--hidden');
       });
       
       var wsDisplay = document.querySelector('#websockets');
@@ -283,9 +259,9 @@
       var discordCheckbox = document.getElementById("discordrp")
       discordCheckbox.addEventListener('change', function () {
         if (discordCheckbox.checked) {
-          sendMessageDiscord("1");
+          sendMessageDiscord('1');
         } else {
-          sendMessageDiscord("0");
+          sendMessageDiscord('0');
         }
       });
     </script>

@@ -9,22 +9,17 @@ function open() {
     wsArtist.onclose = onClose;
     wsArtist.onmessage = onMessage;
     wsArtist.onerror = onError;
-
-document.getElementById('artist-status').innerHTML = "Opening";
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }
 }
 
 var onOpen = function() {
-  document.getElementById("artist-status").innerHTML = "Yes"
-  document.getElementById("artist-info").innerHTML = event.data
   connected = true;
   clearTimeout(reconnect);
 };
 
 var onClose = function() {
-  document.getElementById("artist-status").innerHTML = "No"
   document.getElementById("artist-info").innerHTML = "N/A"
   connected = false;
   reconnect = setTimeout(function() {

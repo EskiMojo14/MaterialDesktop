@@ -1,0 +1,186 @@
+
+@import "@material/elevation/mixins";
+@import "@material/linear-progress/mixins";
+@import "@material/theme/mixins";
+@import "@material/rtl/mixins";
+
+$media-bar-row-height: 56px;
+
+:root {
+  --media-bar-row-height: $media-bar-row-height;
+}
+
+.media-bar {
+  
+  position: fixed;
+  bottom: var(--taskbar-height, 40px);
+  width: 100%;
+  z-index: 3;
+  padding: var(--mdc-layout-grid-margin-desktop, 24px);
+  box-sizing: border-box;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  transition-property: bottom;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  
+  pointer-events: none;
+  
+  &__fab {
+    margin: 1rem;
+    
+    pointer-events: auto;
+    
+    .mdc-fab__icon {
+      pointer-events: none;
+      transition: transform 150ms 0ms cubic-bezier(.4, 0, .2, 1);
+    }
+      
+    .mdc-checkbox__native-control:enabled:checked ~ .mdc-fab__icon { 
+      transform: rotate(180deg);
+    }
+    
+  }
+  
+  @media (min-width: 840px) {
+    &__fab {
+      margin: 1.5rem;
+    }
+  }
+  
+  &__bar {
+    width: 100%;
+    border-radius: 2px;
+  
+    overflow: hidden;
+    
+    pointer-events: auto;
+  
+    @include mdc-elevation(2);
+    
+
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+  
+  &--from-top {
+    .media-bar__fab {
+    
+    }
+    .media-bar__bar {
+    
+    }
+  }
+  
+  &--hidden {
+    bottom: calc(28px - var(--taskbar-height, 40px) - var(--media-bar-row-height, $media-bar-row-height) + var(--mdc-layout-grid-margin-desktop, 24px));
+  }
+
+  &__row {
+    display: flex;
+    position: relative;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    min-height: $media-bar-row-height;
+    min-height: var(--media-bar-row-height, $media-bar-row-height);
+  }
+  
+  &__section {
+    display: inline-flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    height: 100%;
+    z-index: 1;
+
+    &--align-start {
+      justify-content: flex-start;
+      order: -1;
+    }
+
+    &--align-end {
+      justify-content: flex-end;
+      order: 1;
+    }
+
+    &--shrink-to-fit {
+      flex: none;
+    }
+  }
+  
+  &__album-icon {
+    padding: 0 24px;
+    color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38));
+  }
+  
+  &__icon {
+    padding: 12px;
+    color: rgba(0,0,0,0.54);
+    user-select: none;
+    border: none;
+    background-color: transparent;
+    outline: none;
+  }
+
+  .mdc-theme--dark &__icon {
+    color: rgba(255,255,255,70);
+  }
+  
+  &--main-button {
+    width: $media-bar-row-height - 16px; 
+    width: calc(var(--media-bar-row-height, $media-bar-row-height) - 16px);
+    height: $media-bar-row-height - 16px; 
+    height: calc(var(--media-bar-row-height, $media-bar-row-height) - 16px);
+    background-color: var(--mdc-theme-primary, #3f51b5);
+    padding: 0; 
+    margin: 0 12px; 
+    border-radius: 50%;
+    color: var(--mdc-theme-text-primary-on-primary, white);
+    line-height: $media-bar-row-height - 16px; 
+    line-height: calc(var(--media-bar-row-height, $media-bar-row-height) - 16px);
+    text-align: center;
+  }
+  
+  &__track-info {
+    height: $media-bar-row-height;
+    height: var(--media-bar-row-height, $media-bar-row-height);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    
+    .mdc-list, .mdc-list-item {
+      padding: 0;
+    }
+    
+  }
+  .mdc-linear-progress {
+    @include mdc-linear-progress-bar-color(secondary);
+  }
+}
+  
+@media (max-width: 839px) and (min-width: 480px) {
+  .media-bar {
+    padding: var(--mdc-layout-grid-margin-tablet, 16px);
+    &--hidden {
+      bottom: calc(44px - var(--taskbar-height, 40px) - var(--media-bar-row-height, $media-bar-row-height) + var(--mdc-layout-grid-margin-tablet, 16px));
+    }
+  }
+}
+  
+@media (max-width: 479px) {
+  .media-bar {
+    padding: var(--mdc-layout-grid-margin-phone, 16px);
+    &--hidden {
+      bottom: calc(44px - var(--taskbar-height, 40px) - var(--media-bar-row-height, $media-bar-row-height) + var(--mdc-layout-grid-margin-phone, 16px));
+    }
+  }
+}

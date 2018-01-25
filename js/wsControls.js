@@ -9,21 +9,17 @@ function open() {
     wsControls.onclose = onClose;
     wsControls.onmessage = onMessage;
     wsControls.onerror = onError;
-
-    document.getElementById('controls-status').innerHTML = "Opening";
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }
 }
 
 var onOpen = function() {
-  document.getElementById("controls-status").innerHTML = "Yes"
   connected = true;
   clearTimeout(reconnect);
 };
 
 var onClose = function() {
-  document.getElementById("controls-status").innerHTML = "No"
   connected = false;
   reconnect = setTimeout(function() {
     open();

@@ -9,22 +9,17 @@ function open() {
     wsPlayer.onclose = onClose;
     wsPlayer.onmessage = onMessage;
     wsPlayer.onerror = onError;
-
-    document.getElementById('player-status').innerHTML = "Opening";
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }
 }
 
 var onOpen = function() {
-  document.getElementById("player-status").innerHTML = "Yes";
-  document.getElementById("player-info").innerHTML = event.data;
   connected = true;
   clearTimeout(reconnect);
 };
 
 var onClose = function() {
-  document.getElementById("player-status").innerHTML = "No";
   document.getElementById("player-info").innerHTML = "N/A";
   connected = false;
   reconnect = setTimeout(function() {

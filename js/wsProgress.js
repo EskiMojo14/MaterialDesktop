@@ -10,21 +10,17 @@ function open() {
     wsProgress.onmessage = onMessage;
     wsProgress.onerror = onError;
 
-document.getElementById('progress-status').innerHTML = "Opening";
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }
 }
 
 var onOpen = function() {
-  document.getElementById("progress-status").innerHTML = "Yes"
-  document.getElementById("progress-info").innerHTML = event.data
   connected = true;
   clearTimeout(reconnect);
 };
 
 var onClose = function() {
-  document.getElementById("progress-status").innerHTML = "No"
   document.getElementById("progress-info").innerHTML = "N/A"
   connected = false;
   reconnect = setTimeout(function() {
@@ -33,7 +29,9 @@ var onClose = function() {
 };
 
 var onMessage = function(event) {
-  document.getElementById("progress-bar").style.width = event.data + "%";
+  var determinate = document.querySelector('.mdc-linear-progress');
+  var linearProgress = mdc.linearProgress.MDCLinearProgress.attachTo(determinate);
+  linearProgress.progress = event.data / 100;
   document.getElementById("progress-info").innerHTML = event.data
 };
 

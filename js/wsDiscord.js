@@ -9,8 +9,6 @@ function open() {
     wsDiscord.onclose = onClose;
     wsDiscord.onmessage = onMessage;
     wsDiscord.onerror = onError;
-
-    document.getElementById('discord-status').innerHTML = "Opening";
     
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
@@ -18,13 +16,11 @@ function open() {
 }
 
 var onOpen = function() {
-  document.getElementById("discord-status").innerHTML = "Yes"
   connected = true;
   clearTimeout(reconnect);
 };
 
 var onClose = function() {
-  document.getElementById("discord-status").innerHTML = "No"
   document.getElementById("discord-info").innerHTML = "N/A"
   connected = false;
   reconnect = setTimeout(function() {
@@ -33,8 +29,8 @@ var onClose = function() {
 };
 
 var onMessage = function(event) {
-  document.getElementById("discord-info").innerHTML = event.data
-  var discordCheckbox = document.getElementById("discordrp")
+  document.getElementById("discord-info").innerHTML = event.data;
+  var discordCheckbox = document.getElementById("discordrp");
   if (event.data == 1) {
     discordCheckbox.checked = true;
   } else {

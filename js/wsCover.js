@@ -10,20 +10,17 @@ function open() {
     wsCover.onmessage = onMessage;
     wsCover.onerror = onError;
 
-    document.getElementById('cover-status').innerHTML = "Opening";
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }
 }
 
 var onOpen = function() {
-  document.getElementById("cover-status").innerHTML = "Yes"
   connected = true;
   clearTimeout(reconnect);
 };
 
 var onClose = function() {
-  document.getElementById("cover-status").innerHTML = "No"
   connected = false;
   reconnect = setTimeout(function() {
     open();

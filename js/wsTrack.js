@@ -10,21 +10,17 @@ function open() {
     wsTrack.onmessage = onMessage;
     wsTrack.onerror = onError;
 
-document.getElementById('track-status').innerHTML = "Opening";
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }
 }
 
 var onOpen = function() {
-  document.getElementById("track-status").innerHTML = "Yes"
-  document.getElementById("track-info").innerHTML = event.data
   connected = true;
   clearTimeout(reconnect);
 };
 
 var onClose = function() {
-  document.getElementById("track-status").innerHTML = "No"
   document.getElementById("track-info").innerHTML = "N/A"
   connected = false;
   reconnect = setTimeout(function() {

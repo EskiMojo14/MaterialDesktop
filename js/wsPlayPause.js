@@ -10,21 +10,18 @@ function open() {
     wsPlayPause.onmessage = onMessage;
     wsPlayPause.onerror = onError;
 
-document.getElementById('playpause-status').innerHTML = "Opening";
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }
 }
 
 var onOpen = function() {
-  document.getElementById("playpause-status").innerHTML = "Yes"
   document.getElementById("playpause-info").innerHTML = event.data
   connected = true;
   clearTimeout(reconnect);
 };
 
 var onClose = function() {
-  document.getElementById("playpause-status").innerHTML = "No"
   document.getElementById("playpause-info").innerHTML = "N/A"
   connected = false;
   reconnect = setTimeout(function() {
