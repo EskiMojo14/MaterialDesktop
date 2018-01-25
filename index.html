@@ -126,9 +126,74 @@
       </nav>
     </aside>
     <div class="content mdc-toolbar-fixed-adjust">
+      <div class="media-bar">
+        <button class="mdc-fab mdc-fab--mini media-bar__fab" aria-label="Toggle media bar visibility" data-mdc-auto-init="MDCRipple" >
+          <input type="checkbox" id="show-hide-media" class="mdc-checkbox__native-control">
+          <span class="mdc-fab__icon material-icons">
+            expand_more
+          </span>
+        </button>
+        <div class="media-bar__bar mdc-theme--background">
+          <div role="progressbar" class="mdc-linear-progress">
+            <div class="mdc-linear-progress__buffer"></div>
+            <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar" style="transform: scaleX(0.5);">
+              <span class="mdc-linear-progress__bar-inner"></span>
+            </div>
+            <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+              <span class="mdc-linear-progress__bar-inner"></span>
+            </div>
+          </div>
+          <div class="media-bar__row">
+            <div class="media-bar__section media-bar__section--align-start">
+              <span class="media-bar__album-icon material-icons">album</span>
+              <div class="media-bar__track-info">
+                <ul class="mdc-list mdc-list--two-line mdc-list--non-interactive">
+                  <li class="mdc-list-item">
+                    <span class="mdc-list-item__text">
+                      <span class="mdc-list-item__primary-text" id="track"></span>
+                      <span class="mdc-list-item__secondary-text" id="artist"></span>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="media-bar__section media-bar__section--shrink-to-fit">
+              <button class="material-icons media-bar__icon" id="prev" onclick="sendMessageControl('Previous')">skip_previous</button>
+              <button class="material-icons media-bar__icon media-bar--main-button" id="playpause" onclick="sendMessageControl('PlayPause')">play_arrow</button>
+              <button class="material-icons media-bar__icon" id="next" onclick="sendMessageControl('Next')">skip_next</button>
+            </div>
+            <div class="media-bar__section media-bar__section--align-end">
+              <div class="mdc-form-field">
+                <div class="mdc-checkbox">
+                  <input type="checkbox" id="from-top" class="mdc-checkbox__native-control"/>
+                  <div class="mdc-checkbox__background">
+                    <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                      <path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                    </svg>
+                    <div class="mdc-checkbox__mixedmark"></div>
+                  </div>
+                </div>
+                <label for="from-top">From Top</label>
+              </div>
+              <div class="mdc-form-field" style="padding: 0 24px;">
+                <div class="mdc-checkbox">
+                  <input type="checkbox" id="card" class="mdc-checkbox__native-control"/>
+                  <div class="mdc-checkbox__background">
+                    <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                      <path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                    </svg>
+                    <div class="mdc-checkbox__mixedmark"></div>
+                  </div>
+                </div>
+                <label for="card">Card</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="mdc-layout-grid">
         <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-card mdc-theme--background" id="websockets">
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-card mdc-theme--background hidden" id="websockets">
             <header class="mdc-data-table__header">
               <section class="mdc-data-table__header__section mdc-data-table__header__section--align-start">
                 <span class="mdc-data-table__header__title">WebSockets</span>
@@ -168,48 +233,6 @@
           </div>
         </div>
       </div>
-      <div class="media-bar">
-        <button class="mdc-fab mdc-fab--mini media-bar__fab" aria-label="Toggle media bar visibility" data-mdc-auto-init="MDCRipple" >
-          <input type="checkbox" id="show-hide-media" class="mdc-checkbox__native-control">
-          <span class="mdc-fab__icon material-icons">
-            expand_more
-          </span>
-        </button>
-        <div class="media-bar__bar mdc-theme--background">
-          <div role="progressbar" class="mdc-linear-progress">
-            <div class="mdc-linear-progress__buffer"></div>
-            <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar" style="transform: scaleX(0.5);">
-              <span class="mdc-linear-progress__bar-inner"></span>
-            </div>
-            <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
-              <span class="mdc-linear-progress__bar-inner"></span>
-            </div>
-          </div>
-          <div class="media-bar__row">
-            <div class="media-bar__section media-bar__section--align-start">
-              <span class="media-bar__album-icon material-icons">album</span>
-              <div class="media-bar__track-info">
-                <ul class="mdc-list mdc-list--two-line mdc-list--non-interactive">
-                  <li class="mdc-list-item">
-                    <span class="mdc-list-item__text">
-                      <span class="mdc-list-item__primary-text" id="track"></span>
-                      <span class="mdc-list-item__secondary-text" id="artist"></span>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="media-bar__section media-bar__section--shrink-to-fit">
-              <button class="material-icons media-bar__icon" id="prev" onclick="sendMessageControl('Previous')">skip_previous</button>
-              <button class="material-icons media-bar__icon media-bar--main-button" id="playpause" onclick="sendMessageControl('PlayPause')">play_arrow</button>
-              <button class="material-icons media-bar__icon" id="next" onclick="sendMessageControl('Next')">skip_next</button>
-            </div>
-            <div class="media-bar__section media-bar__section--align-end">
-            
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="taskbar mdc-elevation--z4"></div> 
     </div>
     <script>
@@ -219,6 +242,14 @@
       var fabCheckbox = document.getElementById('show-hide-media');
       fabCheckbox.addEventListener('change', function () {
         mediaBar.classList[fabCheckbox.checked ? 'add' : 'remove']('media-bar--hidden');
+      });
+      var fromTop = document.getElementById('from-top');
+      fromTop.addEventListener('change', function () {
+        mediaBar.classList[fromTop.checked ? 'add' : 'remove']('media-bar--from-top');
+      });
+      var cardCheckbox = document.getElementById('card');
+      cardCheckbox.addEventListener('change', function () {
+        mediaBar.classList[cardCheckbox.checked ? 'add' : 'remove']('media-bar--card');
       });
       
       var wsDisplay = document.querySelector('#websockets');
@@ -233,20 +264,11 @@
         body.classList[dark.checked ? 'add' : 'remove']('mdc-theme--dark');
       });
       
-      var toolbar = mdc.toolbar.MDCToolbar.attachTo(document.querySelector('.mdc-toolbar'));
-      toolbar.fixedAdjustElement = document.querySelector('.mdc-toolbar-fixed-adjust');
-      
       var drawerEl = document.querySelector('.mdc-drawer');
       var MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer;
       var drawer = new MDCTemporaryDrawer(drawerEl);
       document.querySelector('.menu-icon').addEventListener('click', function() {
         drawer.open = true;
-      });
-      drawerEl.addEventListener('MDCTemporaryDrawer:open', function() {
-        console.log('Received MDCTemporaryDrawer:open');
-      });
-      drawerEl.addEventListener('MDCTemporaryDrawer:close', function() {
-        console.log('Received MDCTemporaryDrawer:close');
       });
       
       let menu = new mdc.menu.MDCSimpleMenu(document.querySelector('#dropdown'));
@@ -266,6 +288,9 @@
           sendMessageDiscord('0');
         }
       });
+      
+      var toolbar = mdc.toolbar.MDCToolbar.attachTo(document.querySelector('.mdc-toolbar'));
+      toolbar.fixedAdjustElement = document.querySelector('.mdc-toolbar-fixed-adjust');
     </script>
   </body>
 </html>

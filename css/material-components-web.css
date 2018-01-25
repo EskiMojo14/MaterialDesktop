@@ -2333,8 +2333,9 @@ body {
     text-transform: inherit;
     position: relative;
     outline: none;
-    color: inherit;
     text-decoration: none; }
+    .mdc-drawer--persistent .mdc-list-item:not(.mdc-list-item--selected, .mdc-list-item--activated) {
+      color: inherit; }
   .mdc-drawer--persistent .mdc-list-item__graphic {
     color: rgba(0, 0, 0, 0.54); }
     .mdc-drawer--persistent .mdc-list-item__graphic--theme-dark .mdc-drawer--persistent .mdc-list-item__graphic,
@@ -2608,8 +2609,9 @@ body {
     text-transform: inherit;
     position: relative;
     outline: none;
-    color: inherit;
     text-decoration: none; }
+    .mdc-drawer--permanent .mdc-list-item:not(.mdc-list-item--selected, .mdc-list-item--activated) {
+      color: inherit; }
   .mdc-drawer--permanent .mdc-list-item__graphic {
     color: rgba(0, 0, 0, 0.54); }
     .mdc-drawer--permanent .mdc-list-item__graphic--theme-dark .mdc-drawer--permanent .mdc-list-item__graphic,
@@ -3048,8 +3050,9 @@ body {
     text-transform: inherit;
     position: relative;
     outline: none;
-    color: inherit;
     text-decoration: none; }
+    .mdc-drawer--temporary .mdc-list-item:not(.mdc-list-item--selected, .mdc-list-item--activated) {
+      color: inherit; }
   .mdc-drawer--temporary .mdc-list-item__graphic {
     color: rgba(0, 0, 0, 0.54); }
     .mdc-drawer--temporary .mdc-list-item__graphic--theme-dark .mdc-drawer--temporary .mdc-list-item__graphic,
@@ -5339,8 +5342,8 @@ body {
   text-decoration: inherit;
   text-transform: inherit;
   /* @alternate */
-  color: rgba(0, 0, 0, 0.87) !important;
-  color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87)) !important;
+  color: rgba(0, 0, 0, 0.87);
+  color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87));
   margin: 0;
   padding: 8px 0;
   line-height: 1.5rem;
@@ -5348,8 +5351,8 @@ body {
   .mdc-list--theme-dark,
   .mdc-theme--dark .mdc-list {
     /* @alternate */
-    color: white !important;
-    color: var(--mdc-theme-text-primary-on-dark, white) !important; }
+    color: white;
+    color: var(--mdc-theme-text-primary-on-dark, white); }
     .mdc-list--theme-dark .mdc-list-item__secondary-text,
     .mdc-theme--dark .mdc-list .mdc-list-item__secondary-text {
       /* @alternate */
@@ -5358,8 +5361,8 @@ body {
     .mdc-list--theme-dark .mdc-list-item__graphic,
     .mdc-theme--dark .mdc-list .mdc-list-item__graphic {
       /* @alternate */
-      color: rgba(255, 255, 255, 0.5) !important;
-      color: var(--mdc-theme-text-icon-on-dark, rgba(255, 255, 255, 0.5)) !important; }
+      color: rgba(255, 255, 255, 0.5);
+      color: var(--mdc-theme-text-icon-on-dark, rgba(255, 255, 255, 0.5)); }
     .mdc-list--theme-dark .mdc-list-item__meta,
     .mdc-theme--dark .mdc-list .mdc-list-item__meta {
       /* @alternate */
@@ -5376,8 +5379,8 @@ body {
 
 .mdc-list-item__graphic {
   /* @alternate */
-  color: rgba(0, 0, 0, 0.38) !important;
-  color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38)) !important; }
+  color: rgba(0, 0, 0, 0.38);
+  color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38)); }
 
 .mdc-list-item__meta {
   /* @alternate */
@@ -5400,12 +5403,12 @@ body {
   padding: 0 16px; }
   .mdc-list-item--selected, .mdc-list-item--activated {
     /* @alternate */
-    color: #009688 !important;
-    color: var(--mdc-theme-primary, #009688) !important; }
+    color: #009688;
+    color: var(--mdc-theme-primary, #009688); }
     .mdc-list-item--selected .mdc-list-item__graphic, .mdc-list-item--activated .mdc-list-item__graphic {
       /* @alternate */
-      color: #009688 !important;
-      color: var(--mdc-theme-primary, #009688) !important; }
+      color: #009688;
+      color: var(--mdc-theme-primary, #009688); }
   .mdc-list-item__graphic {
     margin-left: 0;
     margin-right: 32px;
@@ -10299,7 +10302,7 @@ a.mdc-list-item {
 
 .mdc-toolbar-fixed-adjust {
   margin-top: 64px; }
-  @media (max-width: 959px) and (max-height: 599px) {
+  @media (max-width: 959px) and (orientation: landscape) {
     .mdc-toolbar-fixed-adjust {
       margin-top: 48px; } }
   @media (max-width: 599px) {

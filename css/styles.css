@@ -32,9 +32,10 @@ button:focus {
 .mdc-drawer--temporary {
   height: calc(100% - var(--taskbar-height, 40px));
 }
-    
+  
 .content {
   height: 100%;
+  position: relative;
 }
 
 
@@ -132,9 +133,4 @@ button.mdc-list-item {
   background-color: transparent;
   border: none;
   width: 100%;
-}
-
-.mdc-list-item--selected .mdc-list-item__graphic {
-  color: #009688 !important;
-  color: var(--mdc-theme-primary, #009688) !important;
 }
