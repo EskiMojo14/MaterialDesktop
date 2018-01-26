@@ -11,6 +11,11 @@ $media-bar-row-height: 56px;
   --media-bar-row-height: $media-bar-row-height;
 }
 
+@mixin css-variable($property, $name, $value) {
+  #{$property}: $value;
+  #{$property}: var(--#{$name}, $value);
+}
+
 .media-bar {
   
   position: fixed;
@@ -111,7 +116,7 @@ $media-bar-row-height: 56px;
   }
   
   &--card {
-    padding: var(--mdc-layout-grid-margin-desktop, 24px);
+    @include css-variable(padding, mdc-layout-grid-margin-desktop, 24px);
     box-sizing: border-box;
     
     .media-bar__bar {
@@ -135,8 +140,7 @@ $media-bar-row-height: 56px;
     box-sizing: border-box;
     width: 100%;
     height: auto;
-    min-height: $media-bar-row-height;
-    min-height: var(--media-bar-row-height, $media-bar-row-height);
+    @include css-variable(min-height, media-bar-row-height, $media-bar-row-height);
   }
   
   &__section {
@@ -166,15 +170,15 @@ $media-bar-row-height: 56px;
   &__album-icon {
     padding: 0 24px;
     user-select: none;
-    color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38));
+    @include mdc-theme-prop(color, text-icon-on-background);
   }
   
   &__icon {
     padding: 12px;
-    color: rgba(0,0,0,0.54);
+    @include mdc-theme-prop(color, text-icon-on-background);
     user-select: none;
     border: none;
-    background-color: transparent;
+    @include mdc-theme-prop(background-color, transparent);
     outline: none;
   }
   
@@ -183,11 +187,11 @@ $media-bar-row-height: 56px;
     width: calc(var(--media-bar-row-height, $media-bar-row-height) - 16px);
     height: $media-bar-row-height - 16px; 
     height: calc(var(--media-bar-row-height, $media-bar-row-height) - 16px);
-    background-color: var(--mdc-theme-primary, #3f51b5);
+    @include mdc-theme-prop(background-color, primary);
     padding: 0; 
     margin: 0 12px; 
     border-radius: 50%;
-    color: var(--mdc-theme-text-primary-on-primary, white);
+    @include mdc-theme-prop(color, text-primary-on-primary);
     line-height: $media-bar-row-height - 16px; 
     line-height: calc(var(--media-bar-row-height, $media-bar-row-height) - 16px);
     text-align: center;
@@ -197,8 +201,7 @@ $media-bar-row-height: 56px;
   }
   
   &__track-info {
-    height: $media-bar-row-height;
-    height: var(--media-bar-row-height, $media-bar-row-height);
+    @include css-variable(height, media-bar-row-height, $media-bar-row-height);
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -218,7 +221,7 @@ $media-bar-row-height: 56px;
   
 @media (max-width: 839px) and (min-width: 480px) {
   .media-bar--card {
-    padding: var(--mdc-layout-grid-margin-tablet, 16px);
+    @include css-variable(padding, mdc-layout-grid-margin-tablet, 16px);
     &.media-bar--hidden {
       bottom: calc(44px - var(--taskbar-height, 40px) - var(--media-bar-row-height, $media-bar-row-height) + var(--mdc-layout-grid-margin-tablet, 16px));
       &.media-bar--from-top {
@@ -231,7 +234,7 @@ $media-bar-row-height: 56px;
   
 @media (max-width: 479px) {
   .media-bar--card {
-    padding: var(--mdc-layout-grid-margin-phone, 16px);
+    @include css-variable(padding, mdc-layout-grid-margin-phone, 16px);
     &.media-bar--hidden {
       bottom: calc(44px - var(--taskbar-height, 40px) - var(--media-bar-row-height, $media-bar-row-height) + var(--mdc-layout-grid-margin-phone, 16px));
       &.media-bar--from-top {
