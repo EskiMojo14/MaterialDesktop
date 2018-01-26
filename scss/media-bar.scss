@@ -7,8 +7,6 @@
 
 $media-bar-row-height: 56px;
 
-
-
 :root {
   --media-bar-row-height: $media-bar-row-height;
 }
@@ -89,6 +87,7 @@ $media-bar-row-height: 56px;
     }
     .media-bar__bar {
       @include mdc-elevation(3);
+      flex-direction: column-reverse;
     }
     &.media-bar--hidden {
       top: calc( var(--media-bar-row-height, $media-bar-row-height) - (var(--media-bar-row-height, $media-bar-row-height)*2) - 4px);
@@ -96,7 +95,7 @@ $media-bar-row-height: 56px;
       transition: mdc-animation-exit-temporary(top, .225s);
       
       &.media-bar--card {
-        top: calc( var(--media-bar-row-height, $media-bar-row-height) - (var(--media-bar-row-height, $media-bar-row-height)*2) - 4px - var(--mdc-layout-grid-margin-desktop, 24px));
+        top: calc( var(--media-bar-row-height, $media-bar-row-height) - (var(--media-bar-row-height, $media-bar-row-height)*2) - var(--mdc-layout-grid-margin-desktop, 24px) - 4px);
         bottom: auto;
       }
     }
@@ -166,7 +165,12 @@ $media-bar-row-height: 56px;
   
   &__album-icon {
     padding: 0 24px;
+    user-select: none;
     color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38));
+  }
+  
+  .mdc-theme--dark &__album-icon {
+    color: rgba(255, 255, 255, 0.5);
   }
   
   &__icon {
@@ -179,10 +183,10 @@ $media-bar-row-height: 56px;
   }
 
   .mdc-theme--dark &__icon {
-    color: rgba(255,255,255,70);
+    color: rgba(255,255,255,0.7);
   }
   
-  &--main-button {
+  &__main-button {
     width: $media-bar-row-height - 16px; 
     width: calc(var(--media-bar-row-height, $media-bar-row-height) - 16px);
     height: $media-bar-row-height - 16px; 
@@ -195,6 +199,9 @@ $media-bar-row-height: 56px;
     line-height: $media-bar-row-height - 16px; 
     line-height: calc(var(--media-bar-row-height, $media-bar-row-height) - 16px);
     text-align: center;
+    user-select: none;
+    border: none;
+    outline: none;
   }
   
   &__track-info {

@@ -225,13 +225,14 @@
     .media-bar--from-top .media-bar__fab .mdc-checkbox__native-control:enabled:checked ~ .mdc-fab__icon {
       transform: rotate(0); }
     .media-bar--from-top .media-bar__bar {
-      box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12); }
+      box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+      flex-direction: column-reverse; }
     .media-bar--from-top.media-bar--hidden {
       top: calc( var(--media-bar-row-height, $media-bar-row-height) - (var(--media-bar-row-height, $media-bar-row-height)*2) - 4px);
       bottom: auto;
       transition: top 0.225s 0ms cubic-bezier(0.4, 0, 0.6, 1); }
       .media-bar--from-top.media-bar--hidden.media-bar--card {
-        top: calc( var(--media-bar-row-height, $media-bar-row-height) - (var(--media-bar-row-height, $media-bar-row-height)*2) - 4px - var(--mdc-layout-grid-margin-desktop, 24px));
+        top: calc( var(--media-bar-row-height, $media-bar-row-height) - (var(--media-bar-row-height, $media-bar-row-height)*2) - var(--mdc-layout-grid-margin-desktop, 24px) - 4px);
         bottom: auto; }
   .media-bar--hidden {
     transition: bottom 0.225s 0ms cubic-bezier(0.4, 0, 0.6, 1);
@@ -276,7 +277,10 @@
       flex: none; }
   .media-bar__album-icon {
     padding: 0 24px;
+    user-select: none;
     color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38)); }
+  .mdc-theme--dark .media-bar__album-icon {
+    color: rgba(255, 255, 255, 0.5); }
   .media-bar__icon {
     padding: 12px;
     color: rgba(0, 0, 0, 0.54);
@@ -285,8 +289,8 @@
     background-color: transparent;
     outline: none; }
   .mdc-theme--dark .media-bar__icon {
-    color: white; }
-  .media-bar--main-button {
+    color: rgba(255, 255, 255, 0.7); }
+  .media-bar__main-button {
     width: 40px;
     width: calc(var(--media-bar-row-height, $media-bar-row-height) - 16px);
     height: 40px;
@@ -298,7 +302,10 @@
     color: var(--mdc-theme-text-primary-on-primary, white);
     line-height: 40px;
     line-height: calc(var(--media-bar-row-height, $media-bar-row-height) - 16px);
-    text-align: center; }
+    text-align: center;
+    user-select: none;
+    border: none;
+    outline: none; }
   .media-bar__track-info {
     height: 56px;
     height: var(--media-bar-row-height, 56px);
