@@ -279,8 +279,6 @@
     padding: 0 24px;
     user-select: none;
     color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38)); }
-  .mdc-theme--dark .media-bar__album-icon {
-    color: rgba(255, 255, 255, 0.5); }
   .media-bar__icon {
     padding: 12px;
     color: rgba(0, 0, 0, 0.54);
@@ -288,8 +286,6 @@
     border: none;
     background-color: transparent;
     outline: none; }
-  .mdc-theme--dark .media-bar__icon {
-    color: rgba(255, 255, 255, 0.7); }
   .media-bar__main-button {
     width: 40px;
     width: calc(var(--media-bar-row-height, $media-bar-row-height) - 16px);

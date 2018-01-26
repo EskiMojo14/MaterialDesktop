@@ -169,10 +169,6 @@ $media-bar-row-height: 56px;
     color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38));
   }
   
-  .mdc-theme--dark &__album-icon {
-    color: rgba(255, 255, 255, 0.5);
-  }
-  
   &__icon {
     padding: 12px;
     color: rgba(0,0,0,0.54);
@@ -180,10 +176,6 @@ $media-bar-row-height: 56px;
     border: none;
     background-color: transparent;
     outline: none;
-  }
-
-  .mdc-theme--dark &__icon {
-    color: rgba(255,255,255,0.7);
   }
   
   &__main-button {

@@ -1,9 +1,6 @@
 body {
   background-image: var(--bg, url("https://storage.googleapis.com/g-design/static/wallpaper-kleiner-google-blue.jpg"));
   background-color: #fafafa; }
-  body.mdc-theme--dark {
-    background-color: #303030;
-    color: white; }
 
 @keyframes mdc-ripple-fg-radius-in {
   from {
