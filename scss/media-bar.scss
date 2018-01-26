@@ -63,6 +63,7 @@ $media-bar-row-height: 56px;
     @include mdc-elevation(8);
     transition: mdc-animation-enter(box-shadow, .195s);
     
+    @include mdc-theme-prop(background-color, background);
 
     display: flex;
     position: relative;
