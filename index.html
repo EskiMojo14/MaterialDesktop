@@ -11,6 +11,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/material-components-web.css" type="text/css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <link rel="stylesheet" href="css/styles-scss.css" type="text/css">
     <link rel="stylesheet" href="css/media-bar.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" type="text/css">
     
@@ -46,75 +47,219 @@
     <header class="mdc-toolbar mdc-toolbar--fixed">
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-          <span>
-            <button class="mdc-toolbar__menu-icon material-icons menu-icon">menu</button>
-          </span>
           <span class="mdc-toolbar__title">Top Bar</span>
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
           <button class="mdc-toolbar__icon material-icons mdc-menu-anchor" id="dropdown-button">more_vert</button>
           <div class="mdc-simple-menu mdc-simple-menu--open-from-top-right" id="dropdown" tabindex="-1">
             <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
-              <li class="mdc-list-item" role="menuitem" tabindex="-1">WebSockets Display
-                <div class="mdc-form-field mdc-list-item__end-detail list-switch">
-                  <div class="mdc-switch">
-                    <input type="checkbox" id="websockets-checkbox" class="mdc-switch__native-control list-switch-native" />
-                    <div class="mdc-switch__background">
-                      <div class="mdc-switch__knob"></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
+              <li class="mdc-list-item" role="menuitem" tabindex="-1" id="settings">Settings</li>
             </ul>
           </div>
         </section>
       </div>
     </header>
-    <aside class="mdc-drawer mdc-drawer--temporary">
-      <nav class="mdc-drawer__drawer">
-        <div class="mdc-drawer__toolbar-spacer">
-        </div>
-        <nav class="mdc-drawer__content mdc-list-group">
-          <div class="mdc-drawer__subtitle">
-            Player
-          </div>
-          <div class="mdc-list">
-            <details class="mdc-expansion" onclick="expandUpdate()">
-              <summary class="mdc-expansion__summary mdc-list-item">
-                <div class="mdc-expansion__header">
-                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">library_music</i>
-                  Player
-                  <i class="material-icons mdc-list-item__meta mdc-expansion__icon" aria-hidden="true">expand_more</i>
-                </div>
-              </summary>
-              <div class="mdc-expansion__content">
-                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="aimp" onclick="sendMessagePlayer('AIMP')">AIMP</button> 
-                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="foobar" onclick="sendMessagePlayer('Foobar')">Foobar</button>
-                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="gpmdp" onclick="sendMessagePlayer('GPMDP')">GPMDP</button>
-                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="itunes" onclick="sendMessagePlayer('iTunes')">iTunes</button> 
-                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="mediamonkey" onclick="sendMessagePlayer('MediaMonkey')">MediaMonkey</button> 
-                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="musicbee" onclick="sendMessagePlayer('MusicBee')">MusicBee</button>   
-                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="spotify" onclick="sendMessagePlayer('Spotify')">Spotify</button>
-                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="web" onclick="sendMessagePlayer('Web')">Web</button> 
-                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="winamp" onclick="sendMessagePlayer('WinAmp')">WinAmp</button>
-                <button class="mdc-list-item" data-mdc-tabindex-handled="true" tabindex="-1" id="wmp" onclick="sendMessagePlayer('WMP')">WMP</button>
-              </div>
-            </details>
-            <div class="mdc-list-item">
-              <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
-              DiscordRP
-              <div class="mdc-form-field mdc-list-item__meta list-switch">
-                <div class="mdc-switch">
-                  <input type="checkbox" id="discordrp" class="mdc-switch__native-control list-switch-native" />
-                  <div class="mdc-switch__background">
-                    <div class="mdc-switch__knob"></div>
+    <aside id="settings-dialog" class="mdc-dialog settings-dialog" role="dialog">
+      <div class="mdc-dialog__surface">
+        <header class="mdc-dialog__header">
+          <h2 class="mdc-dialog__header__title">
+            Settings
+          </h2>
+        </header>
+        <nav id="settings-tab-bar" class="mdc-tab-bar" role="tablist">
+          <span class="mdc-tab">Display</span>
+          <span class="mdc-tab mdc-tab--active">Media</span>
+          <span class="mdc-tab">WebSockets</span>
+          <span class="mdc-tab-bar__indicator mdc-theme--primary-bg"></span>
+        </nav>
+        <section class="mdc-dialog__body mdc-dialog__body--scrollable settings-dialog__body">
+          <div class="settings-dialog__panels">
+            <div class="settings-dialog__panel" id="panel-1" role="tabpanel">
+            </div>
+            <div class="settings-dialog__panel settings-dialog__panel--active" id="panel-2" role="tabpanel">
+              <details class="mdc-expansion mdc-list--non-interactive">
+                <summary class="mdc-expansion__summary mdc-list-item">
+                  <div class="mdc-expansion__header">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">library_music</i>
+                    <span class="mdc-list-item__text">
+                      Music Player
+                      <span class="mdc-list-item__secondary-text">Change player to be controlled/measured.</span>
+                    </span>
+                    <i class="material-icons mdc-list-item__meta mdc-expansion__icon" aria-hidden="true">expand_more</i>
+                  </div>
+                </summary>
+                <div class="settings-dialog__radio-list player-radio-container">
+                  <div class="mdc-form-field">
+                    <div class="mdc-radio">
+                      <input class="mdc-radio__native-control" type="radio" id="player-radio-aimp" name="player">
+                      <div class="mdc-radio__background">
+                        <div class="mdc-radio__outer-circle"></div>
+                        <div class="mdc-radio__inner-circle"></div>
+                      </div>
+                    </div>
+                    <label for="player-radio-aimp">AIMP</label>
+                  </div>
+                  <div class="mdc-form-field">
+                    <div class="mdc-radio">
+                      <input class="mdc-radio__native-control" type="radio" id="player-radio-foobar" name="player">
+                      <div class="mdc-radio__background">
+                        <div class="mdc-radio__outer-circle"></div>
+                        <div class="mdc-radio__inner-circle"></div>
+                      </div>
+                    </div>
+                    <label for="player-radio-foobar">Foobar</label>
+                  </div>
+                  <div class="mdc-form-field">
+                    <div class="mdc-radio">
+                      <input class="mdc-radio__native-control" type="radio" id="player-radio-gpmdp" name="player">
+                      <div class="mdc-radio__background">
+                        <div class="mdc-radio__outer-circle"></div>
+                        <div class="mdc-radio__inner-circle"></div>
+                      </div>
+                    </div>
+                    <label for="player-radio-gpmdp">GPMDP</label>
+                  </div>
+                  <div class="mdc-form-field">
+                    <div class="mdc-radio">
+                      <input class="mdc-radio__native-control" type="radio" id="player-radio-itunes" name="player">
+                      <div class="mdc-radio__background">
+                        <div class="mdc-radio__outer-circle"></div>
+                        <div class="mdc-radio__inner-circle"></div>
+                      </div>
+                    </div>
+                    <label for="player-radio-itunes">iTunes</label>
+                  </div>
+                  <div class="mdc-form-field">
+                    <div class="mdc-radio">
+                      <input class="mdc-radio__native-control" type="radio" id="player-radio-mediamonkey" name="player">
+                      <div class="mdc-radio__background">
+                        <div class="mdc-radio__outer-circle"></div>
+                        <div class="mdc-radio__inner-circle"></div>
+                      </div>
+                    </div>
+                    <label for="player-radio-mediamonkey">MediaMonkey</label>
+                  </div>
+                  <div class="mdc-form-field">
+                    <div class="mdc-radio">
+                      <input class="mdc-radio__native-control" type="radio" id="player-radio-musicbee" name="player">
+                      <div class="mdc-radio__background">
+                        <div class="mdc-radio__outer-circle"></div>
+                        <div class="mdc-radio__inner-circle"></div>
+                      </div>
+                    </div>
+                    <label for="player-radio-musicbee">MusicBee</label>
+                  </div>
+                  <div class="mdc-form-field">
+                    <div class="mdc-radio">
+                      <input class="mdc-radio__native-control" type="radio" id="player-radio-spotify" name="player">
+                      <div class="mdc-radio__background">
+                        <div class="mdc-radio__outer-circle"></div>
+                        <div class="mdc-radio__inner-circle"></div>
+                      </div>
+                    </div>
+                    <label for="player-radio-spotify">Spotify</label>
+                  </div>
+                  <div class="mdc-form-field">
+                    <div class="mdc-radio">
+                      <input class="mdc-radio__native-control" type="radio" id="player-radio-web" name="player">
+                      <div class="mdc-radio__background">
+                        <div class="mdc-radio__outer-circle"></div>
+                        <div class="mdc-radio__inner-circle"></div>
+                      </div>
+                    </div>
+                    <label for="player-radio-web">Web</label>
+                  </div>
+                  <div class="mdc-form-field">
+                    <div class="mdc-radio">
+                      <input class="mdc-radio__native-control" type="radio" id="player-radio-winamp" name="player">
+                      <div class="mdc-radio__background">
+                        <div class="mdc-radio__outer-circle"></div>
+                        <div class="mdc-radio__inner-circle"></div>
+                      </div>
+                    </div>
+                    <label for="player-radio-winamp">WinAmp</label>
+                  </div>
+                  <div class="mdc-form-field">
+                    <div class="mdc-radio">
+                      <input class="mdc-radio__native-control" type="radio" id="player-radio-wmp" name="player">
+                      <div class="mdc-radio__background">
+                        <div class="mdc-radio__outer-circle"></div>
+                        <div class="mdc-radio__inner-circle"></div>
+                      </div>
+                    </div>
+                    <label for="player-radio-wmp">WMP</label>
                   </div>
                 </div>
-              </div>
+              </details>
+              <ul class="mdc-list mdc-list--non-interactive">
+                <li class="mdc-list-item">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
+                  <span class="mdc-list-item__text">
+                    DiscordRP
+                    <span class="mdc-list-item__secondary-text">Display music on Discord playing status.</span>
+                  </span>
+                  <div class="mdc-form-field mdc-list-item__meta list-switch">
+                    <div class="mdc-switch">
+                      <input type="checkbox" id="discordrp" class="mdc-switch__native-control list-switch-native" />
+                      <div class="mdc-switch__background">
+                        <div class="mdc-switch__knob"></div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="settings-dialog__panel" id="panel-3" role="tabpanel">
+              <table class="mdc-data-table mdc-data-table--full-width mdc-data-table--card">
+                <thead>
+                  <tr>
+                    <th class="mdc-data-table__cell--non-numeric">Info</th>
+                    <th class="mdc-data-table__cell--non-numeric">Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="mdc-data-table__cell--non-numeric" >Player</td>
+                    <td class="mdc-data-table__cell--non-numeric" id="player-info">N/A</td>
+                  </tr>
+                  </tr>
+                    <td class="mdc-data-table__cell--non-numeric">PlayPause</td>
+                    <td class="mdc-data-table__cell--non-numeric" id="playpause-info">N/A</td>
+                  </tr>
+                  <tr>
+                    <td class="mdc-data-table__cell--non-numeric">Progress</td>
+                    <td class="mdc-data-table__cell--non-numeric" id="progress-info">N/A</td>
+                  </tr>
+                  <tr>
+                    <td class="mdc-data-table__cell--non-numeric">Track</td>
+                    <td class="mdc-data-table__cell--non-numeric" id="track-info">N/A</td>
+                  </tr>
+                  <tr>
+                    <td class="mdc-data-table__cell--non-numeric">Artist</td>
+                    <td class="mdc-data-table__cell--non-numeric" id="artist-info">N/A</td>
+                  </tr>
+                  <tr>
+                    <td class="mdc-data-table__cell--non-numeric">Cover</td>
+                    <td class="mdc-data-table__cell--non-numeric" id="cover-info">N/A</td>
+                  </tr>
+                  <tr>
+                    <td class="mdc-data-table__cell--non-numeric">Controls</td>
+                    <td class="mdc-data-table__cell--non-numeric" id="controls-info">N/A</td>
+                  </tr>
+                  <tr>
+                    <td class="mdc-data-table__cell--non-numeric">Discord</td>
+                    <td class="mdc-data-table__cell--non-numeric" id="discord-info">N/A</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-        </nav>
-      </nav>
+        </section>
+        <footer class="mdc-dialog__footer">
+          <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel" data-mdc-auto-init="MDCRipple">Close</button>
+        </footer>
+      </div>
+      <div class="mdc-dialog__backdrop"></div>
     </aside>
     <div class="content mdc-toolbar-fixed-adjust">
       <div class="media-bar">
@@ -127,7 +272,7 @@
         <div class="media-bar__bar">
           <div role="progressbar" class="mdc-linear-progress">
             <div class="mdc-linear-progress__buffer"></div>
-            <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar" style="transform: scaleX(0.5);">
+            <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
               <span class="mdc-linear-progress__bar-inner"></span>
             </div>
             <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
@@ -182,48 +327,6 @@
           </div>
         </div>
       </div>
-      <div class="mdc-layout-grid">
-        <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 mdc-card mdc-theme--background hidden" id="websockets">
-            <header class="mdc-data-table__header">
-              <section class="mdc-data-table__header__section mdc-data-table__header__section--align-start">
-                <span class="mdc-data-table__header__title">WebSockets</span>
-              </section>
-              <section class="mdc-data-table__header__section mdc-data-table__header__section--align-end">
-                <button class="material-icons mdc-data-table__header__icon" onclick="location.reload(true)">refresh</button>
-              </section>
-            </header>
-            <table class="mdc-data-table mdc-data-table--full-width mdc-data-table--card">
-              <thead>
-                <th class="mdc-data-table__cell--non-numeric">WebSocket</th>
-                <th class="mdc-data-table__cell--non-numeric">Open?</th>
-                <th class="mdc-data-table__cell--non-numeric">Player</th>
-                <th class="mdc-data-table__cell--non-numeric">PlayPause</th>
-                <th>Progress</th>
-                <th class="mdc-data-table__cell--non-numeric">Track</th>
-                <th class="mdc-data-table__cell--non-numeric">Artist</th>
-                <th class="mdc-data-table__cell--non-numeric">Cover</th>
-                <th class="mdc-data-table__cell--non-numeric">Controls</th>
-                <th>Discord</th>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="mdc-data-table__cell--non-numeric">Condensed</td>
-                  <td class="mdc-data-table__cell--non-numeric" id="condensed-status">No</td>
-                  <td class="mdc-data-table__cell--non-numeric" id="player-info">N/A</td>
-                  <td class="mdc-data-table__cell--non-numeric" id="playpause-info">N/A</td>
-                  <td id="progress-info">N/A</td>
-                  <td class="mdc-data-table__cell--non-numeric" id="track-info">N/A</td>
-                  <td class="mdc-data-table__cell--non-numeric" id="artist-info">N/A</td>
-                  <td class="mdc-data-table__cell--non-numeric" id="cover-info">N/A</td>
-                  <td class="mdc-data-table__cell--non-numeric" id="controls-info">N/A</td>
-                  <td id="discord-info">N/A</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
       <div class="taskbar mdc-elevation--z4"></div> 
     </div>
     <script>
@@ -241,19 +344,6 @@
       var cardCheckbox = document.getElementById('card');
       cardCheckbox.addEventListener('change', function () {
         mediaBar.classList[cardCheckbox.checked ? 'add' : 'remove']('media-bar--card');
-      });
-      
-      var wsDisplay = document.querySelector('#websockets');
-      var wsDisplayCheckbox = document.getElementById('websockets-checkbox');
-      wsDisplayCheckbox.addEventListener('change', function () {
-        wsDisplay.classList[wsDisplayCheckbox.checked ? 'remove' : 'add']('hidden');
-      });
-      
-      var drawerEl = document.querySelector('.mdc-drawer');
-      var MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer;
-      var drawer = new MDCTemporaryDrawer(drawerEl);
-      document.querySelector('.menu-icon').addEventListener('click', function() {
-        drawer.open = true;
       });
       
       let menu = new mdc.menu.MDCSimpleMenu(document.querySelector('#dropdown'));
@@ -276,6 +366,42 @@
       
       var toolbar = mdc.toolbar.MDCToolbar.attachTo(document.querySelector('.mdc-toolbar'));
       toolbar.fixedAdjustElement = document.querySelector('.mdc-toolbar-fixed-adjust');
+      
+      var settingsDialog = new mdc.dialog.MDCDialog(document.querySelector('#settings-dialog'));
+      document.querySelector('#settings').addEventListener('click', function (evt) {
+        settingsDialog.lastFocusedTarget = evt.target;
+        settingsDialog.show();
+      });
+      
+      var dynamicTabBar = window.dynamicTabBar = new mdc.tabs.MDCTabBar(document.querySelector('#settings-tab-bar'));
+      var panels = document.querySelector('.settings-dialog__panels');
+
+      dynamicTabBar.tabs.forEach(function(tab) {
+        tab.preventDefaultOnClick = true;
+      });
+
+      function updatePanel(index) {
+        var activePanel = panels.querySelector('.settings-dialog__panel--active');
+        if (activePanel) {
+          activePanel.classList.remove('settings-dialog__panel--active');
+        }
+        var newActivePanel = panels.querySelector('.settings-dialog__panel:nth-child(' + (index + 1) + ')');
+        if (newActivePanel) {
+          newActivePanel.classList.add('settings-dialog__panel--active');
+        }
+      }
+
+      dynamicTabBar.listen('MDCTabBar:change', function ({detail: tabs}) {
+        var nthChildIndex = tabs.activeTabIndex;
+
+        updatePanel(nthChildIndex);
+      });
+      
+      var radioEl = document.querySelector('.player-radio-container');
+      var checkedRadio = document.querySelector('.player-radio-container .mdc-radio__native-control:checked');
+      radioEl.addEventListener('change', function(e) {
+        
+      });
     </script>
   </body>
 </html>

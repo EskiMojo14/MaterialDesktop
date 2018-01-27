@@ -3471,25 +3471,25 @@ body {
         .mdc-expansion--theme-dark .mdc-expansion--raised:not([open]) + .mdc-expansion:not([open]):last-of-type:not(.mdc-expansion--raised),
         .mdc-theme--dark .mdc-expansion--raised:not([open]) + .mdc-expansion:not([open]):last-of-type:not(.mdc-expansion--raised) {
           border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
-  .mdc-drawer .mdc-expansion__summary .mdc-expansion__header {
+  .mdc-dialog .mdc-expansion__summary .mdc-expansion__header {
     flex-direction: row;
     min-width: 100%; }
-    .mdc-drawer .mdc-expansion__summary .mdc-expansion__header .mdc-expansion__icon {
+    .mdc-dialog .mdc-expansion__summary .mdc-expansion__header .mdc-expansion__icon {
       user-select: none;
       transition: transform 200ms;
       color: rgba(0, 0, 0, 0.38); }
-      .mdc-expansion--theme-dark .mdc-drawer .mdc-expansion__summary .mdc-expansion__header .mdc-expansion__icon,
-      .mdc-theme--dark .mdc-drawer .mdc-expansion__summary .mdc-expansion__header .mdc-expansion__icon {
+      .mdc-expansion--theme-dark .mdc-dialog .mdc-expansion__summary .mdc-expansion__header .mdc-expansion__icon,
+      .mdc-theme--dark .mdc-dialog .mdc-expansion__summary .mdc-expansion__header .mdc-expansion__icon {
         color: rgba(255, 255, 255, 0.38); }
-  .mdc-drawer [open] .mdc-expansion__summary {
+  .mdc-dialog [open] .mdc-expansion__summary {
     height: 48px !important; }
-    .mdc-drawer [open] .mdc-expansion__summary .mdc-expansion__header .mdc-expansion__icon {
+    .mdc-dialog [open] .mdc-expansion__summary .mdc-expansion__header .mdc-expansion__icon {
       transform: rotate(180deg); }
-  .mdc-drawer .mdc-expansion .mdc-expansion__summary:focus {
+  .mdc-dialog .mdc-expansion .mdc-expansion__summary:focus {
     background-color: transparent !important; }
-  .mdc-drawer .mdc-expansion__content {
+  .mdc-dialog .mdc-expansion__content {
     padding: 0; }
-    .mdc-drawer .mdc-expansion__content .mdc-list-item {
+    .mdc-dialog .mdc-expansion__content .mdc-list-item {
       padding: 0 16px 0 72px; }
   .mdc-expansion:not(.mdc-expansion--raised) + .mdc-expansion {
     border-top: 1px solid rgba(0, 0, 0, 0.12);
@@ -5773,7 +5773,9 @@ a.mdc-list-item {
   transform: scale(1);
   transform-origin: top left;
   border-radius: 2px;
-  background-color: white;
+  /* @alternate */
+  background-color: #fff;
+  background-color: var(--mdc-theme-background, #fff);
   opacity: 0;
   white-space: nowrap;
   overflow-x: hidden;

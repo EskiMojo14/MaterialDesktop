@@ -1,0 +1,41 @@
+.settings-dialog .mdc-dialog__surface {
+  min-width: initial;
+  max-width: 480px; }
+
+.settings-dialog .mdc-tab-bar {
+  margin-top: 20px;
+  transform: scale(1.25); }
+
+.settings-dialog.mdc-dialog--open .mdc-tab-bar {
+  transform: scale(1); }
+
+.settings-dialog__body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: 20px;
+  margin-top: 0;
+  box-sizing: border-box;
+  max-height: 360px; }
+
+.settings-dialog__panel {
+  display: none; }
+  .settings-dialog__panel--active {
+    display: block; }
+
+.settings-dialog .mdc-expansion__header {
+  flex-direction: row;
+  align-items: center;
+  font-size: 1rem; }
+
+.settings-dialog__radio-list {
+  display: flex;
+  flex-direction: column;
+  padding-left: 24px; }
+
+.taskbar {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 5;
+  height: var(--taskbar-height, 40px);
+  background-color: var(--mdc-theme-primary, #3f51b5); }
