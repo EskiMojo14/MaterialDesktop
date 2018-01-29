@@ -5726,8 +5726,8 @@ a.mdc-list-item {
 
 .mdc-list-group__subheader {
   /* @alternate */
-  color: rgba(0, 0, 0, 0.87);
-  color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87)); }
+  color: rgba(0, 0, 0, 0.54);
+  color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54)); }
 
 /**
  * The css property used for elevation. In most cases this should not be changed. It is exposed

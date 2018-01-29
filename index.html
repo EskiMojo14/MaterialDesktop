@@ -14,6 +14,12 @@
     <link rel="stylesheet" href="css/styles-scss.css" type="text/css">
     <link rel="stylesheet" href="css/media-bar.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" type="text/css">
+
+    <!-- mCustomScrollbar css-->
+    <link href="css/jquery.mCustomScrollbar.css" type="text/css" rel="stylesheet" />
+	
+    <!-- Propeller scrollbar css-->
+    <link rel="stylesheet" type="text/css" href="css/pmd-scrollbar.css" />
     
     <!-- MCW Scripts -->
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.js"></script>
@@ -51,7 +57,7 @@
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
           <button class="mdc-toolbar__icon material-icons mdc-menu-anchor" id="dropdown-button">more_vert</button>
-          <div class="mdc-simple-menu mdc-simple-menu--open-from-top-right" id="dropdown" tabindex="-1">
+          <div class="mdc-simple-menu" id="dropdown" tabindex="-1">
             <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
               <li class="mdc-list-item" role="menuitem" tabindex="-1" id="settings">Settings</li>
             </ul>
@@ -67,16 +73,55 @@
           </h2>
         </header>
         <nav id="settings-tab-bar" class="mdc-tab-bar" role="tablist">
-          <span class="mdc-tab">Display</span>
-          <span class="mdc-tab mdc-tab--active">Media</span>
+          <span class="mdc-tab mdc-tab--active">Display</span>
+          <span class="mdc-tab">Media</span>
           <span class="mdc-tab">WebSockets</span>
           <span class="mdc-tab-bar__indicator mdc-theme--primary-bg"></span>
         </nav>
-        <section class="mdc-dialog__body mdc-dialog__body--scrollable settings-dialog__body">
+        <section class="mdc-dialog__body mdc-dialog__body--scrollable settings-dialog__body scrollbar mCS-autoHide">
           <div class="settings-dialog__panels">
-            <div class="settings-dialog__panel" id="panel-1" role="tabpanel">
+            <div class="settings-dialog__panel settings-dialog__panel--active" id="panel-1" role="tabpanel">
+              <div class="mdc-list-group">
+              <h3 class="mdc-list-group__subheader">Media Bar</h3>
+              <ul class="mdc-list mdc-list--non-interactive">
+                <li class="mdc-list-item">
+                  <span class="mdc-list-item__text">
+                    From Top
+                    <span class="mdc-list-item__secondary-text">Media bar is displayed from top of screen.</span>
+                  </span>
+                  <div class="mdc-list-item__meta">
+                    <div class="mdc-checkbox">
+                      <input type="checkbox" id="from-top" class="mdc-checkbox__native-control"/>
+                      <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                          <path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="mdc-list-item">
+                  <span class="mdc-list-item__text">
+                    Card
+                    <span class="mdc-list-item__secondary-text">Media bar is displayed as a floating card.</span>
+                  </span>
+                  <div class=" mdc-list-item__meta">
+                    <div class="mdc-checkbox">
+                      <input type="checkbox" id="card" class="mdc-checkbox__native-control"/>
+                      <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                          <path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              </div>
             </div>
-            <div class="settings-dialog__panel settings-dialog__panel--active" id="panel-2" role="tabpanel">
+            <div class="settings-dialog__panel" id="panel-2" role="tabpanel">
               <details class="mdc-expansion mdc-list--non-interactive">
                 <summary class="mdc-expansion__summary mdc-list-item">
                   <div class="mdc-expansion__header">
@@ -299,30 +344,6 @@
               <button class="material-icons media-bar__icon" id="next" onclick="sendMessageControl('Next')">skip_next</button>
             </div>
             <div class="media-bar__section media-bar__section--align-end">
-              <div class="mdc-form-field">
-                <div class="mdc-checkbox">
-                  <input type="checkbox" id="from-top" class="mdc-checkbox__native-control"/>
-                  <div class="mdc-checkbox__background">
-                    <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                      <path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-                    </svg>
-                    <div class="mdc-checkbox__mixedmark"></div>
-                  </div>
-                </div>
-                <label for="from-top">From Top</label>
-              </div>
-              <div class="mdc-form-field" style="padding: 0 24px;">
-                <div class="mdc-checkbox">
-                  <input type="checkbox" id="card" class="mdc-checkbox__native-control"/>
-                  <div class="mdc-checkbox__background">
-                    <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                      <path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-                    </svg>
-                    <div class="mdc-checkbox__mixedmark"></div>
-                  </div>
-                </div>
-                <label for="card">Card</label>
-              </div>
             </div>
           </div>
         </div>
@@ -375,26 +396,59 @@
       
       var dynamicTabBar = window.dynamicTabBar = new mdc.tabs.MDCTabBar(document.querySelector('#settings-tab-bar'));
       var panels = document.querySelector('.settings-dialog__panels');
-
+      var dialogBody = document.querySelector('.settings-dialog__body');
+      var allPanels = panels.querySelectorAll('.settings-dialog__panel');
+      
       dynamicTabBar.tabs.forEach(function(tab) {
         tab.preventDefaultOnClick = true;
       });
-
-      function updatePanel(index) {
-        var activePanel = panels.querySelector('.settings-dialog__panel--active');
-        if (activePanel) {
+      
+      function clearActivePanels() {
+        var activePanels = panels.querySelectorAll('.settings-dialog__panel--active');
+        for (var i = 0, activePanel; activePanel = activePanels[i]; i++) {
           activePanel.classList.remove('settings-dialog__panel--active');
         }
-        var newActivePanel = panels.querySelector('.settings-dialog__panel:nth-child(' + (index + 1) + ')');
+      }
+      
+      function showPanels() {
+        clearActivePanels();
+        dialogBody.classList.add('settings-dialog__body--animating');
+        if (allPanels) {
+          for (var i = 0, eachPanel; eachPanel = allPanels[i]; i++) {
+            eachPanel.classList.add('settings-dialog__panel--animating');
+          }
+        }
+      }
+      
+      function slidePanel(index) {
+        if (allPanels) {
+          for (var i = 0, eachPanel; eachPanel = allPanels[i]; i++) {
+            eachPanel.style.cssText = 'transform: translate(-' + index*100 + '%);';
+          }
+        }
+      }
+
+      function hidePanels(index) {
+        dialogBody.classList.remove('settings-dialog__body--animating');
+        if (allPanels) {
+          for (var i = 0, eachPanel; eachPanel = allPanels[i]; i++) {
+            eachPanel.classList.remove('settings-dialog__panel--animating');
+            //eachPanel.style.cssText = 'transform: translateX(0)';
+          }
+        }
+        var newActivePanel = panels.querySelector('#panel-' + (index + 1));
         if (newActivePanel) {
           newActivePanel.classList.add('settings-dialog__panel--active');
         }
       }
-
+      
       dynamicTabBar.listen('MDCTabBar:change', function ({detail: tabs}) {
         var nthChildIndex = tabs.activeTabIndex;
-
-        updatePanel(nthChildIndex);
+        
+        showPanels();
+        slidePanel(nthChildIndex);
+        //hidePanels(nthChildIndex);
+        setTimeout(function() { hidePanels(nthChildIndex); }, 120);
       });
       
       var radioEl = document.querySelector('.player-radio-container');
@@ -403,5 +457,20 @@
         
       });
     </script>
+<!-- Jquery js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- custom scrollbar plugin -->
+<script type="text/javascript" language="javascript" src="js/jquery.mCustomScrollbar.js"></script>
+    
+    <script>
+	(function($){
+		$(window).load(function(){
+			$(".scrollbar").mCustomScrollbar({
+				theme:"minimal-dark"
+			});
+		});
+	})(jQuery);
+</script>
   </body>
 </html>
