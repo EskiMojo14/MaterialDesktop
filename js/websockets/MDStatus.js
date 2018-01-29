@@ -3,13 +3,12 @@ var reconnect;
 
 function open() {
   try {
-    var url = "ws://127.0.0.1:58932/MDTrack";
-    wsTrack = new WebSocket(url);
-    wsTrack.onopen = onOpen;
-    wsTrack.onclose = onClose;
-    wsTrack.onmessage = onMessage;
-    wsTrack.onerror = onError;
-
+    var url = "ws://127.0.0.1:58932/MDStatus";
+    wsMDStatus = new WebSocket(url);
+    wsMDStatus.onopen = onOpen;
+    wsMDStatus.onclose = onClose;
+    wsMDStatus.onmessage = onMessage;
+    wsMDStatus.onerror = onError;
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }
@@ -21,7 +20,7 @@ var onOpen = function() {
 };
 
 var onClose = function() {
-  document.getElementById("track-info").innerHTML = "N/A"
+  document.getElementById("status-info").innerHTML = "N/A"
   connected = false;
   reconnect = setTimeout(function() {
     open();
@@ -29,8 +28,13 @@ var onClose = function() {
 };
 
 var onMessage = function(event) {
-  document.getElementById("track").innerHTML = event.data;
-  document.getElementById("track-info").innerHTML = event.data
+  console.log(event.data);
+  if (event.data = '1') {
+    document.getElementById("status").innerHTML = 'pause';
+  } else {
+    document.getElementById("status").innerHTML = 'play_arrow';
+  }
+  document.getElementById("status-info").innerHTML = event.data;
 };
 
 var onError = function(event) {

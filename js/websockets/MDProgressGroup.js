@@ -3,13 +3,12 @@ var reconnect;
 
 function open() {
   try {
-    var url = "ws://127.0.0.1:58932/MDProgress";
-    wsProgress = new WebSocket(url);
-    wsProgress.onopen = onOpen;
-    wsProgress.onclose = onClose;
-    wsProgress.onmessage = onMessage;
-    wsProgress.onerror = onError;
-
+    var url = "ws://127.0.0.1:58932/MDProgressGroup";
+    wsMDProgressGroup = new WebSocket(url);
+    wsMDProgressGroup.onopen = onOpen;
+    wsMDProgressGroup.onclose = onClose;
+    wsMDProgressGroup.onmessage = onMessage;
+    wsMDProgressGroup.onerror = onError;
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }
@@ -22,6 +21,7 @@ var onOpen = function() {
 
 var onClose = function() {
   document.getElementById("progress-info").innerHTML = "N/A"
+  document.getElementById("position-info").innerHTML = "N/A"
   connected = false;
   reconnect = setTimeout(function() {
     open();
@@ -29,10 +29,13 @@ var onClose = function() {
 };
 
 var onMessage = function(event) {
+  var selectRegex = /(.*) \| (.*)/
   var determinate = document.querySelector('.mdc-linear-progress');
   var linearProgress = mdc.linearProgress.MDCLinearProgress.attachTo(determinate);
-  linearProgress.progress = event.data / 100;
-  document.getElementById("progress-info").innerHTML = event.data
+  linearProgress.progress = event.data.replace(selectRegex, '$1') / 100;
+  document.getElementById("progress-info").innerHTML = event.data.replace(selectRegex, '$1');
+  document.getElementById("position").innerHTML = event.data.replace(selectRegex, '$2');
+  document.getElementById("position-info").innerHTML = event.data.replace(selectRegex, '$2');
 };
 
 var onError = function(event) {

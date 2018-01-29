@@ -25,14 +25,13 @@
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.js"></script>
     
     <!-- MessagePassing Scripts -->
-    <script src="js/wsArtist.js"></script>
-    <script src="js/wsCover.js"></script>
-    <script src="js/wsControls.js"></script>
-    <script src="js/wsPlayer.js"></script>
-    <script src="js/wsPlayPause.js"></script>
-    <script src="js/wsProgress.js"></script>
-    <script src="js/wsTrack.js"></script>
-    <script src="js/wsDiscord.js"></script>
+    <script src="js/websockets/MDRefreshGroup.js"></script>
+    <script src="js/websockets/MDSongGroup.js"></script>
+    <script src="js/websockets/MDProgressGroup.js"></script>
+    <script src="js/websockets/MDStatus.js"></script>
+    <script src="js/websockets/MDMediaControls.js"></script>
+    <script src="js/websockets/MDPlayerControl.js"></script>
+    <script src="js/websockets/MDDiscordControl.js"></script>
     
     <!--Details polyfill-->
     <script src="js/details-polyfill.js"></script>
@@ -268,8 +267,8 @@
                     <td class="mdc-data-table__cell--non-numeric" id="player-info">N/A</td>
                   </tr>
                   </tr>
-                    <td class="mdc-data-table__cell--non-numeric">PlayPause</td>
-                    <td class="mdc-data-table__cell--non-numeric" id="playpause-info">N/A</td>
+                    <td class="mdc-data-table__cell--non-numeric">Status</td>
+                    <td class="mdc-data-table__cell--non-numeric" id="status-info">N/A</td>
                   </tr>
                   <tr>
                     <td class="mdc-data-table__cell--non-numeric">Progress</td>
@@ -288,8 +287,12 @@
                     <td class="mdc-data-table__cell--non-numeric" id="cover-info">N/A</td>
                   </tr>
                   <tr>
-                    <td class="mdc-data-table__cell--non-numeric">Controls</td>
-                    <td class="mdc-data-table__cell--non-numeric" id="controls-info">N/A</td>
+                    <td class="mdc-data-table__cell--non-numeric">Position</td>
+                    <td class="mdc-data-table__cell--non-numeric" id="position-info">N/A</td>
+                  </tr>
+                  <tr>
+                    <td class="mdc-data-table__cell--non-numeric">Duration</td>
+                    <td class="mdc-data-table__cell--non-numeric" id="duration-info">N/A</td>
                   </tr>
                   <tr>
                     <td class="mdc-data-table__cell--non-numeric">Discord</td>
@@ -339,11 +342,16 @@
               </div>
             </div>
             <div class="media-bar__section media-bar__section--shrink-to-fit">
-              <button class="material-icons media-bar__icon" id="prev" onclick="sendMessageControl('Previous')">skip_previous</button>
-              <button class="material-icons media-bar__main-button" id="playpause" onclick="sendMessageControl('PlayPause')">play_arrow</button>
-              <button class="material-icons media-bar__icon" id="next" onclick="sendMessageControl('Next')">skip_next</button>
+              <button class="material-icons media-bar__icon" id="prev" onclick="MDMediaControls('Previous')">skip_previous</button>
+              <button class="material-icons media-bar__main-button" id="status" onclick="MDMediaControls('PlayPause')">play_arrow</button>
+              <button class="material-icons media-bar__icon" id="next" onclick="MDMediaControls('Next')">skip_next</button>
             </div>
             <div class="media-bar__section media-bar__section--align-end">
+              <div class="mdc-typography--caption media-bar__position">
+                <span class="mdc-theme--text-primary-on-background" id="position">0:12</span>
+                <span class="mdc-theme--text-secondary-on-background">/</span>
+                <span class="mdc-theme--text-secondary-on-background" id="duration">5:33</span>
+              </div>
             </div>
           </div>
         </div>
@@ -379,9 +387,9 @@
       var discordCheckbox = document.getElementById("discordrp")
       discordCheckbox.addEventListener('change', function () {
         if (discordCheckbox.checked) {
-          sendMessageDiscord('1');
+          MDDiscordControl('1');
         } else {
-          sendMessageDiscord('0');
+          MDDiscordControl('0');
         }
       });
       

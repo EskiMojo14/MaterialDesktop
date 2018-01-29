@@ -325,6 +325,8 @@
       width: 100%;
       text-overflow: ellipsis;
       overflow: hidden; }
+  .media-bar__position {
+    padding: 0 24px; }
   .media-bar .mdc-linear-progress .mdc-linear-progress__bar-inner {
     /* @alternate */
     background-color: #018786;

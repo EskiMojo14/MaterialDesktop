@@ -215,6 +215,9 @@ $media-bar-row-height: 56px;
     }
     
   }
+  &__position {
+    padding: 0 24px;
+  }
   .mdc-linear-progress {
     @include mdc-linear-progress-bar-color(secondary);
   }

@@ -1,15 +1,14 @@
-/*
+
 var reconnect;
 
 function open() {
   try {
-    var url = "ws://127.0.0.1:58932/MDCover";
-    wsCover = new WebSocket(url);
-    wsCover.onopen = onOpen;
-    wsCover.onclose = onClose;
-    wsCover.onmessage = onMessage;
-    wsCover.onerror = onError;
-
+    var url = "ws://127.0.0.1:58932/MDMediaControls";
+    wsMDMediaControls = new WebSocket(url);
+    wsMDMediaControls.onopen = onOpen;
+    wsMDMediaControls.onclose = onClose;
+    wsMDMediaControls.onmessage = onMessage;
+    wsMDMediaControls.onerror = onError;
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }
@@ -27,15 +26,15 @@ var onClose = function() {
   }, 5000);
 };
 
-var onMessage = function(event) {
-  document.getElementById("cover").setAttribute("src", event.data)
-  document.getElementById("cover-info").innerHTML = event.data
-};
-
 var onError = function(event) {
   if (typeof event.data != 'undefined') {
     //document.getElementById('content').innerHTML += "\nWebsocket Error:" + event.data;
   }
 };
+
+function MDMediaControls(stringToSend) {
+  if (connected) {
+    wsMDMediaControls.send(stringToSend);
+  }
+}
 open();
-*/

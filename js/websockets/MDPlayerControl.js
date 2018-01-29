@@ -3,12 +3,12 @@ var reconnect;
 
 function open() {
   try {
-    var url = "ws://127.0.0.1:58932/MDArtist";
-    wsArtist = new WebSocket(url);
-    wsArtist.onopen = onOpen;
-    wsArtist.onclose = onClose;
-    wsArtist.onmessage = onMessage;
-    wsArtist.onerror = onError;
+    var url = "ws://127.0.0.1:58932/MDPlayerControl";
+    wsMDPlayerControl = new WebSocket(url);
+    wsMDPlayerControl.onopen = onOpen;
+    wsMDPlayerControl.onclose = onClose;
+    wsMDPlayerControl.onmessage = onMessage;
+    wsMDPlayerControl.onerror = onError;
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }
@@ -20,16 +20,10 @@ var onOpen = function() {
 };
 
 var onClose = function() {
-  document.getElementById("artist-info").innerHTML = "N/A"
   connected = false;
   reconnect = setTimeout(function() {
     open();
   }, 5000);
-};
-
-var onMessage = function(event) {
-  document.getElementById("artist").innerHTML = event.data;
-  document.getElementById("artist-info").innerHTML = event.data
 };
 
 var onError = function(event) {
@@ -38,4 +32,9 @@ var onError = function(event) {
   }
 };
 
+function MDPlayerControl(stringToSend) {
+  if (connected) {
+    wsMDPlayerControl.send(stringToSend);
+  }
+}
 open();

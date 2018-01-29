@@ -17,6 +17,7 @@ Plugin=SpotifyPlugin
 Type=TrackName
 Substitute="":"N/A","^0$":"N/A"
 RegExpSubstitute=1
+OnChangeAction=[!CommandMeasure MDSongGroup "[Track] | [Artist] | [Duration] | [Cover]"]
 
 [Artist]
 Measure=Plugin
@@ -38,6 +39,7 @@ Plugin=SpotifyPlugin
 Type=Progress
 Decimals=2
 Substitute="nan":"0"
+OnChangeAction=[!CommandMeasure MDProgressGroup "[Progress] | [Position]"]
 
 [Duration]
 Measure=Plugin
@@ -59,13 +61,11 @@ Plugin=SpotifyPlugin
 Type=Volume
 Substitute="nan":"0"
 
-[PlayerState]
+[State]
 Measure=Plugin
 Plugin=SpotifyPlugin
 Type=Playing
-IfCondition=PlayerState=1
-IfTrueAction=[!SetVariable PlayPause "pause"][!Update]
-IfFalseAction=[!SetVariable PlayPause "play_arrow"][!Update]
+OnChangeAction=[!CommandMeasure [MDStatus "[State]"]
 
 [CoverAbs]
 Measure=Plugin

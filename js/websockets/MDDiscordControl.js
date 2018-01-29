@@ -3,12 +3,12 @@ var reconnect;
 
 function open() {
   try {
-    var url = "ws://127.0.0.1:58932/MDControls";
-    wsControls = new WebSocket(url);
-    wsControls.onopen = onOpen;
-    wsControls.onclose = onClose;
-    wsControls.onmessage = onMessage;
-    wsControls.onerror = onError;
+    var url = "ws://127.0.0.1:58932/MDDiscordControl";
+    wsMDDiscordControl = new WebSocket(url);
+    wsMDDiscordControl.onopen = onOpen;
+    wsMDDiscordControl.onclose = onClose;
+    wsMDDiscordControl.onmessage = onMessage;
+    wsMDDiscordControl.onerror = onError;
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }
@@ -32,10 +32,10 @@ var onError = function(event) {
   }
 };
 
-function sendMessageControl(stringToSend) {
+function MDDiscordControl(stringToSend) {
   if (connected) {
-    wsControls.send(stringToSend);
+    wsMDDiscordControl.send(stringToSend);
+    location.reload(true);
   }
-  document.getElementById("controls-info").innerHTML = stringToSend
 }
 open();

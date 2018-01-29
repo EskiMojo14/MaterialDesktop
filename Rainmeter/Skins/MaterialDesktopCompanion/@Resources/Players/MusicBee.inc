@@ -17,6 +17,7 @@ Plugin=NowPlaying
 PlayerName=[Player]
 PlayerType=TITLE
 Substitute="":"N/A"
+OnChangeAction=[!CommandMeasure MDSongGroup "[Track] | [Artist] | [Duration] | [Cover]"]
 
 [Artist]
 Measure=Plugin
@@ -37,6 +38,7 @@ Measure=Plugin
 Plugin=NowPlaying
 PlayerName=[Player]
 PlayerType=Progress
+OnChangeAction=[!CommandMeasure MDProgressGroup "[Progress] | [Position]"]
 
 [Duration]
 Measure=Plugin
@@ -60,14 +62,12 @@ Plugin=NowPlaying
 PlayerName=[Player]
 PlayerType=Volume
 
-[PlayerState]
+[State]
 Measure=Plugin
 Plugin=NowPlaying
 PlayerName=[Player]
 PlayerType=State
-IfCondition=PlayerState=1
-IfTrueAction=[!SetVariable PlayPause "pause"][!Update]
-IfFalseAction=[!SetVariable PlayPause "play_arrow"][!Update]
+OnChangeAction=[!CommandMeasure [MDStatus "[State]"]
 
 [CoverAbs]
 Measure=Plugin

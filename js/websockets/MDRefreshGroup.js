@@ -3,13 +3,12 @@ var reconnect;
 
 function open() {
   try {
-    var url = "ws://127.0.0.1:58932/MDDiscord";
-    wsDiscord = new WebSocket(url);
-    wsDiscord.onopen = onOpen;
-    wsDiscord.onclose = onClose;
-    wsDiscord.onmessage = onMessage;
-    wsDiscord.onerror = onError;
-    
+    var url = "ws://127.0.0.1:58932/MDRefreshGroup";
+    wsMDRefreshGroup = new WebSocket(url);
+    wsMDRefreshGroup.onopen = onOpen;
+    wsMDRefreshGroup.onclose = onClose;
+    wsMDRefreshGroup.onmessage = onMessage;
+    wsMDRefreshGroup.onerror = onError;
   } catch (error) {
     //document.getElementById('content').innerHTML += "\nError:" + error;
   }
@@ -22,6 +21,7 @@ var onOpen = function() {
 
 var onClose = function() {
   document.getElementById("discord-info").innerHTML = "N/A"
+  document.getElementById("player-info").innerHTML = "N/A"
   connected = false;
   reconnect = setTimeout(function() {
     open();
@@ -29,13 +29,17 @@ var onClose = function() {
 };
 
 var onMessage = function(event) {
-  document.getElementById("discord-info").innerHTML = event.data;
+  var selectRegex = /(.*) \| (.*)/
   var discordCheckbox = document.getElementById("discordrp");
-  if (event.data == 1) {
+  if (event.data.replace(selectRegex, '$1') == 1) {
     discordCheckbox.checked = true;
   } else {
     discordCheckbox.checked = false;
   }
+  document.getElementById("discord-info").innerHTML = event.data.replace(selectRegex, '$1');
+  var playerRadio = document.getElementById("player-radio-" + event.data.replace(selectRegex, '$2').toLowerCase());
+  playerRadio.checked = true;
+  document.getElementById("player-info").innerHTML = event.data.replace(selectRegex, '$2');
 };
 
 var onError = function(event) {
@@ -43,12 +47,5 @@ var onError = function(event) {
     //document.getElementById('content').innerHTML += "\nWebsocket Error:" + event.data;
   }
 };
-
-function sendMessageDiscord(stringToSend) {
-  if (connected) {
-    wsDiscord.send(stringToSend);
-    location.reload(true);
-  }
-}
 
 open();

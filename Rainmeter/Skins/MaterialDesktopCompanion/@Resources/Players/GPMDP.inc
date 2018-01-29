@@ -14,6 +14,7 @@ Measure=Plugin
 Plugin=GPMDPPlugin
 PlayerInfo=Title
 Substitute="":"N/A"
+OnChangeAction=[!CommandMeasure MDSongGroup "[Track] | [Artist] | [Duration] | [Cover]"]
 
 [Artist]
 Measure=Plugin
@@ -31,6 +32,7 @@ Substitute="":"N/A"
 Measure=Plugin
 Plugin=GPMDPPlugin
 PlayerInfo=Progress
+OnChangeAction=[!CommandMeasure MDProgressGroup "[Progress] | [Position]"]
 
 [Duration]
 Measure=Plugin
@@ -51,13 +53,11 @@ Measure=Plugin
 Plugin=GPMDPPlugin
 PlayerInfo=Volume
 
-[PlayerState]
+[State]
 Measure=Plugin
 Plugin=GPMDPPlugin
 PlayerInfo=State
-IfCondition=PlayerState=1
-IfTrueAction=[!SetVariable PlayPause "pause"][!Update]
-IfFalseAction=[!SetVariable PlayPause "play_arrow"][!Update]
+OnChangeAction=[!CommandMeasure [MDStatus "[State]"]
 
 [CoverAbs]
 Measure=Plugin
