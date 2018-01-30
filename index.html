@@ -372,7 +372,6 @@
             schemeColor = schemeColor.map(function(c) {
               return Math.ceil(c * 255);
               });
-            document.documentElement.style.setProperty(`--mdc-theme-primary`, 'rgb(' + schemeColor + ')');
             contrast(schemeColor, 'primary');
           }
 
@@ -387,7 +386,6 @@
             secondaryColor = secondaryColor.map(function(c) {
               return Math.ceil(c * 255);
               });
-            document.documentElement.style.setProperty(`--mdc-theme-secondary`, 'rgb(' + secondaryColor + ')');
             contrast(secondaryColor, 'secondary');
           }
             
@@ -397,7 +395,6 @@
             backgroundColor = backgroundColor.map(function(c) {
               return Math.ceil(c * 255);
               });
-            document.documentElement.style.setProperty(`--mdc-theme-background`, 'rgb(' + backgroundColor + ')');
             contrast(backgroundColor, 'background');
           }
           

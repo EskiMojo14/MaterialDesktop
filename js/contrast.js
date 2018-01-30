@@ -65,10 +65,10 @@ function contrast(object, theme) {
   var background = darkLight(r, g, b);  
   
   if (background == 'dark') { 
-    var css = ':root { --mdc-theme-text-primary-on-' + theme + ': white; --mdc-theme-text-secondary-on-' + theme + ': rgba(255,255,255,0.75); --mdc-theme-text-hint-on-' + theme + ': rgba(255,255,255,0.5); --mdc-theme-text-disabled-on-' + theme + ': rgba(255,255,255,0.5); --mdc-theme-text-icon-on-' + theme + ': rgba(255,255,255,0.5); --mdc-theme-divider-on-' + theme + ': rgba(255,255,255,0.12); }';
+    var css = ':root { --mdc-theme-' + theme + ': rgb(' + object + '); --mdc-theme-text-primary-on-' + theme + ': white; --mdc-theme-text-secondary-on-' + theme + ': rgba(255,255,255,0.75); --mdc-theme-text-hint-on-' + theme + ': rgba(255,255,255,0.5); --mdc-theme-text-disabled-on-' + theme + ': rgba(255,255,255,0.5); --mdc-theme-text-icon-on-' + theme + ': rgba(255,255,255,0.5); --mdc-theme-divider-on-' + theme + ': rgba(255,255,255,0.12); }';
     createStyle(css, theme);
   } else {
-    var css = ':root { --mdc-theme-text-primary-on-' + theme + ': rgba(0, 0, 0, 0.87); --mdc-theme-text-secondary-on-' + theme + ': rgba(0, 0, 0, 0.54); --mdc-theme-text-hint-on-' + theme + ': rgba(0, 0, 0, 0.38); --mdc-theme-text-disabled-on-' + theme + ': rgba(0, 0, 0, 0.38); --mdc-theme-text-icon-on-' + theme + ': rgba(0, 0, 0, 0.38); --mdc-theme-divider-on-' + theme + ': rgba(0,0,0,0.12); }';
+    var css = ':root { --mdc-theme-' + theme + ': rgb(' + object + '); --mdc-theme-text-primary-on-' + theme + ': rgba(0, 0, 0, 0.87); --mdc-theme-text-secondary-on-' + theme + ': rgba(0, 0, 0, 0.54); --mdc-theme-text-hint-on-' + theme + ': rgba(0, 0, 0, 0.38); --mdc-theme-text-disabled-on-' + theme + ': rgba(0, 0, 0, 0.38); --mdc-theme-text-icon-on-' + theme + ': rgba(0, 0, 0, 0.38); --mdc-theme-divider-on-' + theme + ': rgba(0,0,0,0.12); }';
     createStyle(css, theme);
   }
 }
