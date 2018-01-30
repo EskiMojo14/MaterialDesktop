@@ -26,6 +26,20 @@
 				"type" : "combo",
 				"value" : "40px"
       },
+			"secondarycolor" : 
+			{
+				"order" : 0,
+				"text" : "Secondary Colour",
+				"type" : "color",
+				"value" : "0.91372549 0.11764705882 0.38823529411"
+			},
+			"backgroundcolor" : 
+			{
+				"order" : 0,
+				"text" : "Background Colour",
+				"type" : "color",
+				"value" : "1 1 1"
+			},
 			"schemecolor" : 
 			{
 				"order" : 0,

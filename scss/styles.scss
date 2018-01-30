@@ -1,12 +1,33 @@
+@import "@material/theme/mixins";
+@import "@material/theme/variables";
+@import "@material/ripple/mixins";
+
 .settings-dialog {
   .mdc-dialog__surface {
     min-width: initial;
     max-width: 480px;
+    @include mdc-theme-prop(color, text-primary-on-background);
   }
-  .mdc-tab-bar {
-    margin-top: 20px;
-    transform: scale(1.25);
-    transition: transform 0s 120ms;
+  .mdc-dialog__body--scrollable {
+    @include mdc-theme-prop(border-color, divider-on-background);
+    @include mdc-theme-prop(border-color, divider-on-background);
+  }
+  .mdc-tab {
+    @include mdc-theme-prop(color, text-secondary-on-background);
+    &:hover, &--active {
+      @include mdc-theme-prop(color, text-primary-on-background);
+    }
+    &.mdc-ripple-upgraded {
+      @include mdc-states(text-primary-on-background);
+    }
+    &-bar {
+      margin-top: 20px;
+      transform: scale(1.25);
+      transition: transform 0s 120ms;
+    }
+  }
+  .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate) ~ .mdc-checkbox__background {
+    @include mdc-theme-prop(border-color, text-secondary-on-background);
   }
   &.mdc-dialog--open .mdc-tab-bar {
     transform: scale(1);
@@ -52,6 +73,22 @@
   .mdc-list-item {
     padding: none;
   }
+  .mdc-form-field {
+    @include mdc-theme-prop(color, text-primary-on-background);
+    .mdc-radio .mdc-radio__native-control:enabled:not(:checked) + .mdc-radio__background .mdc-radio__outer-circle {
+      @include mdc-theme-prop(border-color, text-secondary-on-background);
+    }
+  }
+  .mdc-data-table td {
+    @include mdc-theme-prop(border-color, divider-on-background);
+  }
+  .mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    @include mdc-theme-prop(background-color, divider-on-background);
+  }
+  .mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+	.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar{
+    @include mdc-theme-prop(background-color, text-icon-on-background);
+  }
 }
 
 .taskbar {
@@ -60,5 +97,6 @@
   bottom: 0;
   z-index: 5;
   height: var(--taskbar-height, 40px);
-  background-color: var(--mdc-theme-primary, #3f51b5); 
+  @include mdc-theme-prop(background-color, primary);
+  transition: width 300ms 0ms cubic-bezier(.4, 0, .2, 1);
 }

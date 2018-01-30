@@ -3476,11 +3476,7 @@ body {
     min-width: 100%; }
     .mdc-dialog .mdc-expansion__summary .mdc-expansion__header .mdc-expansion__icon {
       user-select: none;
-      transition: transform 200ms;
-      color: rgba(0, 0, 0, 0.38); }
-      .mdc-expansion--theme-dark .mdc-dialog .mdc-expansion__summary .mdc-expansion__header .mdc-expansion__icon,
-      .mdc-theme--dark .mdc-dialog .mdc-expansion__summary .mdc-expansion__header .mdc-expansion__icon {
-        color: rgba(255, 255, 255, 0.38); }
+      transition: transform 200ms; }
   .mdc-dialog [open] .mdc-expansion__summary {
     height: 48px !important; }
     .mdc-dialog [open] .mdc-expansion__summary .mdc-expansion__header .mdc-expansion__icon {
@@ -9607,46 +9603,55 @@ a.mdc-list-item {
   --mdc-theme-text-hint-on-primary: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-disabled-on-primary: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-icon-on-primary: rgba(255, 255, 255, 0.5);
+  --mdc-theme-divider-on-primary: rgba(255, 255, 255, 0.12);
   --mdc-theme-text-primary-on-primary-light: rgba(0, 0, 0, 0.87);
   --mdc-theme-text-secondary-on-primary-light: rgba(0, 0, 0, 0.54);
   --mdc-theme-text-hint-on-primary-light: rgba(0, 0, 0, 0.38);
   --mdc-theme-text-disabled-on-primary-light: rgba(0, 0, 0, 0.38);
   --mdc-theme-text-icon-on-primary-light: rgba(0, 0, 0, 0.38);
+  --mdc-theme-divider-on-primary-light: rgba(0, 0, 0, 0.12);
   --mdc-theme-text-primary-on-primary-dark: white;
   --mdc-theme-text-secondary-on-primary-dark: rgba(255, 255, 255, 0.7);
   --mdc-theme-text-hint-on-primary-dark: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-disabled-on-primary-dark: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-icon-on-primary-dark: rgba(255, 255, 255, 0.5);
+  --mdc-theme-divider-on-primary-dark: rgba(255, 255, 255, 0.12);
   --mdc-theme-text-primary-on-secondary: white;
   --mdc-theme-text-secondary-on-secondary: rgba(255, 255, 255, 0.7);
   --mdc-theme-text-hint-on-secondary: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-disabled-on-secondary: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-icon-on-secondary: rgba(255, 255, 255, 0.5);
+  --mdc-theme-divider-on-secondary: rgba(255, 255, 255, 0.12);
   --mdc-theme-text-primary-on-secondary-light: white;
   --mdc-theme-text-secondary-on-secondary-light: rgba(255, 255, 255, 0.7);
   --mdc-theme-text-hint-on-secondary-light: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-disabled-on-secondary-light: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-icon-on-secondary-light: rgba(255, 255, 255, 0.5);
+  --mdc-theme-divider-on-secondary-light: rgba(255, 255, 255, 0.12);
   --mdc-theme-text-primary-on-secondary-dark: white;
   --mdc-theme-text-secondary-on-secondary-dark: rgba(255, 255, 255, 0.7);
   --mdc-theme-text-hint-on-secondary-dark: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-disabled-on-secondary-dark: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-icon-on-secondary-dark: rgba(255, 255, 255, 0.5);
+  --mdc-theme-divider-on-secondary-dark: rgba(255, 255, 255, 0.12);
   --mdc-theme-text-primary-on-background: rgba(0, 0, 0, 0.87);
   --mdc-theme-text-secondary-on-background: rgba(0, 0, 0, 0.54);
   --mdc-theme-text-hint-on-background: rgba(0, 0, 0, 0.38);
   --mdc-theme-text-disabled-on-background: rgba(0, 0, 0, 0.38);
   --mdc-theme-text-icon-on-background: rgba(0, 0, 0, 0.38);
+  --mdc-theme-divider-on-background: rgba(0, 0, 0, 0.12);
   --mdc-theme-text-primary-on-light: rgba(0, 0, 0, 0.87);
   --mdc-theme-text-secondary-on-light: rgba(0, 0, 0, 0.54);
   --mdc-theme-text-hint-on-light: rgba(0, 0, 0, 0.38);
   --mdc-theme-text-disabled-on-light: rgba(0, 0, 0, 0.38);
   --mdc-theme-text-icon-on-light: rgba(0, 0, 0, 0.38);
+  --mdc-theme-divider-on-light: rgba(0, 0, 0, 0.12);
   --mdc-theme-text-primary-on-dark: white;
   --mdc-theme-text-secondary-on-dark: rgba(255, 255, 255, 0.7);
   --mdc-theme-text-hint-on-dark: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-disabled-on-dark: rgba(255, 255, 255, 0.5);
-  --mdc-theme-text-icon-on-dark: rgba(255, 255, 255, 0.5); }
+  --mdc-theme-text-icon-on-dark: rgba(255, 255, 255, 0.5);
+  --mdc-theme-divider-on-dark: rgba(255, 255, 255, 0.12); }
 
 .mdc-theme--background {
   /* @alternate */
@@ -9708,6 +9713,11 @@ a.mdc-list-item {
   color: rgba(255, 255, 255, 0.5) !important;
   color: var(--mdc-theme-text-icon-on-primary, rgba(255, 255, 255, 0.5)) !important; }
 
+.mdc-theme--divider-on-primary {
+  /* @alternate */
+  color: rgba(255, 255, 255, 0.12) !important;
+  color: var(--mdc-theme-divider-on-primary, rgba(255, 255, 255, 0.12)) !important; }
+
 .mdc-theme--text-primary-on-primary-light {
   /* @alternate */
   color: rgba(0, 0, 0, 0.87) !important;
@@ -9732,6 +9742,11 @@ a.mdc-list-item {
   /* @alternate */
   color: rgba(0, 0, 0, 0.38) !important;
   color: var(--mdc-theme-text-icon-on-primary-light, rgba(0, 0, 0, 0.38)) !important; }
+
+.mdc-theme--divider-on-primary-light {
+  /* @alternate */
+  color: rgba(0, 0, 0, 0.12) !important;
+  color: var(--mdc-theme-divider-on-primary-light, rgba(0, 0, 0, 0.12)) !important; }
 
 .mdc-theme--text-primary-on-primary-dark {
   /* @alternate */
@@ -9758,6 +9773,11 @@ a.mdc-list-item {
   color: rgba(255, 255, 255, 0.5) !important;
   color: var(--mdc-theme-text-icon-on-primary-dark, rgba(255, 255, 255, 0.5)) !important; }
 
+.mdc-theme--divider-on-primary-dark {
+  /* @alternate */
+  color: rgba(255, 255, 255, 0.12) !important;
+  color: var(--mdc-theme-divider-on-primary-dark, rgba(255, 255, 255, 0.12)) !important; }
+
 .mdc-theme--text-primary-on-secondary {
   /* @alternate */
   color: white !important;
@@ -9782,6 +9802,11 @@ a.mdc-list-item {
   /* @alternate */
   color: rgba(255, 255, 255, 0.5) !important;
   color: var(--mdc-theme-text-icon-on-secondary, rgba(255, 255, 255, 0.5)) !important; }
+
+.mdc-theme--divider-on-secondary {
+  /* @alternate */
+  color: rgba(255, 255, 255, 0.12) !important;
+  color: var(--mdc-theme-divider-on-secondary, rgba(255, 255, 255, 0.12)) !important; }
 
 .mdc-theme--text-primary-on-secondary-light {
   /* @alternate */
@@ -9808,6 +9833,11 @@ a.mdc-list-item {
   color: rgba(255, 255, 255, 0.5) !important;
   color: var(--mdc-theme-text-icon-on-secondary-light, rgba(255, 255, 255, 0.5)) !important; }
 
+.mdc-theme--divider-on-secondary-light {
+  /* @alternate */
+  color: rgba(255, 255, 255, 0.12) !important;
+  color: var(--mdc-theme-divider-on-secondary-light, rgba(255, 255, 255, 0.12)) !important; }
+
 .mdc-theme--text-primary-on-secondary-dark {
   /* @alternate */
   color: white !important;
@@ -9832,6 +9862,11 @@ a.mdc-list-item {
   /* @alternate */
   color: rgba(255, 255, 255, 0.5) !important;
   color: var(--mdc-theme-text-icon-on-secondary-dark, rgba(255, 255, 255, 0.5)) !important; }
+
+.mdc-theme--divider-on-secondary-dark {
+  /* @alternate */
+  color: rgba(255, 255, 255, 0.12) !important;
+  color: var(--mdc-theme-divider-on-secondary-dark, rgba(255, 255, 255, 0.12)) !important; }
 
 .mdc-theme--text-primary-on-background {
   /* @alternate */
@@ -9858,6 +9893,11 @@ a.mdc-list-item {
   color: rgba(0, 0, 0, 0.38) !important;
   color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38)) !important; }
 
+.mdc-theme--divider-on-background {
+  /* @alternate */
+  color: rgba(0, 0, 0, 0.12) !important;
+  color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)) !important; }
+
 .mdc-theme--text-primary-on-light {
   /* @alternate */
   color: rgba(0, 0, 0, 0.87) !important;
@@ -9883,6 +9923,11 @@ a.mdc-list-item {
   color: rgba(0, 0, 0, 0.38) !important;
   color: var(--mdc-theme-text-icon-on-light, rgba(0, 0, 0, 0.38)) !important; }
 
+.mdc-theme--divider-on-light {
+  /* @alternate */
+  color: rgba(0, 0, 0, 0.12) !important;
+  color: var(--mdc-theme-divider-on-light, rgba(0, 0, 0, 0.12)) !important; }
+
 .mdc-theme--text-primary-on-dark {
   /* @alternate */
   color: white !important;
@@ -9907,6 +9952,11 @@ a.mdc-list-item {
   /* @alternate */
   color: rgba(255, 255, 255, 0.5) !important;
   color: var(--mdc-theme-text-icon-on-dark, rgba(255, 255, 255, 0.5)) !important; }
+
+.mdc-theme--divider-on-dark {
+  /* @alternate */
+  color: rgba(255, 255, 255, 0.12) !important;
+  color: var(--mdc-theme-divider-on-dark, rgba(255, 255, 255, 0.12)) !important; }
 
 .mdc-theme--primary-bg {
   /* @alternate */
@@ -10121,10 +10171,13 @@ a.mdc-list-item {
 /* TODO(sgomes): Figure out what to do about desktop font sizes. */
 /* TODO(sgomes): Figure out what to do about i18n and i18n font sizes. */
 .mdc-toolbar {
+  /*@include mdc-toolbar-fill-color-accessible(primary);*/
   /* @alternate */
   background-color: #009688;
   background-color: var(--mdc-theme-primary, #009688);
+  /* @alternate */
   color: white;
+  color: var(--mdc-theme-text-primary-on-primary, white);
   display: flex;
   position: relative;
   flex-direction: column;

@@ -24,6 +24,8 @@
     <!-- MCW Scripts -->
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.js"></script>
     
+    <script src="js/contrast.js"></script>
+    
     <!-- MessagePassing Scripts -->
     <script src="js/websockets/MDRefreshGroup.js"></script>
     <script src="js/websockets/MDSongGroup.js"></script>
@@ -39,9 +41,6 @@
     <!-- Variables -->
     <style>
       :root {
-        --taskbar-height: 40px;
-        /* 40 for normal taskbar, 30 for small icons, 0 for disabled/autohide */
-        
         --font: Roboto, sans-serif;
         
         --bg: url("../img/wallpapers/january.jpg");
@@ -351,9 +350,9 @@
             </div>
             <div class="media-bar__section media-bar__section--align-end">
               <div class="mdc-typography--caption media-bar__position">
-                <span class="mdc-theme--text-primary-on-background" id="position">0:12</span>
+                <span class="mdc-theme--text-primary-on-background" id="position"></span>
                 <span class="mdc-theme--text-secondary-on-background">/</span>
-                <span class="mdc-theme--text-secondary-on-background" id="duration">5:33</span>
+                <span class="mdc-theme--text-secondary-on-background" id="duration"></span>
               </div>
             </div>
           </div>
@@ -362,31 +361,81 @@
       <div class="taskbar mdc-elevation--z4"></div> 
     </div>
     <script>
+      var debug = document.getElementById('debug');
+      
+      window.wallpaperPropertyListener = {
+        applyUserProperties: function(properties) {
+            
+          // Read scheme color
+          if (properties.schemecolor) {
+            var schemeColor = properties.schemecolor.value.split(' ');
+            schemeColor = schemeColor.map(function(c) {
+              return Math.ceil(c * 255);
+              });
+            document.documentElement.style.setProperty(`--mdc-theme-primary`, 'rgb(' + schemeColor + ')');
+            contrast(schemeColor, 'primary');
+          }
+
+          // Read custom combo
+          if (properties.taskbarheight) {
+            document.documentElement.style.setProperty(`--taskbar-height`, properties.taskbarheight.value);
+          }
+            
+          // Read secondary color
+          if (properties.secondarycolor) {
+            var secondaryColor = properties.secondarycolor.value.split(' ');
+            secondaryColor = secondaryColor.map(function(c) {
+              return Math.ceil(c * 255);
+              });
+            document.documentElement.style.setProperty(`--mdc-theme-secondary`, 'rgb(' + secondaryColor + ')');
+            contrast(secondaryColor, 'secondary');
+          }
+            
+          // Read background color
+          if (properties.backgroundcolor) {
+            var backgroundColor = properties.backgroundcolor.value.split(' ');
+            backgroundColor = backgroundColor.map(function(c) {
+              return Math.ceil(c * 255);
+              });
+            document.documentElement.style.setProperty(`--mdc-theme-background`, 'rgb(' + backgroundColor + ')');
+            contrast(backgroundColor, 'background');
+          }
+          
+        }
+      };
+    </script>
+    <script>
+      
       mdc.autoInit()
       
+      // sets variable for computed media bar height, used for hiding
+      document.documentElement.style.setProperty(`--media-bar-height`, document.querySelector('.media-bar__bar').clientHeight + 'px');
+      
       var mediaBar = document.querySelector('.media-bar');
+      
+      // hide media bar toggle
       var fabCheckbox = document.getElementById('show-hide-media');
       fabCheckbox.addEventListener('change', function () {
         mediaBar.classList[fabCheckbox.checked ? 'add' : 'remove']('media-bar--hidden');
       });
+      
+      // media bar from top toggle
       var fromTop = document.getElementById('from-top');
       fromTop.addEventListener('change', function () {
         mediaBar.classList[fromTop.checked ? 'add' : 'remove']('media-bar--from-top');
       });
+      
+      // card media bar toggle
       var cardCheckbox = document.getElementById('card');
       cardCheckbox.addEventListener('change', function () {
         mediaBar.classList[cardCheckbox.checked ? 'add' : 'remove']('media-bar--card');
       });
       
+      // dropdown
       let menu = new mdc.menu.MDCSimpleMenu(document.querySelector('#dropdown'));
       document.querySelector('#dropdown-button').addEventListener('click', () => menu.open = !menu.open);
       
-      var expandHeader = document.querySelector('.mdc-expansion__header');
-      function expandUpdate() {
-        let expandOpen = document.querySelector('.mdc-expansion').hasAttribute("open");
-        expandHeader.classList[(expandOpen) ? 'remove' : 'add']('mdc-list-item--selected');
-      }
-      
+      // toggle discordrp
       var discordCheckbox = document.getElementById("discordrp")
       discordCheckbox.addEventListener('change', function () {
         if (discordCheckbox.checked) {
@@ -396,15 +445,18 @@
         }
       });
       
+      // toolbar height
       var toolbar = mdc.toolbar.MDCToolbar.attachTo(document.querySelector('.mdc-toolbar'));
       toolbar.fixedAdjustElement = document.querySelector('.mdc-toolbar-fixed-adjust');
       
+      // shows settings dialog
       var settingsDialog = new mdc.dialog.MDCDialog(document.querySelector('#settings-dialog'));
       document.querySelector('#settings').addEventListener('click', function (evt) {
         settingsDialog.lastFocusedTarget = evt.target;
         settingsDialog.show();
       });
       
+      //tab switching
       var dynamicTabBar = window.dynamicTabBar = new mdc.tabs.MDCTabBar(document.querySelector('#settings-tab-bar'));
       var panels = document.querySelector('.settings-dialog__panels');
       var dialogBody = document.querySelector('.settings-dialog__body');
@@ -454,6 +506,7 @@
         setTimeout(function() { hidePanels(nthChildIndex); }, 120);
       });
       
+      // player selector
       var radioEl = document.querySelector('.player-radio-container');
       radioEl.addEventListener('change', function(e) {
         var checkedRadio = document.querySelector('.player-radio-container .mdc-radio__native-control:checked');
@@ -469,6 +522,7 @@
     <script type="text/javascript" language="javascript" src="js/jquery.mCustomScrollbar.js"></script>
     
     <script>
+    // custom scrollbar
       (function($){
         $(window).load(function(){
           $(".scrollbar").mCustomScrollbar({

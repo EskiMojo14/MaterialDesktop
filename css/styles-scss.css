@@ -1,11 +1,53 @@
 .settings-dialog .mdc-dialog__surface {
   min-width: initial;
-  max-width: 480px; }
+  max-width: 480px;
+  /* @alternate */
+  color: rgba(0, 0, 0, 0.87);
+  color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87)); }
 
-.settings-dialog .mdc-tab-bar {
-  margin-top: 20px;
-  transform: scale(1.25);
-  transition: transform 0s 120ms; }
+.settings-dialog .mdc-dialog__body--scrollable {
+  /* @alternate */
+  border-color: rgba(0, 0, 0, 0.12);
+  border-color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12));
+  /* @alternate */
+  border-color: rgba(0, 0, 0, 0.12);
+  border-color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)); }
+
+.settings-dialog .mdc-tab {
+  /* @alternate */
+  color: rgba(0, 0, 0, 0.54);
+  color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54)); }
+  .settings-dialog .mdc-tab:hover, .settings-dialog .mdc-tab--active {
+    /* @alternate */
+    color: rgba(0, 0, 0, 0.87);
+    color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87)); }
+  .settings-dialog .mdc-tab.mdc-ripple-upgraded::before, .settings-dialog .mdc-tab.mdc-ripple-upgraded::after {
+    /* @alternate */
+    background-color: rgba(0, 0, 0, 0.87); }
+    @supports not (-ms-ime-align: auto) {
+      .settings-dialog .mdc-tab.mdc-ripple-upgraded::before, .settings-dialog .mdc-tab.mdc-ripple-upgraded::after {
+        background-color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87)); } }
+  .settings-dialog .mdc-tab.mdc-ripple-upgraded:hover::before {
+    opacity: 0.04; }
+  .settings-dialog .mdc-tab.mdc-ripple-upgraded:not(.mdc-ripple-upgraded):focus::before, .settings-dialog .mdc-tab.mdc-ripple-upgraded.mdc-ripple-upgraded--background-focused::before {
+    transition-duration: 75ms;
+    opacity: 0.12; }
+  .settings-dialog .mdc-tab.mdc-ripple-upgraded:not(.mdc-ripple-upgraded)::after {
+    transition: opacity 150ms linear; }
+  .settings-dialog .mdc-tab.mdc-ripple-upgraded:not(.mdc-ripple-upgraded):active::after {
+    transition-duration: 75ms;
+    opacity: 0.16; }
+  .settings-dialog .mdc-tab.mdc-ripple-upgraded.mdc-ripple-upgraded {
+    --mdc-ripple-fg-opacity: 0.16; }
+  .settings-dialog .mdc-tab-bar {
+    margin-top: 20px;
+    transform: scale(1.25);
+    transition: transform 0s 120ms; }
+
+.settings-dialog .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate) ~ .mdc-checkbox__background {
+  /* @alternate */
+  border-color: rgba(0, 0, 0, 0.54);
+  border-color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54)); }
 
 .settings-dialog.mdc-dialog--open .mdc-tab-bar {
   transform: scale(1);
@@ -50,10 +92,38 @@
 .settings-dialog .mdc-list-item {
   padding: none; }
 
+.settings-dialog .mdc-form-field {
+  /* @alternate */
+  color: rgba(0, 0, 0, 0.87);
+  color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87)); }
+  .settings-dialog .mdc-form-field .mdc-radio .mdc-radio__native-control:enabled:not(:checked) + .mdc-radio__background .mdc-radio__outer-circle {
+    /* @alternate */
+    border-color: rgba(0, 0, 0, 0.54);
+    border-color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54)); }
+
+.settings-dialog .mdc-data-table td {
+  /* @alternate */
+  border-color: rgba(0, 0, 0, 0.12);
+  border-color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)); }
+
+.settings-dialog .mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  /* @alternate */
+  background-color: rgba(0, 0, 0, 0.12);
+  background-color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)); }
+
+.settings-dialog .mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.settings-dialog .mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+  /* @alternate */
+  background-color: rgba(0, 0, 0, 0.38);
+  background-color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38)); }
+
 .taskbar {
   position: fixed;
   width: 100%;
   bottom: 0;
   z-index: 5;
   height: var(--taskbar-height, 40px);
-  background-color: var(--mdc-theme-primary, #3f51b5); }
+  /* @alternate */
+  background-color: #6200ee;
+  background-color: var(--mdc-theme-primary, #6200ee);
+  transition: width 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1); }

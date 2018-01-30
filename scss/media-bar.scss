@@ -12,6 +12,8 @@ $media-bar-row-height: 56px;
   #{$property}: var(--#{$name}, $value);
 }
 
+// variable --media-bar-height is set using JS
+
 .media-bar {
   
   position: fixed;
@@ -92,12 +94,12 @@ $media-bar-row-height: 56px;
       flex-direction: column-reverse;
     }
     &.media-bar--hidden {
-      top: 0 - $media-bar-row-height - 4px;
+      top: calc(0px - var(--media-bar-height, #{$media-bar-row-height});
       bottom: auto;
       transition: mdc-animation-exit-temporary(top, .225s);
       
       &.media-bar--card {
-        top: calc( #{(-$media-bar-row-height)} - var(--mdc-layout-grid-margin-desktop, 24px) - 4px);
+        top: calc(0px - (var(--media-bar-height, #{$media-bar-row-height}) + var(--mdc-layout-grid-margin-desktop, 24px)));
         bottom: auto;
       }
     }
@@ -105,7 +107,7 @@ $media-bar-row-height: 56px;
   
   &--hidden {
     transition: mdc-animation-exit-temporary(bottom, .225s);
-    bottom: calc(#{76px - $media-bar-row-height} - var(--taskbar-height, 40px) );
+    bottom: calc(var(--taskbar-height, 40px) - var(--media-bar-height, #{$media-bar-row-height}));
     .media-bar__bar {
       box-shadow: none;
       transition: mdc-animation-exit-temporary(box-shadow, .225s);
@@ -122,7 +124,7 @@ $media-bar-row-height: 56px;
     }
     
     &.media-bar--hidden {
-      bottom: calc( #{28px - $media-bar-row-height} - var(--taskbar-height, 40px) + var(--mdc-layout-grid-margin-desktop, 24px));
+      bottom: calc(var(--taskbar-height, 40px) - (var(--media-bar-height, #{$media-bar-row-height}) + var(--mdc-layout-grid-margin-desktop, 24px)) );
     
       .media-bar__bar {
         box-shadow: none;
@@ -232,6 +234,7 @@ $media-bar-row-height: 56px;
   }
   .mdc-linear-progress {
     @include mdc-linear-progress-bar-color(secondary);
+    @include mdc-linear-progress-buffer-color(divider-on-background);
   }
 }
   
@@ -239,9 +242,9 @@ $media-bar-row-height: 56px;
   .media-bar--card {
     @include css-variable(padding, mdc-layout-grid-margin-tablet, 16px);
     &.media-bar--hidden {
-      bottom: calc(#{44px - $media-bar-row-height} - var(--taskbar-height, 40px) + var(--mdc-layout-grid-margin-tablet, 16px));
+      bottom: calc(var(--taskbar-height, 40px) - (var(--media-bar-height, #{$media-bar-row-height}) + var(--mdc-layout-grid-margin-tablet, 16px)) );
       &.media-bar--from-top {
-        top: calc( #{(-$media-bar-row-height) - 4px} - var(--mdc-layout-grid-margin-tablet, 16px));
+        top: calc(0px - (var(--media-bar-height, #{$media-bar-row-height}) + var(--mdc-layout-grid-margin-tablet, 16px)));
         bottom: auto;
       }
     }
@@ -252,9 +255,9 @@ $media-bar-row-height: 56px;
   .media-bar--card {
     @include css-variable(padding, mdc-layout-grid-margin-phone, 16px);
     &.media-bar--hidden {
-      bottom: calc(#{44px - $media-bar-row-height} - var(--taskbar-height, 40px) + var(--mdc-layout-grid-margin-phone, 16px));
+      bottom: calc(var(--taskbar-height, 40px) - (var(--media-bar-height, #{$media-bar-row-height}) + var(--mdc-layout-grid-margin-phone, 16px)) );
       &.media-bar--from-top {
-        top: calc( #{(-$media-bar-row-height) - 4px} - var(--mdc-layout-grid-margin-phone, 16px));
+        top: calc(0px - (var(--media-bar-height, #{$media-bar-row-height}) + var(--mdc-layout-grid-margin-phone, 16px)));
         bottom: auto;
       }
     }
