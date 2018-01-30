@@ -35,6 +35,7 @@ var onError = function(event) {
 function MDPlayerControl(stringToSend) {
   if (connected) {
     wsMDPlayerControl.send(stringToSend);
+    location.reload(true);
   }
 }
 open();

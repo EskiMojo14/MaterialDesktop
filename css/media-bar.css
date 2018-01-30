@@ -178,9 +178,6 @@
  * ```
  * An optional third $root-selector argument may also be given, which is passed to `mdc-rtl`.
  */
-:root {
-  --media-bar-row-height: 56px; }
-
 .media-bar {
   position: fixed;
   bottom: var(--taskbar-height, 40px);
@@ -231,15 +228,15 @@
       box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
       flex-direction: column-reverse; }
     .media-bar--from-top.media-bar--hidden {
-      top: calc( var(--media-bar-row-height, $media-bar-row-height) - (var(--media-bar-row-height, $media-bar-row-height)*2) - 4px);
+      top: -60px;
       bottom: auto;
       transition: top 0.225s 0ms cubic-bezier(0.4, 0, 0.6, 1); }
       .media-bar--from-top.media-bar--hidden.media-bar--card {
-        top: calc( var(--media-bar-row-height, $media-bar-row-height) - (var(--media-bar-row-height, $media-bar-row-height)*2) - var(--mdc-layout-grid-margin-desktop, 24px) - 4px);
+        top: calc( -56px - var(--mdc-layout-grid-margin-desktop, 24px) - 4px);
         bottom: auto; }
   .media-bar--hidden {
     transition: bottom 0.225s 0ms cubic-bezier(0.4, 0, 0.6, 1);
-    bottom: calc(76px - var(--taskbar-height, 40px) - var(--media-bar-row-height, $media-bar-row-height)); }
+    bottom: calc(20px - var(--taskbar-height, 40px)); }
     .media-bar--hidden .media-bar__bar {
       box-shadow: none;
       transition: box-shadow 0.225s 0ms cubic-bezier(0.4, 0, 0.6, 1); }
@@ -251,7 +248,7 @@
       border-radius: 2px;
       box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); }
     .media-bar--card.media-bar--hidden {
-      bottom: calc(28px - var(--taskbar-height, 40px) - var(--media-bar-row-height, $media-bar-row-height) + var(--mdc-layout-grid-margin-desktop, 24px)); }
+      bottom: calc( -28px - var(--taskbar-height, 40px) + var(--mdc-layout-grid-margin-desktop, 24px)); }
       .media-bar--card.media-bar--hidden .media-bar__bar {
         box-shadow: none; }
   .media-bar__row {
@@ -261,8 +258,7 @@
     box-sizing: border-box;
     width: 100%;
     height: auto;
-    min-height: 56px;
-    min-height: var(--media-bar-row-height, 56px); }
+    min-height: 56px; }
   .media-bar__section {
     display: inline-flex;
     flex: 1;
@@ -280,11 +276,26 @@
     .media-bar__section--shrink-to-fit {
       flex: none; }
   .media-bar__album-icon {
-    padding: 0 24px;
     user-select: none;
     /* @alternate */
     color: rgba(0, 0, 0, 0.38);
     color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38)); }
+  .media-bar__cover {
+    height: 48px;
+    width: 48px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 24px;
+    position: relative; }
+    .media-bar__cover-art {
+      height: 100%;
+      width: 100%;
+      position: absolute; }
+    .media-bar__cover--rounded {
+      border-radius: 50%; }
   .media-bar__icon {
     padding: 12px;
     /* @alternate */
@@ -296,9 +307,7 @@
     outline: none; }
   .media-bar__main-button {
     width: 40px;
-    width: calc(var(--media-bar-row-height, $media-bar-row-height) - 16px);
     height: 40px;
-    height: calc(var(--media-bar-row-height, $media-bar-row-height) - 16px);
     /* @alternate */
     background-color: #6200ee;
     background-color: var(--mdc-theme-primary, #6200ee);
@@ -309,14 +318,12 @@
     color: white;
     color: var(--mdc-theme-text-primary-on-primary, white);
     line-height: 40px;
-    line-height: calc(var(--media-bar-row-height, $media-bar-row-height) - 16px);
     text-align: center;
     user-select: none;
     border: none;
     outline: none; }
   .media-bar__track-info {
     height: 56px;
-    height: var(--media-bar-row-height, 56px);
     overflow: hidden;
     display: flex;
     align-items: center; }
@@ -337,9 +344,9 @@
     padding: 16px;
     padding: var(--mdc-layout-grid-margin-tablet, 16px); }
     .media-bar--card.media-bar--hidden {
-      bottom: calc(44px - var(--taskbar-height, 40px) - var(--media-bar-row-height, $media-bar-row-height) + var(--mdc-layout-grid-margin-tablet, 16px)); }
+      bottom: calc(-12px - var(--taskbar-height, 40px) + var(--mdc-layout-grid-margin-tablet, 16px)); }
       .media-bar--card.media-bar--hidden.media-bar--from-top {
-        top: calc( var(--media-bar-row-height, $media-bar-row-height) - (var(--media-bar-row-height, $media-bar-row-height)*2) - 4px - var(--mdc-layout-grid-margin-tablet, 16px));
+        top: calc( -60px - var(--mdc-layout-grid-margin-tablet, 16px));
         bottom: auto; } }
 
 @media (max-width: 479px) {
@@ -347,7 +354,7 @@
     padding: 16px;
     padding: var(--mdc-layout-grid-margin-phone, 16px); }
     .media-bar--card.media-bar--hidden {
-      bottom: calc(44px - var(--taskbar-height, 40px) - var(--media-bar-row-height, $media-bar-row-height) + var(--mdc-layout-grid-margin-phone, 16px)); }
+      bottom: calc(-12px - var(--taskbar-height, 40px) + var(--mdc-layout-grid-margin-phone, 16px)); }
       .media-bar--card.media-bar--hidden.media-bar--from-top {
-        top: calc( var(--media-bar-row-height, $media-bar-row-height) - (var(--media-bar-row-height, $media-bar-row-height)*2) - 4px - var(--mdc-layout-grid-margin-phone, 16px));
+        top: calc( -60px - var(--mdc-layout-grid-margin-phone, 16px));
         bottom: auto; } }

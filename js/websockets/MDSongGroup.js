@@ -38,10 +38,14 @@ var onMessage = function(event) {
   document.getElementById("artist-info").innerHTML = event.data.replace(selectRegex, '$2');
   document.getElementById("duration").innerHTML = event.data.replace(selectRegex, '$3');
   document.getElementById("duration-info").innerHTML = event.data.replace(selectRegex, '$3');
-  if (event.data.replace(selectRegex, '$4')) {
-    document.getElementById("cover").src = event.data.replace(selectRegex, '$4');
+  if (event.data.replace(selectRegex, '$4') != '') {
+    document.getElementById("cover").style.visibility = 'visible';
+    document.getElementById("cover").src = event.data.replace(selectRegex, '$4') + '?random=' + new Date().getTime();
     document.getElementById("cover-info").innerHTML = event.data.replace(selectRegex, '$4');
-  };
+  } else {
+    document.getElementById("cover").style.visibility = 'hidden';
+    document.getElementById("cover-info").innerHTML = 'N/A';
+  }
 };
 
 var onError = function(event) {

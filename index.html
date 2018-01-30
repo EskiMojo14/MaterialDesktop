@@ -329,7 +329,10 @@
           </div>
           <div class="media-bar__row">
             <div class="media-bar__section media-bar__section--align-start">
-              <span class="media-bar__album-icon material-icons">album</span>
+              <div class="media-bar__cover media-bar__cover--rounded">
+                <img class="media-bar__cover-art" id="cover"></img>
+                <span class="media-bar__album-icon material-icons">album</span>
+              </div>
               <div class="media-bar__track-info">
                 <ul class="mdc-list mdc-list--two-line mdc-list--non-interactive">
                   <li class="mdc-list-item">
@@ -437,13 +440,6 @@
       }
 
       function hidePanels(index) {
-        dialogBody.classList.remove('settings-dialog__body--animating');
-        if (allPanels) {
-          for (var i = 0, eachPanel; eachPanel = allPanels[i]; i++) {
-            eachPanel.classList.remove('settings-dialog__panel--animating');
-            //eachPanel.style.cssText = 'transform: translateX(0)';
-          }
-        }
         var newActivePanel = panels.querySelector('#panel-' + (index + 1));
         if (newActivePanel) {
           newActivePanel.classList.add('settings-dialog__panel--active');
@@ -455,30 +451,31 @@
         
         showPanels();
         slidePanel(nthChildIndex);
-        //hidePanels(nthChildIndex);
         setTimeout(function() { hidePanels(nthChildIndex); }, 120);
       });
       
       var radioEl = document.querySelector('.player-radio-container');
-      var checkedRadio = document.querySelector('.player-radio-container .mdc-radio__native-control:checked');
       radioEl.addEventListener('change', function(e) {
-        
+        var checkedRadio = document.querySelector('.player-radio-container .mdc-radio__native-control:checked');
+        var playerRegex = /player-radio-(.*)/
+        MDPlayerControl(checkedRadio.id.replace(playerRegex, '$1'));
       });
     </script>
-<!-- Jquery js -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+    <!-- Jquery js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-<!-- custom scrollbar plugin -->
-<script type="text/javascript" language="javascript" src="js/jquery.mCustomScrollbar.js"></script>
+    <!-- custom scrollbar plugin -->
+    <script type="text/javascript" language="javascript" src="js/jquery.mCustomScrollbar.js"></script>
     
     <script>
-	(function($){
-		$(window).load(function(){
-			$(".scrollbar").mCustomScrollbar({
-				theme:"minimal-dark"
-			});
-		});
-	})(jQuery);
-</script>
+      (function($){
+        $(window).load(function(){
+          $(".scrollbar").mCustomScrollbar({
+            theme:"minimal-dark"
+          });
+        });
+      })(jQuery);
+    </script>
   </body>
 </html>
