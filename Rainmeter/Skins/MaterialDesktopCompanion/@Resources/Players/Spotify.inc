@@ -65,7 +65,7 @@ Substitute="nan":"0"
 Measure=Plugin
 Plugin=SpotifyPlugin
 Type=Playing
-OnChangeAction=[!CommandMeasure [MDStatus "[State]"]
+OnChangeAction=[!CommandMeasure MDStatus "[State]"]
 
 [CoverAbs]
 Measure=Plugin

@@ -57,7 +57,7 @@ PlayerInfo=Volume
 Measure=Plugin
 Plugin=GPMDPPlugin
 PlayerInfo=State
-OnChangeAction=[!CommandMeasure [MDStatus "[State]"]
+OnChangeAction=[!CommandMeasure MDStatus "[State]"]
 
 [CoverAbs]
 Measure=Plugin

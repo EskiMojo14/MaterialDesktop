@@ -28,8 +28,7 @@ var onClose = function() {
 };
 
 var onMessage = function(event) {
-  console.log(event.data);
-  if (event.data = '1') {
+  if (event.data == 1) {
     document.getElementById("status").innerHTML = 'pause';
   } else {
     document.getElementById("status").innerHTML = 'play_arrow';

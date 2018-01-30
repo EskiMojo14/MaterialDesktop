@@ -57,7 +57,7 @@ PlayerType=Volume
 Measure=Plugin
 Plugin=WebNowPlaying
 PlayerType=State
-OnChangeAction=[!CommandMeasure [MDStatus "[State]"]
+OnChangeAction=[!CommandMeasure MDStatus "[State]"]
 
 [CoverAbs]
 Measure=Plugin

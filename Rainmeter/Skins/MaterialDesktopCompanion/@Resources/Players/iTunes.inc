@@ -67,7 +67,7 @@ Measure=Plugin
 Plugin=NowPlaying
 PlayerName=[Player]
 PlayerType=State
-OnChangeAction=[!CommandMeasure [MDStatus "[State]"]
+OnChangeAction=[!CommandMeasure MDStatus "[State]"]
 
 [CoverAbs]
 Measure=Plugin
