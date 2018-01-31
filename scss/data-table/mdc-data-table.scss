@@ -23,7 +23,7 @@
 
 .mdc-data-table {
   position: relative;
-  border: 1px solid mdc-theme-prop-value(divider-on-background);
+  border: 1px solid mdc-theme-prop-value(text-hint-on-background);
   border-collapse: collapse;
   white-space: nowrap;
   font-size: 0.8125rem; /* 13sp */
@@ -100,7 +100,7 @@
   }
   
   &__footer {
-    border-top: 1px solid  mdc-theme-prop-value(divider-on-background);
+    border-top: 1px solid  mdc-theme-prop-value(text-hint-on-background);
     
     height: 56px;
     @include mdc-theme-prop(color, text-secondary-on-background);
@@ -166,7 +166,7 @@
       transition-timing-function: $mdc-animation-standard-curve-timing-function;
       
       &:hover {
-        @include mdc-theme-prop(background-color, divider-on-background);
+        @include mdc-theme-prop(background-color, text-hint-on-background);
       }
       
     }
@@ -189,8 +189,8 @@
     position: relative;
     vertical-align: middle;
     height: 48px;
-    border-top: 1px solid mdc-theme-prop-value(divider-on-background);
-    border-bottom: 1px solid mdc-theme-prop-value(divider-on-background);
+    border-top: 1px solid mdc-theme-prop-value(text-hint-on-background);
+    border-bottom: 1px solid mdc-theme-prop-value(text-hint-on-background);
     
     padding-top: $data-table-cell-top;
     box-sizing: border-box;

@@ -1,0 +1,125 @@
+@import "@material/theme/variables";
+
+// function from https://medium.com/@pentzzsolt/a-non-destructive-map-merge-function-for-sass-f91637f87b2e
+
+@function non-destructive-map-merge($parent-map, $child-map) {
+	$result: $parent-map;
+	@each $key, $value in $child-map {
+		@if (not map-has-key($result, $key)) or (type-of(map-get($result, $key)) != type-of($value)) or (not (type-of(map-get($result, $key)) == map and type-of($value) == map)) {
+			$result: map-merge($result, ($key: $value));
+		}
+		@else {
+			$result: map-merge($result, ($key: non-destructive-map-merge(map-get($result, $key), $value)));
+		}
+	}
+	@return $result;
+}
+
+$mdc-theme-divider-colors: (
+  dark: (
+    divider: rgba(black, .12)
+  ),
+  light: (
+    divider: rgba(white, .2)
+  )
+);
+
+$mdc-theme-text-colors: non-destructive-map-merge($mdc-theme-text-colors, $mdc-theme-divider-colors);
+
+$mdc-theme-divider-values: (
+  divider-on-primary: mdc-theme-ink-color-for-fill_(divider, $mdc-theme-primary),
+  divider-on-primary-light: mdc-theme-ink-color-for-fill_(divider, $mdc-theme-primary-light),
+  divider-on-primary-dark: mdc-theme-ink-color-for-fill_(divider, $mdc-theme-primary-dark),
+  divider-on-secondary: mdc-theme-ink-color-for-fill_(divider, $mdc-theme-secondary),
+  divider-on-secondary-light: mdc-theme-ink-color-for-fill_(divider, $mdc-theme-secondary-light),
+  divider-on-secondary-dark: mdc-theme-ink-color-for-fill_(divider, $mdc-theme-secondary-dark),
+  divider-on-background: mdc-theme-ink-color-for-fill_(divider, $mdc-theme-background),
+  divider-on-light: mdc-theme-ink-color-for-fill_(divider, light),
+  divider-on-dark: mdc-theme-ink-color-for-fill_(divider, dark)
+);
+
+$mdc-theme-property-values: map-merge($mdc-theme-property-values, $mdc-theme-divider-values);
+
+@mixin mdc-theme-divider-prop($property, $style, $important: false, $edgeOptOut: false) {
+  @if type-of($style) == "color" or $style == "currentColor" {
+    @if $important {
+      #{$property}: $style !important;
+    } @else {
+      #{$property}: $style;
+    }
+  } @else {
+    @if not map-has-key($mdc-theme-divider-values, $style) {
+      @error "Invalid style: '#{$style}'. Choose one of: #{map-keys($mdc-theme-divider-values)}";
+    }
+
+    $value: map-get($mdc-theme-divider-values, $style);
+
+    @if $important {
+      /* @alternate */
+      #{$property}: $value !important;
+
+      @if $edgeOptOut {
+        // stylelint-disable max-nesting-depth
+        @at-root {
+          @supports not (-ms-ime-align:auto) {
+            // stylelint-disable scss/selector-no-redundant-nesting-selector
+            & {
+              #{$property}: var(--mdc-theme-#{$style}, $value) !important;
+            }
+            // stylelint-enable scss/selector-no-redundant-nesting-selector
+          }
+        }
+        // stylelint-enable max-nesting-depth
+      } @else {
+        #{$property}: var(--mdc-theme-#{$style}, $value) !important;
+      }
+    } @else {
+      /* @alternate */
+      #{$property}: $value;
+
+      @if $edgeOptOut {
+        // stylelint-disable max-nesting-depth
+        @at-root {
+          @supports not (-ms-ime-align:auto) {
+            // stylelint-disable scss/selector-no-redundant-nesting-selector
+            & {
+              #{$property}: var(--mdc-theme-#{$style}, $value);
+            }
+            // stylelint-enable scss/selector-no-redundant-nesting-selector
+          }
+        }
+        // stylelint-enable max-nesting-depth
+      } @else {
+        #{$property}: var(--mdc-theme-#{$style}, $value);
+      }
+    }
+  }
+}
+
+:root {
+  @each $style in map-keys($mdc-theme-divider-values) {
+    --mdc-theme-#{$style}: #{map-get($mdc-theme-divider-values, $style)};
+  }
+}
+
+.mdc-dialog__body--scrollable {
+  @include mdc-theme-divider-prop(border-color, divider-on-background);
+}
+
+.mdc-data-table {
+  &:not(.mdc-data-table--card) {
+    @include mdc-theme-divider-prop(border-color, divider-on-background);
+  }
+  td {
+    @include mdc-theme-divider-prop(border-color, divider-on-background);
+  }
+}
+
+.mdc-drawer--persistent .mdc-drawer__drawer, .mdc-drawer--permanent .mdc-drawer__drawer {
+  @include mdc-theme-divider-prop(border-color, divider-on-background);
+}
+
+.mdc-drawer__toolbar-spacer {
+  @include mdc-theme-divider-prop(border-color, divider-on-background);
+}
+

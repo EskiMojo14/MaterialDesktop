@@ -2,7 +2,6 @@
 @import "@material/animation/variables";
 @import "@material/elevation/mixins";
 @import "@material/theme/mixins";
-@import "@material/typography/mixins";
 @import "@material/rtl/mixins";
 
 .mdc-expansion {
@@ -44,19 +43,19 @@
     }
     
     &:not([open]) + .mdc-expansion:not([open]) {
-      border-top: 1px solid mdc-theme-prop-value(divider-on-background);
+      border-top: 1px solid mdc-theme-prop-value(text-hint-on-background);
       box-sizing: border-box;
       &:last-of-type:not(.mdc-expansion--raised) {
-        border-bottom: 1px solid mdc-theme-prop-value(divider-on-background);
+        border-bottom: 1px solid mdc-theme-prop-value(text-hint-on-background);
       }
     }
   }
     
   &:not(.mdc-expansion--raised) + .mdc-expansion {
-    border-top: 1px solid mdc-theme-prop-value(divider-on-background);
+    border-top: 1px solid mdc-theme-prop-value(text-hint-on-background);
     box-sizing: border-box;
     &:last-of-type:not(.mdc-expansion--raised) {
-      border-bottom: 1px solid mdc-theme-prop-value(divider-on-background);
+      border-bottom: 1px solid mdc-theme-prop-value(text-hint-on-background);
     }
   }
   
@@ -150,7 +149,7 @@
     padding-top: 16px;
     padding-bottom: 16px;
     & + .mdc-expansion__actions {
-      border-top: 1px solid mdc-prop-value(divider-on-background);
+      border-top: 1px solid mdc-prop-value(text-hint-on-background);
     }
   }
 

@@ -234,7 +234,7 @@ $media-bar-row-height: 56px;
   }
   .mdc-linear-progress {
     @include mdc-linear-progress-bar-color(secondary);
-    @include mdc-linear-progress-buffer-color(divider-on-background);
+    @include mdc-linear-progress-buffer-color(text-hint-on-background);
   }
 }
   

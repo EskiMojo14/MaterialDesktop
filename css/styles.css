@@ -1,3 +1,39 @@
+:root {
+  --mdc-theme-divider-on-primary: rgba(255, 255, 255, 0.2);
+  --mdc-theme-divider-on-primary-light: rgba(0, 0, 0, 0.12);
+  --mdc-theme-divider-on-primary-dark: rgba(255, 255, 255, 0.2);
+  --mdc-theme-divider-on-secondary: rgba(255, 255, 255, 0.2);
+  --mdc-theme-divider-on-secondary-light: rgba(0, 0, 0, 0.12);
+  --mdc-theme-divider-on-secondary-dark: rgba(255, 255, 255, 0.2);
+  --mdc-theme-divider-on-background: rgba(0, 0, 0, 0.12);
+  --mdc-theme-divider-on-light: rgba(0, 0, 0, 0.12);
+  --mdc-theme-divider-on-dark: rgba(255, 255, 255, 0.2); }
+
+.mdc-dialog__body--scrollable {
+  /* @alternate */
+  border-color: rgba(0, 0, 0, 0.12);
+  border-color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)); }
+
+.mdc-data-table:not(.mdc-data-table--card) {
+  /* @alternate */
+  border-color: rgba(0, 0, 0, 0.12);
+  border-color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)); }
+
+.mdc-data-table td {
+  /* @alternate */
+  border-color: rgba(0, 0, 0, 0.12);
+  border-color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)); }
+
+.mdc-drawer--persistent .mdc-drawer__drawer, .mdc-drawer--permanent .mdc-drawer__drawer {
+  /* @alternate */
+  border-color: rgba(0, 0, 0, 0.12);
+  border-color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)); }
+
+.mdc-drawer__toolbar-spacer {
+  /* @alternate */
+  border-color: rgba(0, 0, 0, 0.12);
+  border-color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)); }
+
 @keyframes mdc-ripple-fg-radius-in {
   from {
     animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -2542,12 +2578,6 @@
     background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' enable-background='new 0 0 5 2' xml:space='preserve' viewBox='0 0 5 2' preserveAspectRatio='none slice'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23e6e6e6'/%3E%3C/svg%3E"); }
   .mdc-linear-progress .mdc-linear-progress__buffer {
     background-color: #e6e6e6; }
-  .mdc-linear-progress--theme-dark .mdc-linear-progress__buffering-dots,
-  .mdc-theme--dark .mdc-linear-progress .mdc-linear-progress__buffering-dots {
-    background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' enable-background='new 0 0 5 2' xml:space='preserve' viewBox='0 0 5 2' preserveAspectRatio='none slice'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23616161'/%3E%3C/svg%3E"); }
-  .mdc-linear-progress--theme-dark .mdc-linear-progress__buffer,
-  .mdc-theme--dark .mdc-linear-progress .mdc-linear-progress__buffer {
-    background-color: #616161; }
   .mdc-linear-progress__bar {
     position: absolute;
     width: 100%;
@@ -3323,8 +3353,8 @@ a.mdc-list-item {
 
 .mdc-list-group__subheader {
   /* @alternate */
-  color: rgba(0, 0, 0, 0.54);
-  color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54)); }
+  color: rgba(0, 0, 0, 0.87);
+  color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87)); }
 
 /**
  * The css property used for elevation. In most cases this should not be changed. It is exposed
@@ -3370,9 +3400,7 @@ a.mdc-list-item {
   transform: scale(1);
   transform-origin: top left;
   border-radius: 2px;
-  /* @alternate */
-  background-color: #fff;
-  background-color: var(--mdc-theme-background, #fff);
+  background-color: white;
   opacity: 0;
   white-space: nowrap;
   overflow-x: hidden;
@@ -5367,55 +5395,46 @@ a.mdc-list-item {
   --mdc-theme-text-hint-on-primary: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-disabled-on-primary: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-icon-on-primary: rgba(255, 255, 255, 0.5);
-  --mdc-theme-divider-on-primary: rgba(255, 255, 255, 0.12);
   --mdc-theme-text-primary-on-primary-light: rgba(0, 0, 0, 0.87);
   --mdc-theme-text-secondary-on-primary-light: rgba(0, 0, 0, 0.54);
   --mdc-theme-text-hint-on-primary-light: rgba(0, 0, 0, 0.38);
   --mdc-theme-text-disabled-on-primary-light: rgba(0, 0, 0, 0.38);
   --mdc-theme-text-icon-on-primary-light: rgba(0, 0, 0, 0.38);
-  --mdc-theme-divider-on-primary-light: rgba(0, 0, 0, 0.12);
   --mdc-theme-text-primary-on-primary-dark: white;
   --mdc-theme-text-secondary-on-primary-dark: rgba(255, 255, 255, 0.7);
   --mdc-theme-text-hint-on-primary-dark: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-disabled-on-primary-dark: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-icon-on-primary-dark: rgba(255, 255, 255, 0.5);
-  --mdc-theme-divider-on-primary-dark: rgba(255, 255, 255, 0.12);
   --mdc-theme-text-primary-on-secondary: white;
   --mdc-theme-text-secondary-on-secondary: rgba(255, 255, 255, 0.7);
   --mdc-theme-text-hint-on-secondary: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-disabled-on-secondary: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-icon-on-secondary: rgba(255, 255, 255, 0.5);
-  --mdc-theme-divider-on-secondary: rgba(255, 255, 255, 0.12);
   --mdc-theme-text-primary-on-secondary-light: rgba(0, 0, 0, 0.87);
   --mdc-theme-text-secondary-on-secondary-light: rgba(0, 0, 0, 0.54);
   --mdc-theme-text-hint-on-secondary-light: rgba(0, 0, 0, 0.38);
   --mdc-theme-text-disabled-on-secondary-light: rgba(0, 0, 0, 0.38);
   --mdc-theme-text-icon-on-secondary-light: rgba(0, 0, 0, 0.38);
-  --mdc-theme-divider-on-secondary-light: rgba(0, 0, 0, 0.12);
   --mdc-theme-text-primary-on-secondary-dark: white;
   --mdc-theme-text-secondary-on-secondary-dark: rgba(255, 255, 255, 0.7);
   --mdc-theme-text-hint-on-secondary-dark: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-disabled-on-secondary-dark: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-icon-on-secondary-dark: rgba(255, 255, 255, 0.5);
-  --mdc-theme-divider-on-secondary-dark: rgba(255, 255, 255, 0.12);
   --mdc-theme-text-primary-on-background: rgba(0, 0, 0, 0.87);
   --mdc-theme-text-secondary-on-background: rgba(0, 0, 0, 0.54);
   --mdc-theme-text-hint-on-background: rgba(0, 0, 0, 0.38);
   --mdc-theme-text-disabled-on-background: rgba(0, 0, 0, 0.38);
   --mdc-theme-text-icon-on-background: rgba(0, 0, 0, 0.38);
-  --mdc-theme-divider-on-background: rgba(0, 0, 0, 0.12);
   --mdc-theme-text-primary-on-light: rgba(0, 0, 0, 0.87);
   --mdc-theme-text-secondary-on-light: rgba(0, 0, 0, 0.54);
   --mdc-theme-text-hint-on-light: rgba(0, 0, 0, 0.38);
   --mdc-theme-text-disabled-on-light: rgba(0, 0, 0, 0.38);
   --mdc-theme-text-icon-on-light: rgba(0, 0, 0, 0.38);
-  --mdc-theme-divider-on-light: rgba(0, 0, 0, 0.12);
   --mdc-theme-text-primary-on-dark: white;
   --mdc-theme-text-secondary-on-dark: rgba(255, 255, 255, 0.7);
   --mdc-theme-text-hint-on-dark: rgba(255, 255, 255, 0.5);
   --mdc-theme-text-disabled-on-dark: rgba(255, 255, 255, 0.5);
-  --mdc-theme-text-icon-on-dark: rgba(255, 255, 255, 0.5);
-  --mdc-theme-divider-on-dark: rgba(255, 255, 255, 0.12); }
+  --mdc-theme-text-icon-on-dark: rgba(255, 255, 255, 0.5); }
 
 .mdc-theme--background {
   /* @alternate */
@@ -5477,11 +5496,6 @@ a.mdc-list-item {
   color: rgba(255, 255, 255, 0.5) !important;
   color: var(--mdc-theme-text-icon-on-primary, rgba(255, 255, 255, 0.5)) !important; }
 
-.mdc-theme--divider-on-primary {
-  /* @alternate */
-  color: rgba(255, 255, 255, 0.12) !important;
-  color: var(--mdc-theme-divider-on-primary, rgba(255, 255, 255, 0.12)) !important; }
-
 .mdc-theme--text-primary-on-primary-light {
   /* @alternate */
   color: rgba(0, 0, 0, 0.87) !important;
@@ -5506,11 +5520,6 @@ a.mdc-list-item {
   /* @alternate */
   color: rgba(0, 0, 0, 0.38) !important;
   color: var(--mdc-theme-text-icon-on-primary-light, rgba(0, 0, 0, 0.38)) !important; }
-
-.mdc-theme--divider-on-primary-light {
-  /* @alternate */
-  color: rgba(0, 0, 0, 0.12) !important;
-  color: var(--mdc-theme-divider-on-primary-light, rgba(0, 0, 0, 0.12)) !important; }
 
 .mdc-theme--text-primary-on-primary-dark {
   /* @alternate */
@@ -5537,11 +5546,6 @@ a.mdc-list-item {
   color: rgba(255, 255, 255, 0.5) !important;
   color: var(--mdc-theme-text-icon-on-primary-dark, rgba(255, 255, 255, 0.5)) !important; }
 
-.mdc-theme--divider-on-primary-dark {
-  /* @alternate */
-  color: rgba(255, 255, 255, 0.12) !important;
-  color: var(--mdc-theme-divider-on-primary-dark, rgba(255, 255, 255, 0.12)) !important; }
-
 .mdc-theme--text-primary-on-secondary {
   /* @alternate */
   color: white !important;
@@ -5566,11 +5570,6 @@ a.mdc-list-item {
   /* @alternate */
   color: rgba(255, 255, 255, 0.5) !important;
   color: var(--mdc-theme-text-icon-on-secondary, rgba(255, 255, 255, 0.5)) !important; }
-
-.mdc-theme--divider-on-secondary {
-  /* @alternate */
-  color: rgba(255, 255, 255, 0.12) !important;
-  color: var(--mdc-theme-divider-on-secondary, rgba(255, 255, 255, 0.12)) !important; }
 
 .mdc-theme--text-primary-on-secondary-light {
   /* @alternate */
@@ -5597,11 +5596,6 @@ a.mdc-list-item {
   color: rgba(0, 0, 0, 0.38) !important;
   color: var(--mdc-theme-text-icon-on-secondary-light, rgba(0, 0, 0, 0.38)) !important; }
 
-.mdc-theme--divider-on-secondary-light {
-  /* @alternate */
-  color: rgba(0, 0, 0, 0.12) !important;
-  color: var(--mdc-theme-divider-on-secondary-light, rgba(0, 0, 0, 0.12)) !important; }
-
 .mdc-theme--text-primary-on-secondary-dark {
   /* @alternate */
   color: white !important;
@@ -5626,11 +5620,6 @@ a.mdc-list-item {
   /* @alternate */
   color: rgba(255, 255, 255, 0.5) !important;
   color: var(--mdc-theme-text-icon-on-secondary-dark, rgba(255, 255, 255, 0.5)) !important; }
-
-.mdc-theme--divider-on-secondary-dark {
-  /* @alternate */
-  color: rgba(255, 255, 255, 0.12) !important;
-  color: var(--mdc-theme-divider-on-secondary-dark, rgba(255, 255, 255, 0.12)) !important; }
 
 .mdc-theme--text-primary-on-background {
   /* @alternate */
@@ -5657,11 +5646,6 @@ a.mdc-list-item {
   color: rgba(0, 0, 0, 0.38) !important;
   color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38)) !important; }
 
-.mdc-theme--divider-on-background {
-  /* @alternate */
-  color: rgba(0, 0, 0, 0.12) !important;
-  color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)) !important; }
-
 .mdc-theme--text-primary-on-light {
   /* @alternate */
   color: rgba(0, 0, 0, 0.87) !important;
@@ -5687,11 +5671,6 @@ a.mdc-list-item {
   color: rgba(0, 0, 0, 0.38) !important;
   color: var(--mdc-theme-text-icon-on-light, rgba(0, 0, 0, 0.38)) !important; }
 
-.mdc-theme--divider-on-light {
-  /* @alternate */
-  color: rgba(0, 0, 0, 0.12) !important;
-  color: var(--mdc-theme-divider-on-light, rgba(0, 0, 0, 0.12)) !important; }
-
 .mdc-theme--text-primary-on-dark {
   /* @alternate */
   color: white !important;
@@ -5716,11 +5695,6 @@ a.mdc-list-item {
   /* @alternate */
   color: rgba(255, 255, 255, 0.5) !important;
   color: var(--mdc-theme-text-icon-on-dark, rgba(255, 255, 255, 0.5)) !important; }
-
-.mdc-theme--divider-on-dark {
-  /* @alternate */
-  color: rgba(255, 255, 255, 0.12) !important;
-  color: var(--mdc-theme-divider-on-dark, rgba(255, 255, 255, 0.12)) !important; }
 
 .mdc-theme--primary-bg {
   /* @alternate */
@@ -5935,13 +5909,10 @@ a.mdc-list-item {
 /* TODO(sgomes): Figure out what to do about desktop font sizes. */
 /* TODO(sgomes): Figure out what to do about i18n and i18n font sizes. */
 .mdc-toolbar {
-  /*@include mdc-toolbar-fill-color-accessible(primary);*/
   /* @alternate */
   background-color: #6200ee;
   background-color: var(--mdc-theme-primary, #6200ee);
-  /* @alternate */
   color: white;
-  color: var(--mdc-theme-text-primary-on-primary, white);
   display: flex;
   position: relative;
   flex-direction: column;
@@ -5965,7 +5936,7 @@ a.mdc-list-item {
   .mdc-toolbar__section {
     display: inline-flex;
     flex: 1;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     min-width: 0;
     height: 100%;
@@ -6118,7 +6089,7 @@ a.mdc-list-item {
 
 .mdc-toolbar-fixed-adjust {
   margin-top: 64px; }
-  @media (max-width: 959px) and (orientation: landscape) {
+  @media (max-width: 959px) and (max-height: 599px) {
     .mdc-toolbar-fixed-adjust {
       margin-top: 48px; } }
   @media (max-width: 599px) {
@@ -6308,18 +6279,6 @@ a.mdc-list-item {
 .mdc-typography--icon {
   font-family: Roboto, sans-serif;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  word-wrap: normal;
-  font-feature-settings: "liga";
-  -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased; }
 
 /**
@@ -6521,7 +6480,7 @@ a.mdc-list-item {
  */
 .mdc-data-table {
   position: relative;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.38);
   border-collapse: collapse;
   white-space: nowrap;
   font-size: 0.8125rem;
@@ -6601,7 +6560,7 @@ a.mdc-list-item {
         padding-left: 14px;
         padding-right: 12px; }
   .mdc-data-table__footer {
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    border-top: 1px solid rgba(0, 0, 0, 0.38);
     height: 56px;
     /* @alternate */
     color: rgba(0, 0, 0, 0.54);
@@ -6653,8 +6612,8 @@ a.mdc-list-item {
       border-bottom: none; }
     .mdc-data-table tbody tr:hover {
       /* @alternate */
-      background-color: rgba(0, 0, 0, 0.12);
-      background-color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)); }
+      background-color: rgba(0, 0, 0, 0.38);
+      background-color: var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.38)); }
   .mdc-data-table td, .mdc-data-table th {
     padding: 0 18px 12px 18px;
     text-align: right; }
@@ -6666,8 +6625,8 @@ a.mdc-list-item {
     position: relative;
     vertical-align: middle;
     height: 48px;
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    border-top: 1px solid rgba(0, 0, 0, 0.38);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.38);
     padding-top: 12px;
     box-sizing: border-box; }
     .mdc-data-table td .mdc-data-table__select {
@@ -6700,18 +6659,6 @@ a.mdc-list-item {
       .mdc-data-table th.mdc-data-table__header--sorted-ascending:before, .mdc-data-table th.mdc-data-table__header--sorted-descending:before {
         font-family: Roboto, sans-serif;
         -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        font-family: "Material Icons";
-        font-weight: normal;
-        font-style: normal;
-        font-size: 24px;
-        line-height: 1;
-        letter-spacing: normal;
-        text-transform: none;
-        display: inline-block;
-        word-wrap: normal;
-        font-feature-settings: "liga";
-        -webkit-font-feature-settings: "liga";
         -webkit-font-smoothing: antialiased;
         font-size: 1rem;
         content: "\e5d8";
@@ -6758,8 +6705,6 @@ a.mdc-list-item {
  * }
  * ```
  */
-/* TODO(sgomes): Figure out what to do about desktop font sizes. */
-/* TODO(sgomes): Figure out what to do about i18n and i18n font sizes. */
 /**
  * Creates a rule that will be applied when an MDC-Web component is within the context of an RTL layout.
  *
@@ -6940,15 +6885,15 @@ a.mdc-list-item {
       .mdc-expansion--raised[open]:last-child {
         margin-bottom: 0; }
     .mdc-expansion--raised:not([open]) + .mdc-expansion:not([open]) {
-      border-top: 1px solid rgba(0, 0, 0, 0.12);
+      border-top: 1px solid rgba(0, 0, 0, 0.38);
       box-sizing: border-box; }
       .mdc-expansion--raised:not([open]) + .mdc-expansion:not([open]):last-of-type:not(.mdc-expansion--raised) {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
+        border-bottom: 1px solid rgba(0, 0, 0, 0.38); }
   .mdc-expansion:not(.mdc-expansion--raised) + .mdc-expansion {
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    border-top: 1px solid rgba(0, 0, 0, 0.38);
     box-sizing: border-box; }
     .mdc-expansion:not(.mdc-expansion--raised) + .mdc-expansion:last-of-type:not(.mdc-expansion--raised) {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
+      border-bottom: 1px solid rgba(0, 0, 0, 0.38); }
   .mdc-expansion__summary {
     transition-property: height;
     transition-duration: 0.38s;
@@ -7030,7 +6975,7 @@ a.mdc-list-item {
     padding-top: 16px;
     padding-bottom: 16px; }
     .mdc-expansion__content + .mdc-expansion__actions {
-      border-top: 1px solid mdc-prop-value(divider-on-background); }
+      border-top: 1px solid mdc-prop-value(text-hint-on-background); }
   .mdc-expansion__actions {
     display: flex;
     flex-direction: row-reverse;
@@ -7384,9 +7329,9 @@ a.mdc-list-item {
     background-color: #018786;
     background-color: var(--mdc-theme-secondary, #018786); }
   .media-bar .mdc-linear-progress .mdc-linear-progress__buffering-dots {
-    background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' enable-background='new 0 0 5 2' xml:space='preserve' viewBox='0 0 5 2' preserveAspectRatio='none slice'%3E%3Ccircle cx='1' cy='1' r='1' fill='rgba(0, 0, 0, 0.12)'/%3E%3C/svg%3E"); }
+    background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' enable-background='new 0 0 5 2' xml:space='preserve' viewBox='0 0 5 2' preserveAspectRatio='none slice'%3E%3Ccircle cx='1' cy='1' r='1' fill='rgba(0, 0, 0, 0.38)'/%3E%3C/svg%3E"); }
   .media-bar .mdc-linear-progress .mdc-linear-progress__buffer {
-    background-color: rgba(0, 0, 0, 0.12); }
+    background-color: rgba(0, 0, 0, 0.38); }
 
 @media (max-width: 839px) and (min-width: 480px) {
   .media-bar--card {
@@ -7407,6 +7352,42 @@ a.mdc-list-item {
       .media-bar--card.media-bar--hidden.media-bar--from-top {
         top: calc(0px - (var(--media-bar-height, 56px) + var(--mdc-layout-grid-margin-phone, 16px)));
         bottom: auto; } }
+
+:root {
+  --mdc-theme-divider-on-primary: rgba(255, 255, 255, 0.2);
+  --mdc-theme-divider-on-primary-light: rgba(0, 0, 0, 0.12);
+  --mdc-theme-divider-on-primary-dark: rgba(255, 255, 255, 0.2);
+  --mdc-theme-divider-on-secondary: rgba(255, 255, 255, 0.2);
+  --mdc-theme-divider-on-secondary-light: rgba(0, 0, 0, 0.12);
+  --mdc-theme-divider-on-secondary-dark: rgba(255, 255, 255, 0.2);
+  --mdc-theme-divider-on-background: rgba(0, 0, 0, 0.12);
+  --mdc-theme-divider-on-light: rgba(0, 0, 0, 0.12);
+  --mdc-theme-divider-on-dark: rgba(255, 255, 255, 0.2); }
+
+.mdc-dialog__body--scrollable {
+  /* @alternate */
+  border-color: rgba(0, 0, 0, 0.12);
+  border-color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)); }
+
+.mdc-data-table:not(.mdc-data-table--card) {
+  /* @alternate */
+  border-color: rgba(0, 0, 0, 0.12);
+  border-color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)); }
+
+.mdc-data-table td {
+  /* @alternate */
+  border-color: rgba(0, 0, 0, 0.12);
+  border-color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)); }
+
+.mdc-drawer--persistent .mdc-drawer__drawer, .mdc-drawer--permanent .mdc-drawer__drawer {
+  /* @alternate */
+  border-color: rgba(0, 0, 0, 0.12);
+  border-color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)); }
+
+.mdc-drawer__toolbar-spacer {
+  /* @alternate */
+  border-color: rgba(0, 0, 0, 0.12);
+  border-color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)); }
 
 /**
  * The css property used for elevation. In most cases this should not be changed. It is exposed
@@ -7436,6 +7417,157 @@ a.mdc-list-item {
  *   will-change: $mdc-elevation-property, opacity;
  * }
  * ```
+ */
+/**
+ * Creates a rule that will be applied when an MDC-Web component is within the context of an RTL layout.
+ *
+ * Usage Example:
+ * ```scss
+ * .mdc-foo {
+ *   position: absolute;
+ *   left: 0;
+ *
+ *   @include mdc-rtl {
+ *     left: auto;
+ *     right: 0;
+ *   }
+ *
+ *   &__bar {
+ *     margin-left: 4px;
+ *     @include mdc-rtl(".mdc-foo") {
+ *       margin-left: auto;
+ *       margin-right: 4px;
+ *     }
+ *   }
+ * }
+ *
+ * .mdc-foo--mod {
+ *   padding-left: 4px;
+ *
+ *   @include mdc-rtl {
+ *     padding-left: auto;
+ *     padding-right: 4px;
+ *   }
+ * }
+ * ```
+ *
+ * Note that this works by checking for [dir="rtl"] on an ancestor element. While this will work
+ * in most cases, it will in some cases lead to false negatives, e.g.
+ *
+ * ```html
+ * <html dir="rtl">
+ *   <!-- ... -->
+ *   <div dir="ltr">
+ *     <div class="mdc-foo">Styled incorrectly as RTL!</div>
+ *   </div>
+ * </html>
+ * ```
+ *
+ * In the future, selectors such as :dir (http://mdn.io/:dir) will help us mitigate this.
+ */
+/**
+ * Takes a base box-model property - e.g. margin / border / padding - along with a default
+ * direction and value, and emits rules which apply the value to the
+ * "<base-property>-<default-direction>" property by default, but flips the direction
+ * when within an RTL context.
+ *
+ * For example:
+ *
+ * ```scss
+ * .mdc-foo {
+ *   @include mdc-rtl-reflexive-box(margin, left, 8px);
+ * }
+ * ```
+ * is equivalent to:
+ *
+ * ```scss
+ * .mdc-foo {
+ *   margin-left: 8px;
+ *
+ *   @include mdc-rtl {
+ *     margin-right: 8px;
+ *     margin-left: 0;
+ *   }
+ * }
+ * ```
+ * whereas:
+ *
+ * ```scss
+ * .mdc-foo {
+ *   @include mdc-rtl-reflexive-box(margin, right, 8px);
+ * }
+ * ```
+ * is equivalent to:
+ *
+ * ```scss
+ * .mdc-foo {
+ *   margin-right: 8px;
+ *
+ *   @include mdc-rtl {
+ *     margin-right: 0;
+ *     margin-left: 8px;
+ *   }
+ * }
+ * ```
+ *
+ * You can also pass a 4th optional $root-selector argument which will be forwarded to `mdc-rtl`,
+ * e.g. `@include mdc-rtl-reflexive-box(margin, left, 8px, ".mdc-component")`.
+ *
+ * Note that this function will always zero out the original value in an RTL context. If you're
+ * trying to flip the values, use mdc-rtl-reflexive-property().
+ */
+/**
+ * Takes a base property and emits rules that assign <base-property>-left to <left-value> and
+ * <base-property>-right to <right-value> in a LTR context, and vice versa in a RTL context.
+ * For example:
+ *
+ * ```scss
+ * .mdc-foo {
+ *   @include mdc-rtl-reflexive-property(margin, auto, 12px);
+ * }
+ * ```
+ * is equivalent to:
+ *
+ * ```scss
+ * .mdc-foo {
+ *   margin-left: auto;
+ *   margin-right: 12px;
+ *
+ *   @include mdc-rtl {
+ *     margin-left: 12px;
+ *     margin-right: auto;
+ *   }
+ * }
+ * ```
+ *
+ * A 4th optional $root-selector argument can be given, which will be passed to `mdc-rtl`.
+ */
+/**
+ * Takes an argument specifying a horizontal position property (either "left" or "right") as well
+ * as a value, and applies that value to the specified position in a LTR context, and flips it in a
+ * RTL context. For example:
+ *
+ * ```scss
+ * .mdc-foo {
+ *   @include mdc-rtl-reflexive-position(left, 0);
+ *   position: absolute;
+ * }
+ * ```
+ * is equivalent to:
+ *
+ * ```scss
+ *  .mdc-foo {
+ *    position: absolute;
+ *    left: 0;
+ *    right: initial;
+ *
+ *    @include mdc-rtl {
+ *      right: 0;
+ *      left: initial;
+ *    }
+ *  }
+ * ```
+ * An optional third $root-selector argument may also be given, which is passed to `mdc-rtl`.
  */
 body {
   background-image: var(--bg, url("https://storage.googleapis.com/g-design/static/wallpaper-kleiner-google-blue.jpg"));
@@ -7472,17 +7604,32 @@ button:focus {
   height: 100%;
   position: relative; }
 
+.mdc-list-group__subheader {
+  /* @alternate */
+  color: rgba(0, 0, 0, 0.54);
+  color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54)); }
+
+.mdc-simple-menu {
+  /* @alternate */
+  background-color: #fff;
+  background-color: var(--mdc-theme-background, #fff); }
+
+.mdc-toolbar {
+  /* @alternate */
+  background-color: #6200ee;
+  background-color: var(--mdc-theme-primary, #6200ee);
+  /* @alternate */
+  color: white;
+  color: var(--mdc-theme-text-primary-on-primary, white); }
+  .mdc-toolbar__section--center {
+    align-items: center; }
+
 .settings-dialog .mdc-dialog__surface {
   min-width: initial;
   max-width: 480px;
   /* @alternate */
   color: rgba(0, 0, 0, 0.87);
   color: var(--mdc-theme-text-primary-on-background, rgba(0, 0, 0, 0.87)); }
-
-.settings-dialog .mdc-dialog__body--scrollable {
-  /* @alternate */
-  border-color: rgba(0, 0, 0, 0.12);
-  border-color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)); }
 
 .settings-dialog .mdc-tab {
   /* @alternate */
@@ -7567,11 +7714,6 @@ button:focus {
     border-color: rgba(0, 0, 0, 0.54);
     border-color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54)); }
 
-.settings-dialog .mdc-data-table td {
-  /* @alternate */
-  border-color: rgba(0, 0, 0, 0.12);
-  border-color: var(--mdc-theme-divider-on-background, rgba(0, 0, 0, 0.12)); }
-
 .settings-dialog .mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
   /* @alternate */
   background-color: rgba(0, 0, 0, 0.12);
@@ -7581,7 +7723,7 @@ button:focus {
 .settings-dialog .mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
   /* @alternate */
   background-color: rgba(0, 0, 0, 0.38);
-  background-color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38)); }
+  background-color: var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.38)); }
 
 .settings-dialog .mdc-expansion__header {
   flex-direction: row;
