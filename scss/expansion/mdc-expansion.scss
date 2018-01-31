@@ -12,18 +12,10 @@
   
   @include mdc-theme-prop(color, text-primary-on-background);
   
-  @include mdc-theme-dark {
-    @include mdc-theme-prop(color, white);
-  }
-  
   &--raised {
     @include mdc-elevation(2);
     
     @include mdc-theme-prop(background-color, background);
-    
-    @include mdc-theme-dark(".mdc-expansion", true) {
-      @include mdc-theme-prop(background-color, #424242);   
-    }
     
     &:first-of-type {
       border-top-left-radius: 2px;
@@ -52,60 +44,19 @@
     }
     
     &:not([open]) + .mdc-expansion:not([open]) {
-      border-top: 1px solid rgba(0, 0, 0, 0.12);
+      border-top: 1px solid mdc-theme-prop-value(divider-on-background);
       box-sizing: border-box;
-      @include mdc-theme-dark(".mdc-expansion") {
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-      }
       &:last-of-type:not(.mdc-expansion--raised) {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-        @include mdc-theme-dark(".mdc-expansion") {
-          border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-        }
+        border-bottom: 1px solid mdc-theme-prop-value(divider-on-background);
       }
-    }
-  }
-  
-    
-  .mdc-dialog &__summary .mdc-expansion__header {
-    flex-direction: row;
-    min-width: 100%;
-    .mdc-expansion__icon {
-      user-select: none;
-      transition: transform 200ms;      
-    }
-  }
-  
-  .mdc-dialog [open] &__summary {
-    height: 48px !important;
-    
-    .mdc-expansion__header .mdc-expansion__icon {
-      transform: rotate(180deg);
-    }
-  }
-  
-  .mdc-dialog .mdc-expansion &__summary:focus {
-    background-color: rgba(0,0,0,0) !important;
-  }
-  
-  .mdc-dialog &__content {
-    padding: 0;
-    .mdc-list-item {
-      padding: 0 16px 0 72px;
     }
   }
     
   &:not(.mdc-expansion--raised) + .mdc-expansion {
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    border-top: 1px solid mdc-theme-prop-value(divider-on-background);
     box-sizing: border-box;
-    @include mdc-theme-dark(".mdc-expansion") {
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-    }
     &:last-of-type:not(.mdc-expansion--raised) {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-      @include mdc-theme-dark(".mdc-expansion") {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-      }
+      border-bottom: 1px solid mdc-theme-prop-value(divider-on-background);
     }
   }
   
@@ -149,11 +100,7 @@
       transition: transform 200ms, color 200ms;
       margin-left: auto;
       
-      @include mdc-theme-prop(color, rgba(0,0,0,0.38));
-      
-      @include mdc-theme-dark(".mdc-expansion") {
-        @include mdc-theme-prop(color, rgba(255,255,255,0.38));
-      }
+      @include mdc-theme-prop(color, text-icon-on-background);
     }
 
     &:focus {
@@ -162,11 +109,7 @@
         background-color: #616161;
       }
       &::after {
-        @include mdc-theme-prop(color, rgba(0,0,0,0.54));
-        
-        @include mdc-theme-dark(".mdc-expansion") {
-          @include mdc-theme-prop(color, white);
-        }
+        @include mdc-theme-prop(color, text-secondary-on-background);
       }
     }
   }
@@ -183,10 +126,7 @@
 
   &__subheader {
     font-size: 0.75rem;
-    color: rgba(0, 0, 0, 0.54);
-    @include mdc-theme-dark(".mdc-expansion") {
-      color: rgba(255, 255, 255, 0.7);
-    }
+    @include mdc-theme-prop(color, text-secondary-on-background);
   }
 
   &__secondary-header {
@@ -196,17 +136,11 @@
     font-size: 0.9375rem;
     font-weight: 500;
     flex-basis: 30%;
-    color: rgba(0, 0, 0, 0.54);
+    @include mdc-theme-prop(color, text-secondary-on-background);
     margin-right: 16px;
-    @include mdc-theme-dark(".mdc-expansion") {
-      color: rgba(255, 255, 255, 0.7);
-    }
     &--hint {
-      color: rgba(0, 0, 0, 0.38);
+      @include mdc-theme-prop(color, text-hint-on-background);
       font-style: normal;
-      @include mdc-theme-dark(".mdc-expansion") {
-        color: rgba(255, 255, 255, 0.5);
-      }
     }
   }
 
@@ -216,10 +150,7 @@
     padding-top: 16px;
     padding-bottom: 16px;
     & + .mdc-expansion__actions {
-      border-top: 1px solid rgba(0, 0, 0, 0.12);
-      @include mdc-theme-dark(".mdc-expansion") {
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-      }
+      border-top: 1px solid mdc-prop-value(divider-on-background);
     }
   }
 

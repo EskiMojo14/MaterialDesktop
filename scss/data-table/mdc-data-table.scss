@@ -23,7 +23,7 @@
 
 .mdc-data-table {
   position: relative;
-  border: 1px solid rgba(0,0,0,0.12);
+  border: 1px solid mdc-theme-prop-value(divider-on-background);
   border-collapse: collapse;
   white-space: nowrap;
   font-size: 0.8125rem; /* 13sp */
@@ -33,30 +33,17 @@
   
   @include mdc-theme-prop(color, text-primary-on-background);
   
-  @include mdc-theme-dark {
-    border: 1px solid rgba(255,255,255,0.12);
-    /*@include mdc-theme-prop(background-color, #424242);*/
-    @include mdc-theme-prop(color, white);    
-  }
-  
   &--full-width {
     width: 100%;
   }
   
   &--card {
     border: none;
-    @include mdc-theme-dark(".mdc-data-table") {
-      border: none;
-    }
   }
   
   &__header {
     height: 64px;
     @include mdc-theme-prop(color, text-primary-on-background);
-    
-    @include mdc-theme-dark(".mdc-data-table") {
-      @include mdc-theme-prop(color, white); 
-    }
     
     display: flex;
     position: relative;
@@ -102,10 +89,6 @@
       
       @include mdc-theme-prop(color, text-secondary-on-background);
       
-      @include mdc-theme-dark(".mdc-data-table") {
-        @include mdc-theme-prop(color, rgba(255,255,255,0.7)); 
-      }
-      
       padding-right: 12px;
       padding-left: 12px;
       cursor: pointer;
@@ -117,18 +100,11 @@
   }
   
   &__footer {
-    border-top: 1px solid rgba(0,0,0,0.12);
-    
-    @include mdc-theme-dark(".mdc-data-table") {
-      border-top: 1px solid rgba(255,255,255,0.12); 
-    }
+    border-top: 1px solid  mdc-theme-prop-value(divider-on-background);
     
     height: 56px;
     @include mdc-theme-prop(color, text-secondary-on-background);
     
-    @include mdc-theme-dark(".mdc-data-table") {
-      @include mdc-theme-prop(color, rgba(255,255,255,0.7)); 
-    }
     display: flex;
     position: relative;
     justify-content: flex-end;
@@ -158,9 +134,6 @@
       
       @include mdc-theme-prop(color, text-secondary-on-background);
       
-      @include mdc-theme-dark(".mdc-data-table") {
-        @include mdc-theme-prop(color, rgba(255,255,255,0.7)); 
-      }
       padding-right: 12px;
       padding-left: 12px;
       cursor: pointer;
@@ -193,10 +166,7 @@
       transition-timing-function: $mdc-animation-standard-curve-timing-function;
       
       &:hover {
-        @include mdc-theme-prop(background-color, rgba(0,0,0,0.07));
-        @include mdc-theme-dark(".mdc-data-table") {
-          @include mdc-theme-prop(background-color, rgba(255,255,255,0.07)); 
-        }
+        @include mdc-theme-prop(background-color, divider-on-background);
       }
       
     }
@@ -219,13 +189,9 @@
     position: relative;
     vertical-align: middle;
     height: 48px;
-    border-top: 1px solid rgba(0,0,0,0.12);
-    border-bottom: 1px solid rgba(0,0,0,0.12);
+    border-top: 1px solid mdc-theme-prop-value(divider-on-background);
+    border-bottom: 1px solid mdc-theme-prop-value(divider-on-background);
     
-    @include mdc-theme-dark(".mdc-data-table") {
-      border-top: 1px solid rgba(255,255,255,0.12); 
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-    }
     padding-top: $data-table-cell-top;
     box-sizing: border-box;
 
@@ -243,20 +209,12 @@
     font-size: 0.75rem; /* 12sp */;
     @include mdc-theme-prop(color, text-secondary-on-background);
     
-    @include mdc-theme-dark(".mdc-data-table") {
-      @include mdc-theme-prop(color, rgba(255,255,255,0.7)); 
-    }
-    
     padding-bottom: 8px;
     box-sizing: border-box;
 
     &.mdc-data-table__header--sorted-ascending,
     &.mdc-data-table__header--sorted-descending {
       @include mdc-theme-prop(color, text-primary-on-background);
-      
-      @include mdc-theme-dark(".mdc-data-table") {
-        @include mdc-theme-prop(color, white); 
-      }
       
       &:before {
         @include mdc-typography(icon);

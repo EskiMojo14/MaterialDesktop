@@ -53,7 +53,6 @@ button:focus {
   }
   .mdc-dialog__body--scrollable {
     @include mdc-theme-prop(border-color, divider-on-background);
-    @include mdc-theme-prop(border-color, divider-on-background);
   }
   .mdc-tab {
     @include mdc-theme-prop(color, text-secondary-on-background);
@@ -86,6 +85,7 @@ button:focus {
     height: 360px;
     min-height: 360px;
     max-height: 360px;
+    padding-top: 8px;
   }
   &__panels {
     display: flex;
@@ -102,19 +102,13 @@ button:focus {
       max-height: none;
     }
   }
-  .mdc-expansion__header {
-    flex-direction: row; 
-    align-items: center; 
-    font-size: 1rem;
-    font-weight: 400;
-  }
   &__radio-list {
     display: flex;
     flex-direction: column;
     padding-left: 24px;
   }
   .mdc-list-item {
-    padding: none;
+    padding: 0;
   }
   .mdc-form-field {
     @include mdc-theme-prop(color, text-primary-on-background);
@@ -131,6 +125,39 @@ button:focus {
   .mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
 	.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar{
     @include mdc-theme-prop(background-color, text-icon-on-background);
+  }
+  .mdc-expansion__header {
+    flex-direction: row; 
+    align-items: center; 
+    font-size: 1rem;
+    font-weight: 400;
+    min-width: 100%;
+    justify-content: flex-start;
+  }
+  .mdc-expansion__summary {
+    overflow: visible;
+    
+    &::after {
+      position: relative;
+      left: -40px;
+    }
+  }
+  .mdc-expansion[open] .mdc-expansion__summary {
+    height: 48px !important;
+  }
+  
+  .mdc-expansion .mdc-expansion__summary:focus {
+    background-color: rgba(0,0,0,0) !important;
+  }
+  
+  .mdc-expansion__content {
+    padding: 0;
+    .mdc-list-item {
+      padding: 0 16px 0 72px;
+    }
+  }
+  .mdc-list-group__subheader {
+    margin: 0.75rem 0;
   }
 }
 
