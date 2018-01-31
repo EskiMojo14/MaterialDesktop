@@ -1,5 +1,5 @@
 // from http://www.w3.org/TR/WCAG20/#relativeluminancedef
-function relativeLuminanceW3C(R8bit, G8bit, B8bit) {
+function mdcThemeLuminance(R8bit, G8bit, B8bit) {
 
     var RsRGB = R8bit/255;
     var GsRGB = G8bit/255;
@@ -15,24 +15,24 @@ function relativeLuminanceW3C(R8bit, G8bit, B8bit) {
     return L;
 }
 
-function fromLum(a, b) {
+function mdcThemeContrast(a, b) {
     var l1 = Math.max(a, b),
         l2 = Math.min(a, b);
     return (l1 + 0.05) / (l2 + 0.05);
 }
 
-var white = relativeLuminanceW3C(255,255,255)
-var black = relativeLuminanceW3C(0,0,0)
+var white = mdcThemeLuminance(255,255,255)
+var black = mdcThemeLuminance(0,0,0)
 
 function contrastWhite(r, g, b) {
-  return fromLum(white, relativeLuminanceW3C(r,g,b));
+  return mdcThemeContrast(white, mdcThemeLuminance(r,g,b));
 }
 
 function contrastBlack(r, g, b) {
-  return fromLum(black, relativeLuminanceW3C(r,g,b));
+  return mdcThemeContrast(black, mdcThemeLuminance(r,g,b));
 }
 
-function darkLight(r, g, b) {
+function mdcThemeTone(r, g, b) {
   if (contrastWhite(r, g, b) > 3.1 && contrastWhite(r, g, b) > contrastBlack(r, g, b)) {
     return 'dark';
   } else {
@@ -40,20 +40,24 @@ function darkLight(r, g, b) {
   }
 }
 
+function mdcContrastTone(r, g, b) {
+  return (mdcThemeTone(r, g, b) == 'dark' ? 'light' : 'dark');
+}
+
 function createStyle(css, id) {
   var head = document.head;
     
   if (document.getElementById(id)) {
-    var el = document.getElementById(id);
+    var style = document.getElementById(id);
   } else {
-    var el = document.createElement('style');
-    el.type = 'text/css';
-    el.id = id;
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    style.id = id;
   }
   
-  el.innerHTML = css;
+  style.innerHTML = css;
   
-  head.appendChild(el);
+  head.appendChild(style);
 };
 
 function contrast(object, theme) {
@@ -62,9 +66,9 @@ function contrast(object, theme) {
   var g = Number(JSON.stringify(object).replace(colourRegex, '$2'));
   var b = Number(JSON.stringify(object).replace(colourRegex, '$3'));
   
-  var background = darkLight(r, g, b);  
+  var foreground = mdcContrastTone(r, g, b);
   
-  if (background == 'dark') { 
+  if (foreground == 'light') { 
     var css = ':root { --mdc-theme-' + theme + ': rgb(' + object + '); --mdc-theme-text-primary-on-' + theme + ': white; --mdc-theme-text-secondary-on-' + theme + ': rgba(255,255,255,0.75); --mdc-theme-text-hint-on-' + theme + ': rgba(255,255,255,0.5); --mdc-theme-text-disabled-on-' + theme + ': rgba(255,255,255,0.5); --mdc-theme-text-icon-on-' + theme + ': rgba(255,255,255,0.5); --mdc-theme-divider-on-' + theme + ': rgba(255,255,255,0.12); }';
     createStyle(css, theme);
   } else {

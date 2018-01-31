@@ -26,6 +26,27 @@
 				"type" : "combo",
 				"value" : "40px"
       },
+      "taskbarcolor" :
+      {
+        "options" : 
+				[
+					{
+						"label" : "Primary (Scheme)",
+						"value" : "primary"
+					},
+					{
+						"label" : "Secondary",
+						"value" : "secondary"
+					},
+					{
+						"label" : "Background",
+						"value" : "background"
+					}
+				],
+				"text" : "Taskbar Colour",
+				"type" : "combo",
+				"value" : "primary"
+      },
 			"secondarycolor" : 
 			{
 				"order" : 0,

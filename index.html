@@ -9,10 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" type="text/css">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/material-components-web.css" type="text/css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
-    <link rel="stylesheet" href="css/styles-scss.css" type="text/css">
-    <link rel="stylesheet" href="css/media-bar.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" type="text/css">
 
     <!-- mCustomScrollbar css-->
@@ -22,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="css/pmd-scrollbar.css" />
     
     <!-- MCW Scripts -->
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.js"></script>
+    <script src="node_modules/material-components-web/dist/material-components-web.js"></script>
     
     <script src="js/contrast.js"></script>
     
@@ -41,13 +38,11 @@
     <!-- Variables -->
     <style>
       :root {
-        --font: Roboto, sans-serif;
-        
         --bg: url("../img/wallpapers/january.jpg");
       }
     </style>
   </head>
-  <body class="mdc-typography body">
+  <body class="mdc-typography">
     <header class="mdc-toolbar mdc-toolbar--fixed">
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
@@ -358,49 +353,9 @@
           </div>
         </div>
       </div>
-      <div class="taskbar mdc-elevation--z4"></div> 
+      <div class="taskbar mdc-theme--primary-bg"></div> 
     </div>
-    <script>
-      var debug = document.getElementById('debug');
-      
-      window.wallpaperPropertyListener = {
-        applyUserProperties: function(properties) {
-            
-          // Read scheme color
-          if (properties.schemecolor) {
-            var schemeColor = properties.schemecolor.value.split(' ');
-            schemeColor = schemeColor.map(function(c) {
-              return Math.ceil(c * 255);
-              });
-            contrast(schemeColor, 'primary');
-          }
-
-          // Read custom combo
-          if (properties.taskbarheight) {
-            document.documentElement.style.setProperty(`--taskbar-height`, properties.taskbarheight.value);
-          }
-            
-          // Read secondary color
-          if (properties.secondarycolor) {
-            var secondaryColor = properties.secondarycolor.value.split(' ');
-            secondaryColor = secondaryColor.map(function(c) {
-              return Math.ceil(c * 255);
-              });
-            contrast(secondaryColor, 'secondary');
-          }
-            
-          // Read background color
-          if (properties.backgroundcolor) {
-            var backgroundColor = properties.backgroundcolor.value.split(' ');
-            backgroundColor = backgroundColor.map(function(c) {
-              return Math.ceil(c * 255);
-              });
-            contrast(backgroundColor, 'background');
-          }
-          
-        }
-      };
-    </script>
+    <script src='js/properties.js'></script>
     <script>
       
       mdc.autoInit()
