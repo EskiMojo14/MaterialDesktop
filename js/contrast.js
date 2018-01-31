@@ -33,7 +33,7 @@ function contrastBlack(r, g, b) {
 }
 
 function darkLight(r, g, b) {
-  if (contrastWhite(r, g, b) > contrastBlack(r, g, b)) {
+  if (contrastWhite(r, g, b) > 3.1 && contrastWhite(r, g, b) > contrastBlack(r, g, b)) {
     return 'dark';
   } else {
     return 'light';
