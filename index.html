@@ -55,8 +55,8 @@
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
           <button class="mdc-toolbar__icon material-icons mdc-menu-anchor" id="dropdown-button">more_vert</button>
-          <div class="mdc-simple-menu" style="transform-origin: right top 0px;" id="dropdown" tabindex="-1">
-            <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
+          <div class="mdc-menu" style="transform-origin: right top 0px;" id="dropdown" tabindex="-1">
+            <ul class="mdc-menu__items mdc-list" role="menu" aria-hidden="true">
               <li class="mdc-list-item" role="menuitem" tabindex="-1" id="settings">Settings</li>
             </ul>
           </div>
@@ -92,7 +92,7 @@
                       <input type="checkbox" id="from-top" class="mdc-checkbox__native-control"/>
                       <div class="mdc-checkbox__background">
                         <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                          <path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                          <path class="mdc-checkbox__checkmark-path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
                         </svg>
                         <div class="mdc-checkbox__mixedmark"></div>
                       </div>
@@ -109,7 +109,7 @@
                       <input type="checkbox" id="card" class="mdc-checkbox__native-control"/>
                       <div class="mdc-checkbox__background">
                         <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                          <path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                          <path class="mdc-checkbox__checkmark-path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
                         </svg>
                         <div class="mdc-checkbox__mixedmark"></div>
                       </div>
@@ -308,7 +308,7 @@
       <div class="mdc-dialog__backdrop"></div>
     </aside>
     <div class="content mdc-toolbar-fixed-adjust">
-      <div class="media-bar">
+      <aside class="media-bar">
         <button class="mdc-fab mdc-fab--mini media-bar__fab" aria-label="Toggle media bar visibility" data-mdc-auto-init="MDCRipple" >
           <input type="checkbox" id="show-hide-media" class="mdc-checkbox__native-control">
           <span class="mdc-fab__icon material-icons">
@@ -356,7 +356,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </aside>
       <div class="taskbar mdc-theme--primary-bg"></div> 
     </div>
     <script src='js/properties.js'></script>
@@ -388,7 +388,7 @@
       });
       
       // dropdown
-      let menu = new mdc.menu.MDCSimpleMenu(document.querySelector('#dropdown'));
+      let menu = new mdc.menu.MDCMenu(document.querySelector('#dropdown'));
       document.querySelector('#dropdown-button').addEventListener('click', () => menu.open = !menu.open);
       
       // toggle discordrp

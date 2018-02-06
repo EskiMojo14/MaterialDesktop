@@ -49,7 +49,7 @@ button:focus {
 
 @include mdc-list-group-subheader-ink-color(text-secondary-on-background);
 
-.mdc-simple-menu {
+.mdc-menu {
   @include mdc-theme-prop(background-color, background);
 }
 

@@ -104,9 +104,6 @@
 
     &:focus {
       background-color: #eeeeee;
-      @include mdc-theme-dark(".mdc-expansion") {
-        background-color: #616161;
-      }
       &::after {
         @include mdc-theme-prop(color, text-secondary-on-background);
       }
