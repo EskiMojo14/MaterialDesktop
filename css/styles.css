@@ -6944,4 +6944,4 @@ button:focus {
   bottom: 0;
   z-index: 5;
   height: var(--taskbar-height, 40px);
-  transition: width 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1); }
+  transition: height 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1); }
