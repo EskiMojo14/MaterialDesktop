@@ -18,11 +18,13 @@
 	
     <!-- Propeller scrollbar css-->
     <link rel="stylesheet" type="text/css" href="css/pmd-scrollbar.css" />
+      
+      
+    <!-- import local for offline -->
+    <script src="node_modules/material-components-web/dist/material-components-web.js"></script>
     
     <!-- MCW Scripts -->
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.js"></script>
-      <!-- import local for offline -->
-    <script src="node_modules/material-components-web/dist/material-components-web.js"></script>
     
     <script src="js/contrast.js"></script>
     
@@ -41,7 +43,7 @@
     <!-- Variables -->
     <style>
       :root {
-        --bg: url("../img/wallpapers/february.jpg");
+        --bg: url("https://source.unsplash.com/collection/389237");
         
         --font: Raleway, Roboto, sans-serif;
       }
@@ -51,10 +53,10 @@
     <header class="mdc-toolbar mdc-toolbar--fixed">
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--center mdc-toolbar__section--align-start">
-          <span class="mdc-toolbar__title">Top Bar</span>
+          <span class="mdc-toolbar__title">Material Desktop</span>
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
-          <button class="mdc-toolbar__icon material-icons mdc-menu-anchor" id="dropdown-button">more_vert</button>
+          <button class="mdc-toolbar__icon material-icons mdc-menu-anchor toolbar-icon-ripple" id="dropdown-button">more_vert</button>
           <div class="mdc-menu" style="transform-origin: top right;" id="dropdown" tabindex="-1">
             <ul class="mdc-menu__items mdc-list" role="menu" aria-hidden="true">
               <li class="mdc-list-item" role="menuitem" tabindex="-1" id="settings">Settings</li>
@@ -342,10 +344,10 @@
                 </ul>
               </div>
             </div>
-            <div class="media-bar__section media-bar__section--shrink-to-fit">
-              <button class="material-icons media-bar__icon" id="prev" onclick="MDMediaControls('Previous')">skip_previous</button>
-              <button class="material-icons media-bar__main-button" id="status" onclick="MDMediaControls('PlayPause')">play_arrow</button>
-              <button class="material-icons media-bar__icon" id="next" onclick="MDMediaControls('Next')">skip_next</button>
+            <div class="media-bar__section" id="controls">
+              <button class="material-icons media-bar__icon" id="prev" onclick="MDMediaControls('Previous')" data-mdc-ripple-is-unbounded>skip_previous</button>
+              <button class="material-icons media-bar__main-button" id="status" onclick="MDMediaControls('PlayPause')" data-mdc-ripple-is-unbounded>play_arrow</button>
+              <button class="material-icons media-bar__icon" id="next" onclick="MDMediaControls('Next')" data-mdc-ripple-is-unbounded>skip_next</button>
             </div>
             <div class="media-bar__section media-bar__section--align-end">
               <div class="mdc-typography--caption media-bar__position">
@@ -463,6 +465,10 @@
         var playerRegex = /player-radio-(.*)/
         MDPlayerControl(checkedRadio.id.replace(playerRegex, '$1'));
       });
+      
+      // ripple controls
+      // disabled as is currently buggy
+      // [].forEach.call(document.querySelectorAll('#controls .media-bar__icon, #controls .media-bar__main-button'), function(surface) { mdc.ripple.MDCRipple.attachTo(surface); });
     </script>
     
     <!-- Jquery js -->

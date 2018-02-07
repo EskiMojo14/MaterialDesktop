@@ -4,6 +4,7 @@
 @import "@material/linear-progress/mixins";
 @import "@material/theme/mixins";
 @import "@material/rtl/mixins";
+@import "@material/ripple/mixins";
 
 $media-bar-row-height: 56px;
 
@@ -192,27 +193,36 @@ $media-bar-row-height: 56px;
   }
   
   &__icon {
-    padding: 12px;
+    padding: 8px;
+    margin: 4px;
     @include mdc-theme-prop(color, text-icon-on-background);
     user-select: none;
     border: none;
     @include mdc-theme-prop(background-color, transparent);
     outline: none;
+    overflow: visible;
+    @include mdc-ripple-surface;
+    @include mdc-states;
+    @include mdc-ripple-radius-unbounded;
   }
   
   &__main-button {
-    width: $media-bar-row-height - 16px; 
-    height: $media-bar-row-height - 16px; 
+    width: $media-bar-row-height; 
+    height: $media-bar-row-height; 
     @include mdc-theme-prop(background-color, primary);
-    padding: 0; 
+    background-clip: content-box;
+    padding: 8px; 
     margin: 0 12px; 
     border-radius: 50%;
     @include mdc-theme-prop(color, text-primary-on-primary);
-    line-height: $media-bar-row-height - 16px; 
     text-align: center;
     user-select: none;
     border: none;
     outline: none;
+    overflow: visible;
+    @include mdc-ripple-surface;
+    @include mdc-states(primary);
+    @include mdc-ripple-radius-unbounded;
   }
   
   &__track-info {

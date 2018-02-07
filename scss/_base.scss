@@ -3,11 +3,12 @@
 @import "@material/list/mixins";
 @import "@material/theme/mixins";
 @import "@material/theme/functions";
+@import "@material/toolbar/variables";
 @import "@material/toolbar/mixins";
 @import "@material/ripple/mixins";
 
 body {
-  background-image: var(--bg, url("https://storage.googleapis.com/g-design/static/wallpaper-kleiner-google-blue.jpg"));
+  background-image: var(--bg, url("../img/nil-castellvi-309295.jpg"));
   background-color: #fafafa;
 }
 
@@ -61,6 +62,18 @@ button:focus {
   &__section--center {
     align-items: center;
   }
+}
+
+.toolbar-icon-ripple {
+  padding: 12px;
+  @include mdc-ripple-surface;
+  @include mdc-states;
+  @include mdc-ripple-radius-unbounded;
+}
+
+.toolbar-icon-ripple:last-of-type {
+  padding: 12px;
+  @include mdc-rtl-reflexive-box(margin, 'right', $mdc-toolbar-element-horizontal-padding-mobile / 2);
 }
 
 .settings-dialog {

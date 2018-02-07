@@ -52,7 +52,7 @@
 				"order" : 0,
 				"text" : "Secondary Colour",
 				"type" : "color",
-				"value" : "1 0.341176471 0.133333333"
+				"value" : "1 0.250980392 0.505882353"
 			},
 			"backgroundcolor" : 
 			{
@@ -64,13 +64,13 @@
 			"schemecolor" : 
 			{
 				"order" : 0,
-				"text" : "ui_browse_properties_scheme_color",
+				"text" : "Primary Colour",
 				"type" : "color",
-				"value" : "0 0.58823529411 0.53333333333"
+				"value" : "0 0.737254902 0.831372549"
 			}
 		}
 	},
-	"preview" : "/img/wallpapers/february.jpg",
+	"preview" : "/img/nil-castellvi-309295.jpg",
 	"title" : "Material Desktop",
 	"type" : "web"
 }
