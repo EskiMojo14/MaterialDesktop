@@ -220,6 +220,7 @@ $media-bar-row-height: 56px;
     border: none;
     outline: none;
     overflow: visible;
+    flex-shrink: 0;
     @include mdc-ripple-surface;
     @include mdc-states(primary);
     @include mdc-ripple-radius-unbounded;
