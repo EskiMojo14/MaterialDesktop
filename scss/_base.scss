@@ -64,18 +64,6 @@ button:focus {
   }
 }
 
-.toolbar-icon-ripple {
-  padding: 12px;
-  @include mdc-ripple-surface;
-  @include mdc-states;
-  @include mdc-ripple-radius-unbounded;
-}
-
-.toolbar-icon-ripple:last-of-type {
-  padding: 12px;
-  @include mdc-rtl-reflexive-box(margin, 'right', $mdc-toolbar-element-horizontal-padding-mobile / 2);
-}
-
 .settings-dialog {
   .mdc-dialog__surface {
     min-width: initial;

@@ -207,8 +207,8 @@ $media-bar-row-height: 56px;
   }
   
   &__main-button {
-    width: $media-bar-row-height; 
-    height: $media-bar-row-height; 
+    width: 56px; 
+    height: 56px; 
     @include mdc-theme-prop(background-color, primary);
     background-clip: content-box;
     padding: 8px; 
