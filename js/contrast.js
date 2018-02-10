@@ -61,10 +61,9 @@ function createStyle(css, id) {
 };
 
 function contrast(object, theme) {
-  var colourRegex = /\[(.*),(.*),(.*)\]/;
-  var r = Number(JSON.stringify(object).replace(colourRegex, '$1'));
-  var g = Number(JSON.stringify(object).replace(colourRegex, '$2'));
-  var b = Number(JSON.stringify(object).replace(colourRegex, '$3'));
+  var r = Number(object[0]);
+  var g = Number(object[1]);
+  var b = Number(object[2]); 
   
   var foreground = mdcContrastTone(r, g, b);
   
