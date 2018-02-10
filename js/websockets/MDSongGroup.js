@@ -31,17 +31,17 @@ var onClose = function() {
 };
 
 var onMessage = function(event) {
-  var selectRegex = /(.*) \| (.*) \| (.*) \| (.*)/
-  document.getElementById("track").innerHTML = event.data.replace(selectRegex, '$1');
-  document.getElementById("track-info").innerHTML = event.data.replace(selectRegex, '$1');
-  document.getElementById("artist").innerHTML = event.data.replace(selectRegex, '$2');
-  document.getElementById("artist-info").innerHTML = event.data.replace(selectRegex, '$2');
-  document.getElementById("duration").innerHTML = event.data.replace(selectRegex, '$3');
-  document.getElementById("duration-info").innerHTML = event.data.replace(selectRegex, '$3');
-  if (event.data.replace(selectRegex, '$4') != '') {
+  var dataArray = event.data.split(' | ');
+  document.getElementById("track").innerHTML = dataArray[0];
+  document.getElementById("track-info").innerHTML = dataArray[0];
+  document.getElementById("artist").innerHTML = dataArray[1];
+  document.getElementById("artist-info").innerHTML = dataArray[1];
+  document.getElementById("duration").innerHTML = dataArray[2];
+  document.getElementById("duration-info").innerHTML = dataArray[2];
+  if (dataArray[3] != '') {
     document.getElementById("cover").style.visibility = 'visible';
-    document.getElementById("cover").src = event.data.replace(selectRegex, '$4') + '?random=' + new Date().getTime();
-    document.getElementById("cover-info").innerHTML = event.data.replace(selectRegex, '$4');
+    document.getElementById("cover").src =  dataArray[3] + '?random=' + new Date().getTime();
+    document.getElementById("cover-info").innerHTML = dataArray[3];
   } else {
     document.getElementById("cover").style.visibility = 'hidden';
     document.getElementById("cover-info").innerHTML = 'N/A';

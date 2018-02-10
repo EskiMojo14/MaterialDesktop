@@ -29,13 +29,13 @@ var onClose = function() {
 };
 
 var onMessage = function(event) {
-  var selectRegex = /(.*) \| (.*)/
+  var dataArray = event.data.split(' | ');
   var determinate = document.querySelector('.mdc-linear-progress');
   var linearProgress = mdc.linearProgress.MDCLinearProgress.attachTo(determinate);
-  linearProgress.progress = event.data.replace(selectRegex, '$1') / 100;
-  document.getElementById("progress-info").innerHTML = event.data.replace(selectRegex, '$1');
-  document.getElementById("position").innerHTML = event.data.replace(selectRegex, '$2');
-  document.getElementById("position-info").innerHTML = event.data.replace(selectRegex, '$2');
+  linearProgress.progress = dataArray[0] / 100;
+  document.getElementById("progress-info").innerHTML = dataArray[0];
+  document.getElementById("position").innerHTML = dataArray[1];
+  document.getElementById("position-info").innerHTML = dataArray[1];
 };
 
 var onError = function(event) {

@@ -29,17 +29,17 @@ var onClose = function() {
 };
 
 var onMessage = function(event) {
-  var selectRegex = /(.*) \| (.*)/
+  var dataArray = event.data.split(' | ');
   var discordCheckbox = document.getElementById("discordrp");
-  if (event.data.replace(selectRegex, '$1') == 1) {
+  if (dataArray[0] == 1) {
     discordCheckbox.checked = true;
   } else {
     discordCheckbox.checked = false;
   }
-  document.getElementById("discord-info").innerHTML = event.data.replace(selectRegex, '$1');
-  var playerRadio = document.getElementById("player-radio-" + event.data.replace(selectRegex, '$2').toLowerCase());
+  document.getElementById("discord-info").innerHTML = dataArray[0];
+  var playerRadio = document.getElementById("player-radio-" + dataArray[1].toLowerCase());
   playerRadio.checked = true;
-  document.getElementById("player-info").innerHTML = event.data.replace(selectRegex, '$2');
+  document.getElementById("player-info").innerHTML = dataArray[1];
 };
 
 var onError = function(event) {
