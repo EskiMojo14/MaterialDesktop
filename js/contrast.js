@@ -65,13 +65,8 @@ function contrast(object, theme) {
   var g = Number(object[1]);
   var b = Number(object[2]); 
   
-  var foreground = mdcContrastTone(r, g, b);
+  var background = mdcThemeTone(r, g, b);
   
-  if (foreground == 'light') { 
-    var css = ':root { --mdc-theme-' + theme + ': rgb(' + object + '); --mdc-theme-text-primary-on-' + theme + ': white; --mdc-theme-text-secondary-on-' + theme + ': rgba(255,255,255,0.75); --mdc-theme-text-hint-on-' + theme + ': rgba(255,255,255,0.5); --mdc-theme-text-disabled-on-' + theme + ': rgba(255,255,255,0.5); --mdc-theme-text-icon-on-' + theme + ': rgba(255,255,255,0.5); --mdc-theme-divider-on-' + theme + ': rgba(255,255,255,0.2); }';
-    createStyle(css, theme);
-  } else {
-    var css = ':root { --mdc-theme-' + theme + ': rgb(' + object + '); --mdc-theme-text-primary-on-' + theme + ': rgba(0, 0, 0, 0.87); --mdc-theme-text-secondary-on-' + theme + ': rgba(0, 0, 0, 0.54); --mdc-theme-text-hint-on-' + theme + ': rgba(0, 0, 0, 0.38); --mdc-theme-text-disabled-on-' + theme + ': rgba(0, 0, 0, 0.38); --mdc-theme-text-icon-on-' + theme + ': rgba(0, 0, 0, 0.38); --mdc-theme-divider-on-' + theme + ': rgba(0,0,0,0.12); }';
-    createStyle(css, theme);
-  }
+  var css = ":root {\n  --mdc-theme-" + theme + ": rgb(" + object + ");\n  --mdc-theme-text-primary-on-" + theme + ": var(--mdc-theme-text-primary-on-" + background + ");\n  --mdc-theme-text-secondary-on-" + theme + ": var(--mdc-theme-text-secondary-on-" + background + ");\n  --mdc-theme-text-hint-on-" + theme + ": var(--mdc-theme-text-hint-on-" + background + ");\n  --mdc-theme-text-disabled-on-" + theme + ": var(--mdc-theme-text-disabled-on-" + background + ");\n  --mdc-theme-text-icon-on-" + theme + ": var(--mdc-theme-text-icon-on-" + background + ");\n  --mdc-theme-divider-on-" + theme + ": var(--mdc-theme-text-divider-on-" + background + ");\n}";
+  createStyle(css, theme);
 }
