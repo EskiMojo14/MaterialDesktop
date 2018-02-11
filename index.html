@@ -310,6 +310,12 @@
       <div class="mdc-dialog__backdrop"></div>
     </aside>
     <div class="content mdc-toolbar-fixed-adjust">
+      <div class="clock">
+        <div class="clock__display">
+          <div class="clock__time" id="time">15:43</div>
+          <div class="clock__date" id="date">Sun, 11 Feb</div>
+        </div>
+      </div>
       <aside class="media-bar">
         <button class="mdc-fab mdc-fab--mini media-bar__fab" aria-label="Toggle media bar visibility" data-mdc-auto-init="MDCRipple" >
           <input type="checkbox" id="show-hide-media" class="mdc-checkbox__native-control">
@@ -365,6 +371,30 @@
     <script>
       
       mdc.autoInit()
+      
+      // clock
+      
+      // values for translation
+      var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      
+      function startTime() {
+        var today = new Date();
+        var day = days[today.getDay()];
+        var date = today.getDate();
+        var month = months[today.getMonth()];
+        var h = today.getHours();
+        var m = today.getMinutes();
+        m = checkTime(m);
+        document.getElementById('time').innerHTML = h + ':' + m;
+        document.getElementById('date').innerHTML = day + ', ' + date + ' ' + month;
+        var t = setTimeout(startTime, 500);
+      }
+      function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+      }
+      startTime();
       
       // sets variable for computed media bar height, used for hiding
       document.documentElement.style.setProperty(`--media-bar-height`, document.querySelector('.media-bar__bar').clientHeight + 'px');
