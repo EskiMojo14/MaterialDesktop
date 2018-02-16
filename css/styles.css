@@ -7065,7 +7065,7 @@ button:focus {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12); }
+    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.4), 0px 1px 1px rgba(0, 0, 0, 0.28), 0px 1px 3px rgba(0, 0, 0, 0.24); }
   .clock__time {
     font-family: Roboto, sans-serif;
     -moz-osx-font-smoothing: grayscale;
@@ -7225,3 +7225,19 @@ button:focus {
   z-index: 5;
   height: var(--taskbar-height, 40px);
   transition: height 300ms 0ms cubic-bezier(0.4, 0, 0.2, 1); }
+
+.theme-dark .mdc-switch__native-control:enabled:not(:checked) ~ .mdc-switch__background::before {
+  background-color: white; }
+
+.theme-dark .mdc-switch__native-control:enabled:not(:checked) ~ .mdc-switch__background .mdc-switch__knob {
+  background-color: #bdbdbd; }
+
+.theme-dark .mdc-switch__background::before {
+  opacity: .3; }
+
+.theme-dark .mdc-switch__native-control:disabled ~ .mdc-switch__background::before {
+  background-color: white;
+  opacity: .10; }
+
+.theme-dark .mdc-switch__native-control:disabled ~ .mdc-switch__background .mdc-switch__knob {
+  background-color: #424242; }

@@ -50,6 +50,29 @@ window.wallpaperPropertyListener = {
         return Math.ceil(c * 255);
       });
       contrast(backgroundColor, 'background');
+      var body = document.querySelector('body');
+      if (mdcThemeTone(Number(backgroundColor[0]),Number(backgroundColor[1]),Number(backgroundColor[2])) == 'dark') {
+        body.classList.add('theme-dark');
+      } else {
+        body.classList.remove('theme-dark');
+      }
+    }
+    
+    // Read title
+    if(properties.title) {
+      document.getElementById('title').innerHTML = properties.title.value;
+    } 
+    
+    if(properties.background) {
+      if(typeof properties.background.value !== 'undefined') {
+        if (properties.background.value !== '') {
+          var background = 'url(file:///' + properties.background.value + ')';
+        } else {
+          var background = 'url("https://source.unsplash.com/collection/389237")';
+        }
+        var css = ":root { \n  --bg: " + background + "; \n}";
+        createStyle(css, 'background-image');
+      }
     }
   }
 };

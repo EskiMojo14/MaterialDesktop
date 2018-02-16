@@ -5,6 +5,19 @@
 	{
 		"properties" : 
 		{
+      "title" :
+			{
+				"order" : 6,
+				"text" : "Title",
+				"type" : "textinput",
+				"value" : "Material Desktop"
+			},
+      "background" :
+			{
+				"order" : 7,
+				"text" : "Background",
+				"type" : "file"
+			},
       "taskbarheight" :
       {
         "options" : 
@@ -24,7 +37,8 @@
 				],
 				"text" : "Taskbar Height",
 				"type" : "combo",
-				"value" : "40px"
+				"value" : "40px",
+				"order" : 4
       },
       "taskbarcolor" :
       {
@@ -45,28 +59,32 @@
 				],
 				"text" : "Taskbar Colour",
 				"type" : "combo",
-				"value" : "primary"
+				"value" : "primary",
+				"order" : 5
       },
 			"secondarycolor" : 
 			{
 				"order" : 0,
 				"text" : "Secondary Colour",
 				"type" : "color",
-				"value" : "1 0.250980392 0.505882353"
+				"value" : "1 0.250980392 0.505882353",
+				"order" : 2
 			},
 			"backgroundcolor" : 
 			{
 				"order" : 0,
 				"text" : "Background Colour",
 				"type" : "color",
-				"value" : "1 1 1"
+				"value" : "1 1 1",
+				"order" : 3
 			},
 			"schemecolor" : 
 			{
 				"order" : 0,
 				"text" : "Primary Colour",
 				"type" : "color",
-				"value" : "0 0.737254902 0.831372549"
+				"value" : "0 0.737254902 0.831372549",
+				"order" : 1
 			}
 		}
 	},

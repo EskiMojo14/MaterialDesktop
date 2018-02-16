@@ -53,7 +53,7 @@
     <header class="mdc-toolbar mdc-toolbar--fixed">
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--center mdc-toolbar__section--align-start">
-          <span class="mdc-toolbar__title">Material Desktop</span>
+          <span class="mdc-toolbar__title" id="title">Material Desktop</span>
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--center mdc-toolbar__section--align-end">
           <button class="mdc-toolbar__icon material-icons mdc-menu-anchor" id="dropdown-button" data-mdc-ripple-is-unbounded>more_vert</button>
@@ -336,7 +336,7 @@
           <div class="media-bar__row">
             <div class="media-bar__section media-bar__section--align-start">
               <div class="media-bar__cover media-bar__cover--rounded">
-                <img class="media-bar__cover-art" id="cover"></img>
+                <img class="media-bar__cover-art" id="cover" style="visibility: hidden;"></img>
                 <span class="media-bar__album-icon material-icons">album</span>
               </div>
               <div class="media-bar__track-info">
@@ -386,8 +386,10 @@
         var h = today.getHours();
         var m = today.getMinutes();
         m = checkTime(m);
-        document.getElementById('time').innerHTML = h + ':' + m;
-        document.getElementById('date').innerHTML = day + ', ' + date + ' ' + month;
+        var timeFormat = h + ':' + m;
+        var dateFormat = day + ', ' + date + ' ' + month;
+        document.getElementById('time').innerHTML = timeFormat;
+        document.getElementById('date').innerHTML = dateFormat;
         var t = setTimeout(startTime, 500);
       }
       function checkTime(i) {
@@ -487,6 +489,28 @@
         slidePanel(nthChildIndex);
         setTimeout(function() { hidePanels(nthChildIndex); }, 120);
       });
+      
+      /*//attach radio
+      var formFields = document.querySelectorAll('.mdc-form-field');
+      for (var i = 0, formField; formField = formFields[i]; i++) {
+        var formFieldInstance = new mdc.formField.MDCFormField(formField);
+        var radio = formField.querySelector('.mdc-radio');
+        if (radio) {
+          var radioInstance = new mdc.radio.MDCRadio(radio);
+          formFieldInstance.input = radioInstance;
+        }
+      }
+    
+      // attach checkbox
+      for (var i = 0, formField; formField = formFields[i]; i++) {
+        var formFieldInstance = new mdc.formField.MDCFormField(formField);
+        var checkbox = formField.querySelector('.mdc-checkbox');
+        if (checkbox) {
+          var checkboxInstance = new mdc.checkbox.MDCCheckbox(checkbox);
+          formFieldInstance.input = checkboxInstance;
+        }
+      }*/
+    
       
       // player selector
       var radioEl = document.querySelector('.player-radio-container');

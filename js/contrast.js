@@ -67,6 +67,6 @@ function contrast(object, theme) {
   
   var background = mdcThemeTone(r, g, b);
   
-  var css = ":root {\n  --mdc-theme-" + theme + ": rgb(" + object + ");\n  --mdc-theme-text-primary-on-" + theme + ": var(--mdc-theme-text-primary-on-" + background + ");\n  --mdc-theme-text-secondary-on-" + theme + ": var(--mdc-theme-text-secondary-on-" + background + ");\n  --mdc-theme-text-hint-on-" + theme + ": var(--mdc-theme-text-hint-on-" + background + ");\n  --mdc-theme-text-disabled-on-" + theme + ": var(--mdc-theme-text-disabled-on-" + background + ");\n  --mdc-theme-text-icon-on-" + theme + ": var(--mdc-theme-text-icon-on-" + background + ");\n  --mdc-theme-divider-on-" + theme + ": var(--mdc-theme-text-divider-on-" + background + ");\n}";
+  var css = ":root {\n  --mdc-theme-" + theme + ": rgb(" + object + ");\n  --mdc-theme-text-primary-on-" + theme + ": var(--mdc-theme-text-primary-on-" + background + ");\n  --mdc-theme-text-secondary-on-" + theme + ": var(--mdc-theme-text-secondary-on-" + background + ");\n  --mdc-theme-text-hint-on-" + theme + ": var(--mdc-theme-text-hint-on-" + background + ");\n  --mdc-theme-text-disabled-on-" + theme + ": var(--mdc-theme-text-disabled-on-" + background + ");\n  --mdc-theme-text-icon-on-" + theme + ": var(--mdc-theme-text-icon-on-" + background + ");\n  --mdc-theme-divider-on-" + theme + ": var(--mdc-theme-divider-on-" + background + ");\n}";
   createStyle(css, theme);
 }

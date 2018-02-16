@@ -1,0 +1,22 @@
+@import "@material/switch/mixins";
+
+.theme-dark {
+  $mdc-switch-unchecked-track-color: white;
+  $mdc-switch-unchecked-knob-color: #bdbdbd;
+  $mdc-switch-disabled-knob-color: #424242;
+  @include mdc-switch-unchecked-track-color_($mdc-switch-unchecked-track-color);
+  @include mdc-switch-unchecked-knob-color_($mdc-switch-unchecked-knob-color);
+  .mdc-switch__background::before {
+    opacity: .3;
+  }
+  .mdc-switch__native-control:disabled ~ .mdc-switch__background {
+    // Track
+    &::before {
+      background-color: $mdc-switch-unchecked-track-color;
+      opacity: .10;
+    }
+    .mdc-switch__knob {
+      background-color: $mdc-switch-disabled-knob-color;
+    }
+  }
+}
