@@ -193,9 +193,8 @@ $media-bar-row-height: 56px;
   }
   
   &__icon {
-    padding: 8px;
-    margin: 4px;
-    @include mdc-theme-prop(color, text-icon-on-background);
+    padding: 12px;
+    @include mdc-theme-prop(color, text-secondary-on-background);
     user-select: none;
     border: none;
     @include mdc-theme-prop(background-color, transparent);

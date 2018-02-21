@@ -58,6 +58,7 @@
 					}
 				],
 				"text" : "Taskbar Colour",
+        "condition" : "taskbarheight.value !== '0px'",
 				"type" : "combo",
 				"value" : "primary",
 				"order" : 5

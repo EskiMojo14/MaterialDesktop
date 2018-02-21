@@ -351,9 +351,9 @@
               </div>
             </div>
             <div class="media-bar__section" id="controls">
-              <button class="material-icons media-bar__icon" id="prev" onclick="MDMediaControls('Previous')" data-mdc-ripple-is-unbounded>skip_previous</button>
-              <button class="material-icons media-bar__main-button" id="status" onclick="MDMediaControls('PlayPause')" data-mdc-ripple-is-unbounded>play_arrow</button>
-              <button class="material-icons media-bar__icon" id="next" onclick="MDMediaControls('Next')" data-mdc-ripple-is-unbounded>skip_next</button>
+              <button class="material-icons media-bar__icon" id="prev" onclick="MDMediaControls('Previous')">skip_previous</button>
+              <button class="material-icons media-bar__main-button" id="status" onclick="MDMediaControls('PlayPause')">play_arrow</button>
+              <button class="material-icons media-bar__icon" id="next" onclick="MDMediaControls('Next')">skip_next</button>
             </div>
             <div class="media-bar__section media-bar__section--align-end">
               <div class="mdc-typography--caption media-bar__position">
@@ -520,9 +520,13 @@
         MDPlayerControl(checkedRadio.id.replace(playerRegex, '$1'));
       });
       
-      // ripple controls
-      // disabled as is currently buggy
-      [].forEach.call(document.querySelectorAll('#controls .media-bar__main-button'), function(surface) { mdc.ripple.MDCRipple.attachTo(surface); });
+      // ripple
+      // currently buggy
+      var icons = document.querySelectorAll('.mdc-toolbar__icon, .media-bar__icon, .media-bar__main-button')
+      for (var i = 0, icon; icon = icons[i]; i++){
+        var rippleIcon = new mdc.ripple.MDCRipple(icon);
+        rippleIcon.unbounded = true;
+      }
     </script>
     
     <!-- Jquery js -->

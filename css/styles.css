@@ -6587,11 +6587,10 @@ a.mdc-list-item {
     .media-bar__cover--rounded {
       border-radius: 50%; }
   .media-bar__icon {
-    padding: 8px;
-    margin: 4px;
+    padding: 12px;
     /* @alternate */
-    color: rgba(0, 0, 0, 0.38);
-    color: var(--mdc-theme-text-icon-on-background, rgba(0, 0, 0, 0.38));
+    color: rgba(0, 0, 0, 0.54);
+    color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54));
     user-select: none;
     border: none;
     background-color: transparent;
