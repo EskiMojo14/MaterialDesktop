@@ -7125,12 +7125,16 @@ button:focus {
     transform: scale(1.25);
     transition: transform 0s 120ms; }
 
+.settings-dialog .wallpaper-button {
+  transform: scale(1.25);
+  transition: transform 0s 120ms; }
+
 .settings-dialog .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate) ~ .mdc-checkbox__background {
   /* @alternate */
   border-color: rgba(0, 0, 0, 0.54);
   border-color: var(--mdc-theme-text-secondary-on-background, rgba(0, 0, 0, 0.54)); }
 
-.settings-dialog.mdc-dialog--open .mdc-tab-bar {
+.settings-dialog.mdc-dialog--open .mdc-tab-bar, .settings-dialog.mdc-dialog--open .wallpaper-button {
   transform: scale(1);
   transition: transform 0s 0ms; }
 

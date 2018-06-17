@@ -35,7 +35,7 @@
 						"value" : "0px"
 					}
 				],
-				"text" : "Taskbar Height",
+				"text" : "Taskbar height",
 				"type" : "combo",
 				"value" : "40px",
 				"order" : 4
@@ -57,7 +57,7 @@
 						"value" : "background"
 					}
 				],
-				"text" : "Taskbar Colour",
+				"text" : "Taskbar colour",
         "condition" : "taskbarheight.value !== '0px'",
 				"type" : "combo",
 				"value" : "primary",
@@ -65,27 +65,33 @@
       },
 			"secondarycolor" : 
 			{
-				"order" : 0,
-				"text" : "Secondary Colour",
+				"text" : "Secondary colour",
+        "condition" : "autocolor.value == false",
 				"type" : "color",
 				"value" : "1 0.250980392 0.505882353",
 				"order" : 2
 			},
 			"backgroundcolor" : 
 			{
-				"order" : 0,
-				"text" : "Background Colour",
+				"text" : "Background colour",
 				"type" : "color",
 				"value" : "1 1 1",
 				"order" : 3
 			},
+			"autocolor" : 
+			{
+				"order" : 1,
+				"text" : "Choose colours automatically",
+				"type" : "bool",
+				"value" : true
+			},
 			"schemecolor" : 
 			{
 				"order" : 0,
-				"text" : "Primary Colour",
+				"text" : "Primary colour",
+        "condition" : "autocolor.value === false",
 				"type" : "color",
-				"value" : "0 0.737254902 0.831372549",
-				"order" : 1
+				"value" : "0 0.737254902 0.831372549"
 			}
 		}
 	},

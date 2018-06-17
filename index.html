@@ -37,6 +37,9 @@
     <script src="js/websockets/MDPlayerControl.js"></script>
     <script src="js/websockets/MDDiscordControl.js"></script>
     
+    <!-- Vibrant -->
+    <script src="node_modules\node-vibrant\dist\vibrant.js"></script>
+    
     <!--Details polyfill-->
     <script src="js/details-polyfill.js"></script>
     
@@ -45,7 +48,7 @@
       :root {
         --bg: url("https://source.unsplash.com/collection/389237"); 
         
-        --font: Raleway, Roboto, sans-serif;
+        --font: Roboto Condensed, sans-serif;
       }
     </style>
   </head>
@@ -119,6 +122,8 @@
                   </div>
                 </li>
               </ul>
+              <h3 class="mdc-list-group__subheader">Wallpaper</h3>
+              <button type="button" class="mdc-button wallpaper-button" data-mdc-auto-init="MDCRipple" onclick="newBackground()">New Wallpaper</button>
               </div>
             </div>
             <div class="settings-dialog__panel" id="panel-2" role="tabpanel">
@@ -317,7 +322,7 @@
         </div>
       </div>
       <aside class="media-bar">
-        <button class="mdc-fab mdc-fab--mini media-bar__fab" aria-label="Toggle media bar visibility" data-mdc-auto-init="MDCRipple" >
+        <button class="mdc-fab media-bar__fab" aria-label="Toggle media bar visibility" data-mdc-auto-init="MDCRipple" >
           <input type="checkbox" id="show-hide-media" class="mdc-checkbox__native-control">
           <span class="mdc-fab__icon material-icons">
             expand_more
